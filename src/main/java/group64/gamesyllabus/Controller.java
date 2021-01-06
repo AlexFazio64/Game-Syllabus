@@ -4,8 +4,8 @@ import org.springframework.web.bind.annotation.*;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-	@GetMapping("/jsp")
+	@GetMapping("/provaDio")
 	public String provaJsp(){
-		return "prova";
+		return "base";
 	}
 }
