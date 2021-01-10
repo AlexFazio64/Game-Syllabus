@@ -1,4 +1,4 @@
-package group64.gamesyllabus;
+package group64.gamesyllabus.controller;
 
 import org.springframework.web.bind.annotation.*;
 
