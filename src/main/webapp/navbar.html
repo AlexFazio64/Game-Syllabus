@@ -24,13 +24,18 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	
 	//regola la visualizzazione dell' account nella navbar
 	function showAccountInfo(logged) {
-		$(logged ? '.account a:not(".item") ' : '.account.item').css("display", "none");
+		if(logged){
+			$(".register").remove();
+			$(".login").remove();
+		}else{
+			$("a.item").remove();
+		}
 	}
 	
 	// risultati falsi per adesso
 	//ragionare sulle dimensioni-max delle parti
 	function showQueryResults(s) {
-		const itemImg = $("<img src='images/logo_50.png' alt='logo'>")
+		const itemImg = $("<img src='images/logo.png' width='50' height='50' alt='logo'>")
 		const itemName = $("<p>NieR: Automata</p>");
 		const itemType = $("<p>" + s + "</p>");
 		const result = $("<span class='result-item'></span>");
