@@ -1,32 +1,89 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="../../../../../Desktop/index.html">
-        <img src="images/logo.png" alt="logo" style="width:40px;">
-    </a>
-    <form class="form-inline" action="/action_page.php">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-success color-purple" type="submit">Search</button>
-    </form>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Games</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Devs</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Platforms</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="register.html">Register</a>
-        </li>
-    </ul>
+<!-- Non ancora responsive
+inserire nella pagina per importare la navbar
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+<div id="nav-placeholder">
+</div>
+<script>
+	$(function () {
+		$("#nav-placeholder").load("navbar.html");
+	});
+</script>
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-->
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script defer>
+	// carica il css della pagina
+	$('<link>').appendTo('head').attr({
+		type: 'text/css',
+		rel: 'stylesheet',
+		href: 'css/navbar.css'
+	});
+	
+	//regola la visualizzazione dell' account nella navbar
+	function showAccountInfo(logged) {
+		$(logged ? '.account a:not(".item") ' : '.account.item').css("display", "none");
+	}
+	
+	// risultati falsi per adesso
+	//ragionare sulle dimensioni-max delle parti
+	function showQueryResults(s) {
+		const itemImg = $("<img src='images/logo_50.png' alt='logo'>")
+		const itemName = $("<p>NieR: Automata</p>");
+		const itemType = $("<p>" + s + "</p>");
+		const result = $("<span class='result-item'></span>");
+		result.append(itemImg);
+		result.append(itemName);
+		result.append(itemType);
+		$(".dropdown-content").append(result);
+	}
+	
+	//visualizza o nasconde i risultati suggeriti
+	function suggestion() {
+		let $x = $(".dropdown-content");
+		if ($(".search-box")[0].value.length >= 3) {
+			$x.css("display", "flex");
+		} else {
+			$x.css("display", "none");
+		}
+	}
+	
+	showQueryResults("Games");
+	showQueryResults("Platforms");
+	showQueryResults("Developers");
+	showQueryResults("All");
+</script>
+<nav>
+	<ul class="nav">
+		<li class="search">
+			<!-- Esportare in 50x50 per ottimizzare -->
+			<a class="logo" href="#"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
+			<form action="#" class="dropdown">
+				<input class="search-box" type="search" placeholder="Search..." oninput="suggestion()">
+				<span class="dropdown-content"></span>
+				<span class="icon"><i class="material-icons">search</i></span>
+			</form>
+		</li>
+		
+		<li class="item">
+			<span class="menu material-icons">menu</span>
+			<a href="#">Games</a>
+			<a href="#">Developers</a>
+			<a href="#">Platforms</a>
+			<a href="#">About Us</a>
+			<a href="#">Contacts</a>   <!-- Muovere in About us? -->
+		</li>
+		
+		<!-- usare showAccountInfo(true|false) -->
+		<li class="item account">
+			<a class="item" href="#">
+				<span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
+				<span class="profile-name">VeryLongUsernameOver</span> <!-- Lunghezza massima?? -->
+			</a>
+			<a class="register" href="#">Register</a>
+			<a class="login" href="#">Login</a>
+		</li>
+	</ul>
 </nav>
