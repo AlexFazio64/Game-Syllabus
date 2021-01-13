@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class GameController {
-    @GetMapping("/game.html")
+    @GetMapping("/game")
     public String iscrivi(@RequestParam String name, Model model) {
-        System.out.println(name);
         model.addAttribute("game",name);
+
         return "game";
     }
 

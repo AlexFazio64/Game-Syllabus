@@ -1,0 +1,172 @@
+.color-purple {
+    background-color: #9966cc;
+    border-color: #9966cc;
+}
+
+.color-purple:hover {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+
+.color-purple:focus-visible {
+    background-color: rebeccapurple;
+    border-color: rebeccapurple;
+}
+
+.arguments {
+    text-decoration: underline;
+    text-decoration-color: #9966cc;
+    margin-top: 20px;
+    margin-left: 1%;
+}
+
+.info {
+    display: flex;
+    overflow-x: auto;
+
+}
+
+.item {
+
+    text-align: center;
+    height: auto;
+    width: auto;
+    align-items: start;
+    line-height: 100%;
+    margin-right: 1%;
+
+}
+
+.info #basicInformation li {
+
+    margin-bottom: 5%;
+    list-style-type: none;
+    overflow-x: auto;
+}
+
+.content-responsive {
+    padding: 0px 15px;
+    width: 100%;
+    height: auto;
+}
+
+
+#main {
+
+}
+
+footer {
+    font-weight: 500;
+}
+
+.nav {
+    width: 100%;
+    height: auto;
+    position: -webkit-sticky; /* solo per safari */
+    position: sticky;
+    top: 0;
+}
+
+.content-responsive .main {
+    align-items: center;
+    width: 220px;
+    height: 300px;
+    border: 1px solid black;
+    display: flex;
+}
+
+.sticky-top {
+    width: 100%;
+}
+
+#videos {
+    margin-top: 20px;
+    max-height: 290px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 5%;
+
+}
+
+#videos::-webkit-scrollbar {
+    width: 0;
+}
+
+#videos .item {
+
+    line-height: 110px;
+    text-align: center;
+    background-color: #ddd;
+    margin-right: 0.1%;
+    padding-left: 2px;
+}
+
+#screenshots {
+    margin-top: 20px;
+    max-height: max-content;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+    margin-bottom: 5%;
+}
+
+#screenshots::-webkit-scrollbar {
+    width: 0;
+}
+
+#screenshots .item {
+    line-height: 110px;
+    text-align: center;
+    background-color: #ddd;
+    margin-right: 2px;
+    padding-left: 2px;
+}
+
+/* Chat containers */
+.container {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+/* Darker chat container */
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+/* Clear floats */
+.container::after {
+    content: "";
+    clear: both;
+    display: table;
+
+}
+
+/* Style images */
+.container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+/* Style the right image */
+.container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+#review-container {
+    overflow: auto;
+    height: 20%;
+}
+
+.checked {
+    color: orange;
+}
