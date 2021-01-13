@@ -1,0 +1,71 @@
+.color-purple {
+	background-color: #9966cc;
+	border-color: #9966cc;
+}
+
+.color-purple:hover {
+	background-color: rebeccapurple;
+	border-color: rebeccapurple;
+}
+
+.color-purple:focus-visible {
+	background-color: rebeccapurple;
+	border-color: rebeccapurple;
+}
+
+.trend {
+	text-decoration: underline;
+	text-decoration-color: #9966cc;
+	margin-top: 20px;
+}
+
+.news {
+	margin-top: 20px;
+	border: 1px;
+	display: flex;
+	overflow-x: auto;
+	justify-content: center;
+}
+
+.news div {
+	margin: auto;
+}
+
+.content {
+	width: 85%;
+	margin: 0 auto;
+	padding: 10px 15px;
+}
+
+
+.mostCommon {
+	margin-top: 20px;
+	max-height: 115px;
+	border: 1px solid #ddd;
+	display: flex;
+	overflow-x: auto;
+
+}
+
+.mostCommon::-webkit-scrollbar {
+	width: 0;
+}
+
+.mostCommon .item {
+	min-width: 110px;
+	height: 110px;
+	line-height: 110px;
+	text-align: center;
+	background-color: #ddd;
+	margin-right: 2px;
+}
+
+footer {
+	font-weight: 500;
+}
+
+
+.labelLogin {
+	color: white;
+}
+
