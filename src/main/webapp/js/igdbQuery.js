@@ -99,7 +99,9 @@ function loadVideos(gameId) {
                     newPlayer.width = 480;
                     newPlayer.height = 270;
                     newPlayer.frameBorder = "0";
-                    newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    newPlayer.allowFullscreen=true;
+                    newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+
                     newPlayer.src = "https://www.youtube.com/embed/" + videos[i].video_id;
                     document.getElementById("videos").append(newPlayer);
 
