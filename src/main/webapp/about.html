@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>About the Devs</title>
+	<link rel="stylesheet" href="css/about.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<script>
+	$(function () {
+		$("#nav-placeholder").load("navbar.html");
+	});
+</script>
+
+<script>
+	function dev(n) {
+		$("#dev").load("dev" + n + ".html");
+	}
+</script>
+<main>
+	<section>
+		<section class="devs">
+			<div onclick="dev(0)">
+				<img src="images/profile_picture.jpg" alt="dev">
+				<p>AlexFazio64</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, similique.</p>
+			</div>
+			<div onclick="dev(1)">
+				<img src="images/profile_picture.jpg" alt="dev">
+				<p>Armorofberserk</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, nostrum.</p>
+			</div>
+			<div onclick="dev(2)">
+				<img src="images/profile_picture.jpg" alt="dev">
+				<p>TheDD97</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, ipsum!</p>
+			</div>
+			<div onclick="dev(3)">
+				<img src="images/profile_picture.jpg" alt="dev">
+				<p>lovaion</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, quidem?</p>
+			</div>
+		</section>
+		
+		<section class="dev-about">
+			<div id="dev"></div>
+		</section>
+	</section>
+</main>
+</body>
+</html>
