@@ -1,32 +1,233 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
-    <a class="navbar-brand" href="../../../../../Desktop/index.html">
-        <img src="images/logo.png" alt="logo" style="width:40px;">
-    </a>
-    <form class="form-inline" action="/action_page.php">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-success color-purple" type="submit">Search</button>
-    </form>
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Games</a>
+<!--inserire nella pagina per importare la navbar
+VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+<div id="nav-placeholder"></div>
+<script>
+	$(function () {
+		$("#nav-placeholder").load("navbar.html");
+	});
+</script>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
+
+<!-- css loading && GOOGLE meta injection -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    // carica il css della pagina
+    $('<link>').appendTo('head').attr({
+        type: 'text/css',
+        rel: 'stylesheet',
+        href: 'css/navbar.css'
+    });
+
+    $('<meta>').appendTo('head').attr({
+        name: "google-signin-client_id",
+        content: "508493289721-mi2g5njrlan5oue6n1h64b2lroc28nu4.apps.googleusercontent.com"
+    });
+
+    //regola la visualizzazione dell' account nella navbar
+    function showAccountInfo(logged) {
+        if (logged) {
+            $(".register").remove();
+            $(".login").remove();
+        } else {
+            $("a.item").remove();
+        }
+    }
+
+    // risultati falsi per adesso
+    //ragionare sulle dimensioni-max delle parti
+    function showQueryResults(s) {
+        const itemImg = $("<img src='images/logo.png' width='50' height='50' alt='logo'>")
+        const itemName = $("<p>NieR: Automata</p>");
+        const itemType = $("<p>" + s + "</p>");
+        const result = $("<span class='result-item'></span>");
+        result.append(itemImg);
+        result.append(itemName);
+        result.append(itemType);
+        $(".dropdown-content").append(result);
+    }
+
+    //visualizza o nasconde i risultati suggeriti
+    function suggestion() {
+        let $x = $(".dropdown-content");
+        if ($(".search-box")[0].value.length >= 3) {
+            $x.css("display", "flex");
+        } else {
+            $x.css("display", "none");
+        }
+    }
+
+    function hamburgerMenu() {
+        $(".hamburger-menu").toggleClass("visible");
+    }
+
+    showQueryResults("Games");
+    showQueryResults("Platforms");
+    showQueryResults("Developers");
+    showQueryResults("All");
+</script>
+
+<!-- GOOGLE -->
+<!-- forse non serve il primo?? -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+
+<!-- FACEBOOK -->
+<script>
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '{904598133610405}',
+            cookie: true,
+            xfbml: true,
+            version: '{v9.0}'
+        });
+        FB.AppEvents.logPageView();
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v9.0&appId=904598133610405&autoLogAppEvents=1"
+        nonce="e8iPCl2W"></script>
+<div id="fb-root"></div>
+
+<!-- NAVBAR -->
+<nav>
+    <ul class="nav">
+        <li class="search">
+            <!-- Esportare in 50x50 per ottimizzare -->
+            <a class="logo" href="#"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
+            <form action="#" class="dropdown">
+                <input class="search-box" type="search" placeholder="Search..." oninput="suggestion()">
+                <span class="dropdown-content"></span>
+                <span class="icon"><i class="material-icons">search</i></span>
+            </form>
+            <span class="icon hamburger" onclick="hamburgerMenu()"><i class="material-icons">menu</i></span>
+            <span class="hamburger-menu">
+				<a href="#">Games</a>
+				<a href="#">Developers</a>
+				<a href="#">Platforms</a>
+				<a href="#">About Us</a>
+				<a href="#">Contacts</a>
+				<a class="item" href="#">VeryLongUsernameOver</a>
+				<a class="register" href="http://localhost:8080/register.html">Register</a>
+				<a href="#" class="login" id="myBtn2" data-toggle="modal" data-target="#myModal">Login</a>
+			</span>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Devs</a>
+
+        <li class="item">
+            <span class="menu material-icons">menu</span>
+            <a href="#">Games</a>
+            <a href="#">Developers</a>
+            <a href="#">Platforms</a>
+            <a href="#">About Us</a>
+            <a href="#">Contacts</a>   <!-- Muovere in About us? -->
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Platforms</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="register.html">Register</a>
+
+        <!-- usare showAccountInfo(true|false) -->
+        <li class="item account">
+            <a class="item" href="#">
+                <span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
+                <span class="profile-name">VeryLongUsernameOver</span> <!-- Lunghezza massima?? -->
+            </a>
+            <a class="register" href="http://localhost:8080/register.html">Register</a>
+            <a class="login" id="myBtn" href="#" data-toggle="modal" data-target="#myModal">Login</a>
         </li>
     </ul>
 </nav>
+
+<!-- MODAL FORM -->
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="modal.style.display='none';">&times;</span>
+            <h1>Login</h1>
+        </div>
+        <div class="modal-body">
+            <form action="">
+                <p class="campo">Email</p>
+                <input type="email" placeholder="Insert your email..">
+                <p class="campo">Password</p>
+                <input type="password" placeholder="Insert your password..">
+                <div class="loginButtons">
+                    <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
+                         data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <div id="my-signin2"></div>
+                    <script>
+                        function onSuccess(googleUser) {
+                            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                            var profile = googleUser.getBasicProfile();
+                            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                            console.log('Name: ' + profile.getName());
+                            console.log('Image URL: ' + profile.getImageUrl());
+                            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                            scegliUsername();
+                        }
+
+                        function onFailure(error) {
+                            console.log(error);
+                        }
+
+                        function scegliUsername() {
+                            window.location.href = 'http://localhost:8080/chooseUsername';
+
+                        }
+
+                        function renderButton() {
+                            gapi.signin2.render('my-signin2', {
+                                'scope': 'profile email',
+                                'width': 173,
+                                'height': 28,
+                                'longtitle': true,
+                                'theme': 'dark',
+                                'onsuccess': onSuccess,
+                                'onfailure': onFailure
+                            });
+                        }
+                    </script>
+                </div>
+                <input type="submit" value="Login" class="modalLogin">
+            </form>
+        </div>
+    </div>
+</div>
+<script defer>
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    var btn2 = document.getElementById("myBtn2");
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    btn2.onclick = function () {
+        modal.style.display = "block";
+    }
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>

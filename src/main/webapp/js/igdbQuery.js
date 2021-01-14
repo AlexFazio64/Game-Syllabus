@@ -62,8 +62,8 @@ function loadScreenshots(gameId) {
                 for (var i = 0; i < screeshots.length; i++) {
                     var newImg = document.createElement('img');
                     newImg.className = 'item';
-                    newImg.height=screeshots.height;
-                    newImg.width=screeshots.width;
+                    newImg.height=screeshots[i].height;
+                    newImg.width=screeshots[i].width;
                     newImg.src = screeshots[i].url;
                     document.getElementById("screenshots").append(newImg);
 
