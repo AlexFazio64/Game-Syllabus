@@ -20,28 +20,22 @@
     margin-left: 1%;
 }
 
-.info {
+#all-info {
     display: flex;
     overflow-x: auto;
 
 }
 
-.item {
-
-    text-align: center;
-    height: auto;
-    width: auto;
-    align-items: start;
-    line-height: 100%;
-    margin-right: 1%;
+.info{
+padding: 2px 5px;
 
 }
 
-.info #basicInformation li {
+#all-info #basicInformation li {
 
-    margin-bottom: 5%;
+    margin-bottom: 0.8%;
     list-style-type: none;
-    overflow-x: auto;
+
 }
 
 .content-responsive {
@@ -81,7 +75,7 @@ footer {
 
 #videos {
     margin-top: 20px;
-    max-height: 290px;
+    max-height: 320px;
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
@@ -91,9 +85,10 @@ footer {
 
 #videos::-webkit-scrollbar {
     width: 0;
+
 }
 
-#videos .item {
+#videos .video-player {
 
     line-height: 110px;
     text-align: center;
@@ -104,26 +99,34 @@ footer {
 
 #screenshots {
     margin-top: 20px;
-    max-height: max-content;
+
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
     margin-bottom: 5%;
+    max-height: 500px;
+
 }
 
 #screenshots::-webkit-scrollbar {
     width: 0;
 }
 
-#screenshots .item {
-    line-height: 110px;
-    text-align: center;
+#screenshots .screenshot-image {
+
     background-color: #ddd;
     margin-right: 2px;
     padding-left: 2px;
-}
+    width: 480px;
+    height: 300px;
 
+}
+#screenshots .screenshot-image:hover{opacity: 0.7;}
 /* Chat containers */
+#cover{
+    width: auto;
+    height: 400px;
+}
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
@@ -169,4 +172,10 @@ footer {
 
 .checked {
     color: orange;
+}
+
+a.info:hover {
+    border-radius: 60%;
+
+    background-color: lightgray;
 }

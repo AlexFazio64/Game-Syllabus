@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 </head>
 
@@ -42,7 +41,7 @@
         <img class="item" src="https://images.igdb.com/igdb/image/upload/t_cover_big/co2mjs.jpg"
              style="height: 352px;">
         <ul id="basicInformation">
-            <li><span>Name</span><span>${game}</span></li>
+            <li><span>Name</span><span> ${game}</span></li>
             <li id="release_name" onclick="loadReleaseDate(gameid)"></li>
             <li>valutazione</li>
             <li>generi</li>
@@ -53,12 +52,12 @@
     </div>
 
     <h3 class="Arguments" onclick="loadVideos(gameid)">Video</h3>
-    <div class="videos">
-    </div>
+    <div id="videos">
+     </div>
     <div>
         <h3 class="Arguments" onclick="loadScreenshots(gameid)">Screenshot</h3>
-        <div class="screenshots">
-        </div>
+        <div id="screenshots">
+              </div>
     </div>
     <div>
 
