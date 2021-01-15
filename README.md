@@ -15,3 +15,4 @@ USERNAME: postgres
 PASSWORD SERVER: postgres  
 
 # Query creazione db
+[Query](https://github.com/TheDD97/progettoWcomp-Ingsw/blob/doc/query.sql)
