@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body{
+    background-color: #e7e7e7;
+}
+
+.container{
+    padding-top: 25px;
+    width: 75%;
+    margin:auto;
+    line-height: 1.5;
+}
+
+.info-grid{
+    display: grid;
+    grid-template-columns: 30% 60% auto;
+    grid-template-rows: 40% auto;
+    margin: auto;
+    background-color: white;
+}
+
+.casa-vg{
+    grid-column: 2/4;
+    grid-row: 1;
+}
+
+.casa-vg h1{
+    border-width: 0 0 15px 0;
+    border-style: solid;
+    border-color: #9966cc;
+}
+
+.uno{
+    float: left;
+    grid-column: 3;
+    grid-row: 4/5;
+    text-align: center;
+}
+
+.due{
+    display: inline;
+    float: right;
+    text-align: center;
+}
+
+
+.dev-logo{
+    margin: auto;
+}
+
+.dev-logo img{
+    padding-top: 15px;
+}
+
+.info-casa{
+    padding-top: 10px;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+.lista-giochi{
+    margin: auto;
+    margin-top: 50px;
+    background-color: white;
+
+}
+
+.lista-giochi h1{
+    padding-top: 1%;
+    text-align: center;
+    border-width: 0 0 5px 0;
+    border-style: solid;
+    border-color: #9966cc;
+}
+
+.dev-logo-game{
+    padding: 1% 1% 0 1%;
+}
+
+.gioco-1{
+    display: -webkit-box;
+}
+
+.altre-info{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: baseline;
+    padding-top: 1%;
+}
+
+.altre-info a{
+    text-decoration: none;
+    color: #121212;
+    font-weight: 600;
+    text-align: center;
+}
+
