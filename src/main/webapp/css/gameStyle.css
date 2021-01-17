@@ -30,7 +30,9 @@
 padding: 2px 5px;
 
 }
-
+ul li{
+    list-style-type: none;
+}
 #all-info #basicInformation li {
 
     margin-bottom: 0.8%;
@@ -125,7 +127,7 @@ footer {
 /* Chat containers */
 #cover{
     width: auto;
-    height: 400px;
+    height: fit-content;
 }
 .container {
     border: 2px solid #dedede;
@@ -163,6 +165,7 @@ footer {
     float: right;
     margin-left: 20px;
     margin-right: 0;
+
 }
 
 #review-container {
@@ -178,4 +181,12 @@ a.info:hover {
     border-radius: 60%;
 
     background-color: lightgray;
+}
+#summary{
+    margin: 100px 0px 20px 10px;
+    border-radius: 15px;
+    padding: 5px;
+}
+#summary:hover {
+    box-shadow: -1px 1px 19px 6px rgba(0, 0, 0, 0.2);
 }

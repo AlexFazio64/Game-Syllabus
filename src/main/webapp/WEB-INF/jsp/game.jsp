@@ -39,7 +39,7 @@
             "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
             "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
-        data: 'fields name, release_dates, websites, summary, screenshots, videos, age_ratings,genres,game_modes,dlcs; where category = 0 ;search "${game}"; limit 1;',
+        data: 'fields name, release_dates, websites, summary, screenshots, videos, age_ratings,genres,game_modes,dlcs; search "${game}"; limit 1;',
         dataType: "json",
         success: function (result) {
             var content = JSON.stringify(result).replaceAll("'", " ");
@@ -90,7 +90,7 @@
             <li><span id="websites" onclick="loadWebsites()"><strong>Websites</strong></span></li>
             <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type</strong> </span></li>
             <li><span id="dlc" onclick="loadDLCName()"><strong>DLCs: </strong></span></li>
-            <li><span id="summary"></span></li>
+            <li><p id="summary"></p></li>
         </ul>
     </div>
 
