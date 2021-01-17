@@ -7,7 +7,7 @@ public class DBManager {
     static {
         try {
             Class.forName("org.postgresql.Driver");
-            dataSource = new DBSource("jdbc:postgresql://localhost:5432/nomeDB", "postgres", "postgres");
+            dataSource = new DBSource("jdbc:postgresql://localhost:5432/game-syllabus", "postgres", "postgres");
         } catch (Exception e) {
             e.printStackTrace();
         }

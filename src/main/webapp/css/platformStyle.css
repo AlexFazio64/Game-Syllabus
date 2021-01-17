@@ -1,11 +1,15 @@
 *{
     margin: 0;
     padding:0;
+    box-sizing: border-box;
 }
 
 body{
     background-color: #e7e7e7;
+    font-family: "Raleway", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
 }
+
 .container{
     padding-top: 25px;
     width: 75%;
@@ -19,7 +23,7 @@ body{
     grid-template-rows: 25% 30% auto;
     margin: auto;
     background-color: white;
-    padding: 10px 10px 10px 10px;
+    height: 375px;
 }
 
 .platform-name{
@@ -39,7 +43,15 @@ body{
 }
 
 .platform-logo{
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 1/4;
+}
+
+.platform-logo img{
+    max-height: 160px;
+    max-width: 160px;
 }
 
 .other-info{
@@ -50,7 +62,7 @@ body{
     grid-row: 3;
 }
 
-.other-due{
+.other-three{
     margin-right: 25px;
 }
 
