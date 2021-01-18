@@ -71,7 +71,7 @@
                     bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
                     bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
 
-                    document.getElementById("main").insertBefore(bkg,document.getElementById("main").firstChild);
+                    document.getElementById("main").insertBefore(bkg, document.getElementById("main").firstChild);
                 },
                 error: function (xhr, status, error) {
                     console.log("error on cover and background loading");
@@ -90,7 +90,7 @@
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
         <ul id="basicInformation">
-            <li><span>${game} </span></li>
+            <li><span class="gameName">${game} </span></li>
             <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date</strong></span></li>
             <li><span id="gameGenres" onclick="loadGenres()"><strong>Genres</strong></span></li>
             <li id="Developer" onclick="loadDeveloper()"><strong>Developers</strong></li>
@@ -100,58 +100,60 @@
 
         </ul>
     </div>
-    <li><p id="summary"></p></li>
-    <h3 class="Arguments" onclick="loadVideos()">Video</h3>
-    <div id="videos"></div>
+    <section class="other-info">
+        <p id="summary"></p>
+        <h3 class="Arguments" onclick="loadVideos()">Video</h3>
+        <div id="videos"></div>
 
-    <h3 class="Arguments" onclick="loadScreenshots()">Screenshot</h3>
-    <div id="screenshots"></div>
+        <h3 class="Arguments" onclick="loadScreenshots()">Screenshot</h3>
+        <div id="screenshots"></div>
 
-    <div>
+        <div>
 
-        <h3 class="Arguments">Reviews</h3>
-        <div class="container">
-            <span>write your review</span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-            <textarea onkeyup="textAreaAdjust(this)" cols="60" style="resize: none" id="reviewText"></textarea>
-            <button onclick="sendReview()">Invia</button>
-        </div>
-        <div id="review-container">
-            <div class="container darker">
-                <span>Scrivi la tua recensione</span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <div class="fa fa-star"></div>
-                <p>Hey! I'm fine. Thanks for asking!</p>
-            </div>
-
+            <h3 class="Arguments">Reviews</h3>
             <div class="container">
-                <span>Scrivi la tua recensione</span>
+                <span>write your review</span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star checked"></span>
                 <span class="fa fa-star"></span>
                 <span class="fa fa-star"></span>
-                <p>Sweet! So, what do you wanna do today?</p>
+                <textarea onkeyup="textAreaAdjust(this)" cols="60" style="resize: none" id="reviewText"></textarea>
+                <button onclick="sendReview()">Invia</button>
             </div>
+            <div id="review-container">
+                <div class="container darker">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <div class="fa fa-star"></div>
+                    <p>Hey! I'm fine. Thanks for asking!</p>
+                </div>
 
-            <div class="container darker">
-                <span>Scrivi la tua recensione</span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+                <div class="container">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>Sweet! So, what do you wanna do today?</p>
+                </div>
+
+                <div class="container darker">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
     <footer>
         <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
         <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>

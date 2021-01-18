@@ -1,3 +1,8 @@
+
+* {
+    font-size: 23px;
+}
+
 .color-purple {
     background-color: #9966cc;
     border-color: #9966cc;
@@ -19,7 +24,6 @@
     margin-top: 20px;
     margin-left: 1%;
 }
-
 
 
 #all-info {
@@ -60,13 +64,16 @@ ul li {
     list-style-type: none;
 }
 
-#basicInformation:first-child {
+.gameName {
+
     font-weight: bolder;
+
+    font-size: 150%;
 }
 
 #all-info #basicInformation li {
     text-align: -webkit-left;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .content-responsive {
@@ -75,11 +82,10 @@ ul li {
     height: auto;
 }
 
-
 .bkgcolor {
     filter: blur(8px);
     -webkit-filter: blur(8px);
-    height: 100%;
+    height: 60%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -163,13 +169,6 @@ footer {
 #screenshots .screenshot-image:hover {
     opacity: 0.7;
 }
-
-/* Chat containers */
-#cover {
-    width: auto;
-    height: fit-content;
-}
-
 .container {
     border: 2px solid #dedede;
     background-color: #f1f1f1;
@@ -177,6 +176,13 @@ footer {
     padding: 10px;
     margin: 10px 0;
 }
+
+/* Chat containers */
+#cover {
+    width: auto;
+    height: fit-content;
+}
+
 
 /* Darker chat container */
 .darker {
@@ -225,11 +231,18 @@ a.info:hover {
 }
 
 #summary {
-    margin: 100px 0px 20px 10px;
+    margin: 20px 20px 20px 10px;
     border-radius: 15px;
     padding: 5px;
 }
 
 #summary:hover {
     box-shadow: -1px 1px 19px 6px rgba(0, 0, 0, 0.2);
+}
+
+section.other-info {
+    display: grid;
+    margin: 6px 30px 10px 30px;
+    background-color: #DDF;
+    border-radius: 25px 25px 25px 25px;
 }
