@@ -106,7 +106,6 @@
 </main>
 <script type="text/javascript" defer>
     loadGameBasicInfo('${game}');
-   loadReleaseDate();
 </script>
 
 </body>
