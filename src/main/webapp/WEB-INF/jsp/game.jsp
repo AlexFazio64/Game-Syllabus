@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/gameStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/js/igdbQuery.js">
-        var txt;
+    <script type="text/javascript" src="/js/igdbQuery.js">var txt;
     </script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -23,66 +22,12 @@
         $("#nav-placeholder").load("navbar.html");
     });
 </script>
+
 <script>
     function textAreaAdjust(element) {
         element.style.height = "1px";
         element.style.height = (25 + element.scrollHeight) + "px";
     }
-</script>
-<script defer>
-    $.ajax({
-        url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
-        type: "POST",
-        crossDomain: true,
-        headers: {
-            'Accept': 'application/json',
-            "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
-            "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
-        },
-        data: 'fields name, release_dates, websites, summary, screenshots, videos, age_ratings,genres,game_modes,dlcs; search "${game}"; limit 1;',
-        dataType: "json",
-        success: function (result) {
-            var content = JSON.stringify(result).replaceAll("'", " ");
-            content = content.replace("[", "");
-            content = content.substring(0, content.lastIndexOf("]"));
-            console.log(content);
-
-            txt = JSON.parse(content);
-            document.getElementById("summary").innerHTML = txt.summary;
-            $.ajax({
-                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
-                type: "POST",
-                crossDomain: true,
-                headers: {
-                    'Accept': 'application/json',
-                    "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
-                    "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
-                },
-                data: "fields image_id;where game= " + txt.id + ";",
-                dataType: "json",
-                success: function (results) {
-                    var datas = JSON.stringify(results).replace("[", "");
-                    datas = datas.substring(0, datas.lastIndexOf("]"))
-                    var cover = JSON.parse(datas);
-                    var image = document.getElementById("cover");
-                    image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-                    var bkg = document.createElement('div');
-                    bkg.className = "bkgcolor";
-                    bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
-                    bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-
-                    document.getElementById("main").insertBefore(bkg, document.getElementById("main").firstChild);
-                },
-                error: function (xhr, status, error) {
-                    console.log("error on cover and background loading");
-                }
-            });
-        },
-        error: function (xhr, status, error) {
-            alert(status);
-        }
-    })
-    ;
 </script>
 <main id="main">
 
@@ -159,6 +104,10 @@
         <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
     </footer>
 </main>
+<script type="text/javascript" defer>
+    loadGameBasicInfo('${game}');
+   loadReleaseDate();
+</script>
 
 </body>
 

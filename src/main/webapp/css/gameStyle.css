@@ -119,7 +119,7 @@ footer {
 
 #videos {
     margin-top: 20px;
-    max-height: 320px;
+    max-height: 360px;
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
@@ -134,11 +134,7 @@ footer {
 
 #videos .video-player {
 
-    line-height: 110px;
-    text-align: center;
-    background-color: #ddd;
-    margin-right: 0.1%;
-    padding-left: 2px;
+
 }
 
 #screenshots {
