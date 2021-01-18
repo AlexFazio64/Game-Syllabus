@@ -128,7 +128,7 @@
         var starts = [parseInt(s - 20), parseInt(s + 20), parseInt(s + 40), parseInt(s + 60), parseInt(s + 80), parseInt(s + 100)];
         if (starts[0] < 20)
             starts[0] = 0;
-        document.getElementById("page1").href = "http://localhost:8080/developers?start=" +starts[0];
+        document.getElementById("page1").href = "http://localhost:8080/developers?start="+starts[0];
         document.getElementById("page2").href = "http://localhost:8080/developers?start="+starts[1];
         document.getElementById("page3").href = "http://localhost:8080/developers?start="+starts[2];
         document.getElementById("page4").href = "http://localhost:8080/developers?start="+starts[3];

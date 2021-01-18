@@ -66,9 +66,15 @@
                     var cover = JSON.parse(datas);
                     var image = document.getElementById("cover");
                     image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+                    var bkg = document.createElement('div');
+                    bkg.className = "bkgcolor";
+                    bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
+                    bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+
+                    document.getElementById("main").insertBefore(bkg,document.getElementById("main").firstChild);
                 },
                 error: function (xhr, status, error) {
-                    alert(status);
+                    console.log("error on cover and background loading");
                 }
             });
         },
@@ -79,21 +85,22 @@
     ;
 </script>
 <main id="main">
-    <div id="all-info">
+
+    <div id="all-info" style="opacity: 1">
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
         <ul id="basicInformation">
-            <li><span><strong>Name </strong> ${game}</span></li>
+            <li><span>${game} </span></li>
             <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date</strong></span></li>
             <li><span id="gameGenres" onclick="loadGenres()"><strong>Genres</strong></span></li>
-            <li id="Developer" onclick="loadDeveloper()"><strong>Developers</strong> </li>
+            <li id="Developer" onclick="loadDeveloper()"><strong>Developers</strong></li>
             <li><span id="websites" onclick="loadWebsites()"><strong>Websites</strong></span></li>
             <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type</strong> </span></li>
             <li><span id="dlc" onclick="loadDLCName()"><strong>DLCs: </strong></span></li>
-            <li><p id="summary"></p></li>
+
         </ul>
     </div>
-
+    <li><p id="summary"></p></li>
     <h3 class="Arguments" onclick="loadVideos()">Video</h3>
     <div id="videos"></div>
 
@@ -145,11 +152,12 @@
             </div>
         </div>
     </div>
+    <footer>
+        <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
+        <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
+    </footer>
 </main>
-<footer>
-    <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
-    <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
-</footer>
+
 </body>
 
 </html>
