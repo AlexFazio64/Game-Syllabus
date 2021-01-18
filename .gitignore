@@ -1,2 +1,3 @@
 /.idea/
 /gamesyllabus.iml
+!/src/main/webapp/gameDummy.html

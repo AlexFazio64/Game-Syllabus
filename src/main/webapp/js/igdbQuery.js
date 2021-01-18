@@ -1,45 +1,65 @@
-function loadGameBasicInfo() {
-
-    gameName = document.getElementById("gameName").textContent;
-    console.log(gameName);
+function loadGameBasicInfo(game) {
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
         type: "POST",
         crossDomain: true,
         headers: {
             'Accept': 'application/json',
-            "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
-            "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
+            "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
+            "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
-        data: "fields name, release_dates, websites, summary, screenshots, videos, age_ratings; where category = 0 ;search " + gameName + "; limit 1;",
+        data: 'fields name, release_dates, websites, summary, screenshots, videos, age_ratings,genres,game_modes,dlcs; search "' + game + '"; limit 1;',
         dataType: "json",
         success: function (result) {
-
             var content = JSON.stringify(result).replaceAll("'", " ");
             content = content.replace("[", "");
             content = content.substring(0, content.lastIndexOf("]"));
             console.log(content);
-            var fields = ["id", "age_ratings", "name", "release_dates", "screenshots", "summary", "videos", "websites"];
-            var availableField = [];
-            fields.forEach(function (item, index, array) {
-                if (content.includes(item))
-                    availableField.push(item);
-            });
-            var txt = JSON.parse(content);
 
-            document.getElementById("name").innerHTML = gameName;
+            txt = JSON.parse(content);
+
             document.getElementById("summary").innerHTML = txt.summary;
-            gameid = txt.id;
-            console.log("ok");
+            $.ajax({
+                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
+                type: "POST",
+                crossDomain: true,
+                headers: {
+                    'Accept': 'application/json',
+                    "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
+                    "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
+                },
+                data: "fields image_id;where game= " + window.txt.id + ";",
+                dataType: "json",
+                success: function (results) {
+                    var datas = JSON.stringify(results).replace("[", "");
+                    datas = datas.substring(0, datas.lastIndexOf("]"))
+                    var cover = JSON.parse(datas);
+                    var image = document.getElementById("cover");
+                    image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+                    var bkg = document.createElement('div');
+                    bkg.className = "bkgcolor";
+                    bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
+                    bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+
+                    document.getElementById("main").insertBefore(bkg, document.getElementById("main").firstChild);
+                },
+                error: function (xhr, status, error) {
+                    console.log("error on cover and background loading");
+                }
+            });
         },
         error: function (xhr, status, error) {
             alert(status);
         }
-    });
+
+    })
+    ;
 }
 
 function loadScreenshots() {
-    $.ajax({
+    if (document.getElementById("screenshots").getElementsByClassName("screenshot-image").length == 0) {
+
+        $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/screenshots",
         type: "POST",
         crossDomain: true,
@@ -48,7 +68,7 @@ function loadScreenshots() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields image_id,url,height,width;where game= " + txt.id + ";",
+        data: 'fields image_id,url,height,width;where game= ' + txt.id + ';',
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -66,13 +86,15 @@ function loadScreenshots() {
             }
         },
         error: function (xhr, status, error) {
-            alert(status);
+            alert("merda");
         }
     });
+    } else console.log("Screenshots already loaded");
 }
 
 function loadVideos() {
-    $.ajax({
+    if (document.getElementById("videos").getElementsByClassName("video-player").length == 0) {
+        $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/game_videos",
         type: "POST",
         crossDomain: true,
@@ -92,8 +114,8 @@ function loadVideos() {
                 for (var i = 0; i < videos.length; i++) {
                     var newPlayer = document.createElement('iframe');
                     newPlayer.className = "video-player";
-                    newPlayer.width = 680;
-                    newPlayer.height = 300;
+                    newPlayer.width = 560;
+                    newPlayer.height = 345;
                     newPlayer.frameBorder = "0";
                     newPlayer.allowFullscreen = true;
                     newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
@@ -107,10 +129,13 @@ function loadVideos() {
             alert(status);
         }
     });
+    } else console.log("Videos already loaded");
 }
 
 function loadWebsites() {
-    $.ajax({
+    if (document.getElementById("websites").getElementsByClassName("info").length == 0) {
+
+        $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/websites",
         type: "POST",
         crossDomain: true,
@@ -142,161 +167,175 @@ function loadWebsites() {
             alert(status);
         }
     });
+    } else console.log("Websites already loaded");
 }
 
 function loadReleaseDate() {
-    $.ajax({
-        url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/release_dates",
-        type: "POST",
-        crossDomain: true,
-        headers: {
-            'Accept': 'application/json',
-            "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
-            "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
-        },
-        data: "fields date; where game = " + txt.id + "; ",
-        dataType: "json",
-        success: function (results) {
-            var dates = JSON.stringify(results);
-            console.log(dates);
-            var d = [];
-            d = JSON.parse(dates);
-            console.log(d);
-            var regionDate = [];
-            for (var i = 0; i < d.length; i++) {
-                var c = new Date((d[i].date * 1000));
-                regionDate.push(c.toLocaleDateString().substring(c.toLocaleString(), c.toLocaleString().indexOf(",")));
-            }
-            if (regionDate.length > 0) {
-                var datesEntered = [];
-                for (var i = 0; i < regionDate.length; i++) {
-                    if (!datesEntered.includes(regionDate[i])) {
-                        datesEntered.push(regionDate[i]);
-                        var newSpan = document.createElement('span');
-                        newSpan.className = "info";
-                        newSpan.innerHTML = regionDate[i];
-                        document.getElementById("release_date").append(newSpan);
+
+    if (document.getElementById("release_date").getElementsByClassName("info").length == 0) {
+        $.ajax({
+            url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/release_dates",
+            type: "POST",
+            crossDomain: true,
+            headers: {
+                'Accept': 'application/json',
+                "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
+                "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
+            },
+            data: "fields date; where game = " + txt.id + "; ",
+            dataType: "json",
+            success: function (results) {
+                var dates = JSON.stringify(results);
+                console.log(dates);
+                var d = [];
+                d = JSON.parse(dates);
+                console.log(d);
+                var regionDate = [];
+                for (var i = 0; i < d.length; i++) {
+                    var c = new Date((d[i].date * 1000));
+                    regionDate.push(c.toLocaleDateString().substring(c.toLocaleString(), c.toLocaleString().indexOf(",")));
+                }
+                if (regionDate.length > 0) {
+                    var datesEntered = [];
+                    for (var i = 0; i < regionDate.length; i++) {
+                        if (!datesEntered.includes(regionDate[i])) {
+                            datesEntered.push(regionDate[i]);
+                            var newSpan = document.createElement('span');
+                            newSpan.className = "info";
+                            newSpan.innerHTML = regionDate[i];
+                            document.getElementById("release_date").append(newSpan);
+                        }
                     }
                 }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
             }
-        },
-        error: function (xhr, status, error) {
-            alert(status);
-        }
-    });
+        });
+    } else console.log("Release dates already loaded");
 }
 
 function loadGenres() {
-    $.ajax({
-        url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/genres",
-        type: "POST",
-        crossDomain: true,
-        headers: {
-            'Accept': 'application/json',
-            "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
-            "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
-        },
-        data: "fields name; where id = (" + txt.genres + "); ",
-        dataType: "json",
-        success: function (results) {
-            var datas = JSON.stringify(results);
-            console.log(datas);
-            var d = [];
-            d = JSON.parse(datas);
-            console.log(d);
+    if (document.getElementById("gameGenres").getElementsByClassName("info").length == 0) {
 
-            if (d.length > 0) {
-                for (var i = 0; i < d.length; i++) {
-                    var newGenre = document.createElement('span');
-                    console.log(d[i].name);
-                    newGenre.innerHTML = d[i].name;
-                    newGenre.className = "info";
+        $.ajax({
+            url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/genres",
+            type: "POST",
+            crossDomain: true,
+            headers: {
+                'Accept': 'application/json',
+                "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
+                "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
+            },
+            data: "fields name; where id = (" + txt.genres + "); ",
+            dataType: "json",
+            success: function (results) {
+                var datas = JSON.stringify(results);
+                console.log(datas);
+                var d = [];
+                d = JSON.parse(datas);
+                console.log(d);
 
-                    document.getElementById("gameGenres").append(newGenre);
+                if (d.length > 0) {
+                    for (var i = 0; i < d.length; i++) {
+                        var newGenre = document.createElement('span');
+                        console.log(d[i].name);
+                        newGenre.innerHTML = d[i].name;
+                        newGenre.className = "info";
 
+                        document.getElementById("gameGenres").append(newGenre);
+
+                    }
                 }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
             }
-        },
-        error: function (xhr, status, error) {
-            alert(status);
-        }
-    });
+        });
+    } else console.log("Genres already loaded");
 }
 
 function loadDeveloper() {
-    $.ajax({
-        url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/companies",
-        type: "POST",
-        crossDomain: true,
-        headers: {
-            'Accept': 'application/json',
-            "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
-            "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
-        },
-        data: "fields name; where developed = [ " + txt.id + "]; ",
-        dataType: "json",
-        success: function (results) {
-            var datas = JSON.stringify(results);
-            console.log(datas);
-            var companies = [];
-            companies = JSON.parse(datas);
-            console.log(companies);
+    if (document.getElementById("Developer").getElementsByClassName("info").length == 0) {
 
-            if (companies.length > 0) {
-                for (var i = 0; i < companies.length; i++) {
-                    var newComp = document.createElement('span');
+        $.ajax({
+            url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/companies",
+            type: "POST",
+            crossDomain: true,
+            headers: {
+                'Accept': 'application/json',
+                "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
+                "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
+            },
+            data: "fields name; where developed = [ " + txt.id + "]; ",
+            dataType: "json",
+            success: function (results) {
+                var datas = JSON.stringify(results);
+                console.log(datas);
+                var companies = [];
+                companies = JSON.parse(datas);
+                console.log(companies);
 
-                    newComp.innerHTML = companies[i].name;
-                    newComp.className = "info";
-                    document.getElementById("Developer").append(newComp);
+                if (companies.length > 0) {
+                    for (var i = 0; i < companies.length; i++) {
+                        var newComp = document.createElement('span');
 
+                        newComp.innerHTML = companies[i].name;
+                        newComp.className = "info";
+                        document.getElementById("Developer").append(newComp);
+
+                    }
                 }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
             }
-        },
-        error: function (xhr, status, error) {
-            alert(status);
-        }
-    });
+        });
+    } else console.log("Developers already loaded");
 }
 
 function loadGameplayType() {
-    $.ajax({
-        url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/game_modes",
-        type: "POST",
-        crossDomain: true,
-        headers: {
-            'Accept': 'application/json',
-            "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
-            "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
-        },
-        data: "fields name; where id = ( " + txt.game_modes + "); ",
-        dataType: "json",
-        success: function (results) {
-            var datas = JSON.stringify(results);
-            console.log(datas);
-            var gameplayType = [];
-            gameplayType = JSON.parse(datas);
-            console.log(gameplayType);
+    if (document.getElementById("gameplay-type").getElementsByClassName("info").length == 0) {
 
-            if (gameplayType.length > 0) {
-                for (var i = 0; i < gameplayType.length; i++) {
-                    var newType = document.createElement('span');
+        $.ajax({
+            url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/game_modes",
+            type: "POST",
+            crossDomain: true,
+            headers: {
+                'Accept': 'application/json',
+                "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
+                "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
+            },
+            data: "fields name; where id = ( " + txt.game_modes + "); ",
+            dataType: "json",
+            success: function (results) {
+                var datas = JSON.stringify(results);
+                console.log(datas);
+                var gameplayType = [];
+                gameplayType = JSON.parse(datas);
+                console.log(gameplayType);
 
-                    newType.innerHTML = gameplayType[i].name;
-                    newType.className = "info";
-                    document.getElementById("gameplay-type").append(newType);
+                if (gameplayType.length > 0) {
+                    for (var i = 0; i < gameplayType.length; i++) {
+                        var newType = document.createElement('span');
 
+                        newType.innerHTML = gameplayType[i].name;
+                        newType.className = "info";
+                        document.getElementById("gameplay-type").append(newType);
+
+                    }
                 }
+            },
+            error: function (xhr, status, error) {
+                alert(status);
             }
-        },
-        error: function (xhr, status, error) {
-            alert(status);
-        }
-    });
+        });
+    } else console.log("Gameplay type already loaded");
 }
 
 function loadDLCName() {
-    $.ajax({
+    if (document.getElementById("dlc").getElementsByClassName("info").length == 0 && txt.dlcs!='undefined') {
+        $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
         type: "POST",
         crossDomain: true,
@@ -329,5 +368,6 @@ function loadDLCName() {
             alert(status);
         }
     });
+}else console.log("Dlcs already loaded");
 }
 
