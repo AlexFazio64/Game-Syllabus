@@ -14,10 +14,7 @@ function loadGameBasicInfo(game) {
             var content = JSON.stringify(result).replaceAll("'", " ");
             content = content.replace("[", "");
             content = content.substring(0, content.lastIndexOf("]"));
-            console.log(content);
-
             txt = JSON.parse(content);
-
             document.getElementById("summary").innerHTML = txt.summary;
             $.ajax({
                 url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
@@ -72,7 +69,6 @@ function loadScreenshots() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log("image: \n" + datas);
                 var screeshots = [];
                 screeshots = JSON.parse(datas);
                 if (screeshots.length > 0) {
@@ -107,7 +103,6 @@ function loadVideos() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log("video: \n" + datas);
                 var videos = [];
                 videos = JSON.parse(datas);
                 if (videos.length > 0) {
@@ -148,7 +143,6 @@ function loadWebsites() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log("web: \n" + datas);
                 var websites = [];
                 var type = ["official", "wikia", "wikipedia", "facebook", "twitter", "twitch", "instagram", "youtube", "iphone", "ipad", "android", "steam", "reddit", "itch", "epicgames", "gog", "discord"];
                 websites = JSON.parse(datas);
@@ -186,10 +180,8 @@ function loadReleaseDate() {
             dataType: "json",
             success: function (results) {
                 var dates = JSON.stringify(results);
-                console.log(dates);
                 var d = [];
                 d = JSON.parse(dates);
-                console.log(d);
                 var regionDate = [];
                 for (var i = 0; i < d.length; i++) {
                     var c = new Date((d[i].date * 1000));
@@ -231,15 +223,12 @@ function loadGenres() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log(datas);
                 var d = [];
                 d = JSON.parse(datas);
-                console.log(d);
 
                 if (d.length > 0) {
                     for (var i = 0; i < d.length; i++) {
                         var newGenre = document.createElement('span');
-                        console.log(d[i].name);
                         newGenre.innerHTML = d[i].name;
                         newGenre.className = "info";
 
@@ -271,11 +260,8 @@ function loadDeveloper() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log(datas);
                 var companies = [];
                 companies = JSON.parse(datas);
-                console.log(companies);
-
                 if (companies.length > 0) {
                     for (var i = 0; i < companies.length; i++) {
                         var newComp = document.createElement('span');
@@ -310,11 +296,8 @@ function loadGameplayType() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log(datas);
                 var gameplayType = [];
                 gameplayType = JSON.parse(datas);
-                console.log(gameplayType);
-
                 if (gameplayType.length > 0) {
                     for (var i = 0; i < gameplayType.length; i++) {
                         var newType = document.createElement('span');
@@ -334,7 +317,7 @@ function loadGameplayType() {
 }
 
 function loadDLCName() {
-    if (document.getElementById("dlc").getElementsByClassName("info").length == 0 && txt.dlcs != 'undefined') {
+    if (document.getElementById("dlc").getElementsByClassName("info").length == 0 && !("dlcs" in txt) == 0) {
         $.ajax({
             url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
             type: "POST",
@@ -348,11 +331,8 @@ function loadDLCName() {
             dataType: "json",
             success: function (results) {
                 var datas = JSON.stringify(results);
-                console.log(datas);
                 var game = [];
                 game = JSON.parse(datas);
-                console.log(game);
-
                 if (game.length > 0) {
                     for (var i = 0; i < game.length; i++) {
                         var newDlc = document.createElement('span');

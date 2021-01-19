@@ -66,7 +66,7 @@
                             i++;
                             if (alreadyPresent.length >= 20) {
                                 finish = true;
-                                lastIndex=cont;
+                                lastIndex = cont;
                                 break;
                             }
 
@@ -128,14 +128,14 @@
         var starts = [parseInt(s - 20), parseInt(s + 20), parseInt(s + 40), parseInt(s + 60), parseInt(s + 80), parseInt(s + 100)];
         if (starts[0] < 20)
             starts[0] = 0;
-        document.getElementById("page1").href = "http://localhost:8080/developers?start="+starts[0];
-        document.getElementById("page2").href = "http://localhost:8080/developers?start="+starts[1];
-        document.getElementById("page3").href = "http://localhost:8080/developers?start="+starts[2];
-        document.getElementById("page4").href = "http://localhost:8080/developers?start="+starts[3];
-        document.getElementById("page5").href = "http://localhost:8080/developers?start="+starts[4];
-        document.getElementById("page6").href = "http://localhost:8080/developers?start="+starts[5];
+        document.getElementById("page1").href = "http://localhost:8080/developers?start=" + starts[0];
+        document.getElementById("page2").href = "http://localhost:8080/developers?start=" + starts[1];
+        document.getElementById("page3").href = "http://localhost:8080/developers?start=" + starts[2];
+        document.getElementById("page4").href = "http://localhost:8080/developers?start=" + starts[3];
+        document.getElementById("page5").href = "http://localhost:8080/developers?start=" + starts[4];
+        document.getElementById("page6").href = "http://localhost:8080/developers?start=" + starts[5];
         document.getElementById("page1").innerText = (currentPage - 1).toString();
-        document.getElementById("page2").innerText= (currentPage).toString();
+        document.getElementById("page2").innerText = (currentPage).toString();
         document.getElementById("page3").innerText = (currentPage + 1).toString();
         document.getElementById("page4").innerText = (currentPage + 2).toString();
         document.getElementById("page5").innerText = (currentPage + 3).toString();

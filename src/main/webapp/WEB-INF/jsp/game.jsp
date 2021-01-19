@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/gameStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="/js/igdbQuery.js">var txt;
-    </script>
+    <script type="text/javascript" src="/js/gameQuery.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,6 +26,11 @@
     function textAreaAdjust(element) {
         element.style.height = "1px";
         element.style.height = (25 + element.scrollHeight) + "px";
+    }
+</script>
+<script>
+    function sendReview() {
+        console.log(document.getElementById("reviewText").value);
     }
 </script>
 <main id="main">
@@ -57,14 +61,18 @@
 
             <h3 class="Arguments">Reviews</h3>
             <div class="container">
-                <span>write your review</span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <textarea onkeyup="textAreaAdjust(this)" cols="60" style="resize: none" id="reviewText"></textarea>
-                <button onclick="sendReview()">Invia</button>
+                <section>
+                    <span>write your review</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                </section>
+                <section>
+                    <textarea onkeyup="textAreaAdjust(this)" cols="60" style="resize: none" id="reviewText"></textarea>
+                    <button onclick="sendReview()">Invia</button>
+                </section>
             </div>
             <div id="review-container">
                 <div class="container darker">
@@ -86,7 +94,33 @@
                     <span class="fa fa-star"></span>
                     <p>Sweet! So, what do you wanna do today?</p>
                 </div>
-
+                <div class="container">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>Sweet! So, what do you wanna do today?</p>
+                </div>
+                <div class="container">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>Sweet! So, what do you wanna do today?</p>
+                </div>
+                <div class="container">
+                    <span>Scrivi la tua recensione</span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <span class="fa fa-star"></span>
+                    <p>Sweet! So, what do you wanna do today?</p>
+                </div>
                 <div class="container darker">
                     <span>Scrivi la tua recensione</span>
                     <span class="fa fa-star checked"></span>

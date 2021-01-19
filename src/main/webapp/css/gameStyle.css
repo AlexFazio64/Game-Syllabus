@@ -57,7 +57,7 @@
 
 .info {
     padding: 2px 5px;
-
+font-size: 22px;
 }
 
 ul li {
@@ -213,7 +213,7 @@ footer {
 
 #review-container {
     overflow: auto;
-    height: 20%;
+    height: 450px;
 }
 
 .checked {
@@ -225,7 +225,9 @@ a.info:hover {
 
     background-color: lightgray;
 }
-
+a.info{
+    padding: 5px;
+}
 #summary {
     margin: 20px 20px 20px 10px;
     border-radius: 15px;
