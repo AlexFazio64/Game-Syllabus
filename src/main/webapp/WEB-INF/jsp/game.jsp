@@ -34,17 +34,18 @@
     }
 </script>
 <main id="main">
-
+<div id="bkg" class="bkgcolor" style="background-image:url('../../images/devLogoNotFound.webp') "></div>
     <div id="all-info" style="opacity: 1">
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
         <ul id="basicInformation">
             <li><span class="gameName">${game} </span></li>
-            <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date</strong></span></li>
-            <li><span id="gameGenres" onclick="loadGenres()"><strong>Genres</strong></span></li>
-            <li id="Developer" onclick="loadDeveloper()"><strong>Developers</strong></li>
-            <li><span id="websites" onclick="loadWebsites()"><strong>Websites</strong></span></li>
-            <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type</strong> </span></li>
+            <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date: </strong></span></li>
+            <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type: </strong> </span></li>
+            <li><span id="console"><strong>Available for:</strong></span></li>
+            <li><span id="gameGenres" onclick="loadGenres()"><strong>Genres: </strong></span></li>
+            <li id="Developer" onclick="loadDeveloper()"><strong>Developers: </strong></li>
+            <li><span id="websites" onclick="loadWebsites()"><strong>Websites: </strong></span></li>
             <li><span id="dlc" onclick="loadDLCName()"><strong>DLCs: </strong></span></li>
 
         </ul>

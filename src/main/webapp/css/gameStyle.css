@@ -23,6 +23,7 @@
     text-decoration-color: #9966cc;
     margin-top: 20px;
     margin-left: 1%;
+    font-size: 28px;
 }
 
 
@@ -221,17 +222,23 @@ footer {
 }
 
 a.info:hover {
-    border-radius: 60%;
+    border-radius: 10%;
 
     background-color: lightgray;
 }
 a.info{
     padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+a.info:visited{
+    text-decoration: none;
 }
 #summary {
     margin: 20px 20px 20px 10px;
     border-radius: 15px;
     padding: 5px;
+    font-size: 22px;
 }
 
 #summary:hover {
