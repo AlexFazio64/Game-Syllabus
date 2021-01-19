@@ -33,37 +33,69 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		}
 	}
 	
+	async function requestSuggestion(data) {
+		return $.ajax({
+			url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
+			type: "POST",
+			crossDomain: true,
+			dataType: "json",
+			headers: {
+				"Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
+				"Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
+			},
+			data: 'fields name, platforms.name, cover.image_id; search "$"; limit 4;'.replace("$", data)
+		});
+	}
+	
 	// risultati falsi per adesso
 	//ragionare sulle dimensioni-max delle parti
-	function showQueryResults(s) {
-		const itemImg = $("<img src='images/logo.png' width='50' height='50' alt='logo'>")
-		const itemName = $("<p>NieR: Automata</p>");
-		const itemType = $("<p>" + s + "</p>");
-		const result = $("<span class='result-item'></span>");
-		result.append(itemImg);
-		result.append(itemName);
-		result.append(itemType);
-		$(".dropdown-content").append(result);
+	async function showQueryResults() {
+		if (suggestion()) {
+			// return;
+			const arr = await requestSuggestion($(".search-box")[0].value);
+			arr.forEach(a => {
+				var cover;
+				var platform;
+				try {
+					cover = "https://images.igdb.com/igdb/image/upload/t_cover_small/{hash}.jpg".replace("{hash}", a.cover.image_id);
+					platform = a.platforms[0].name;
+				} catch (e) {
+					console.log("missing non-critical data...");
+					platform = "no data..."
+				}
+				const name = a.name;
+				
+				const img = $("<img>").prop("src", cover);
+				const n = $("<p>").html(name);
+				const p = $("<p>").html(platform);
+				var $res = $("<span>").addClass("result-item");
+				
+				$res.append(img);
+				$res.append(n);
+				$res.append(p);
+				
+				$(".dropdown-content").append($res);
+			});
+		}
 	}
 	
 	//visualizza o nasconde i risultati suggeriti
 	function suggestion() {
-		let $x = $(".dropdown-content");
-		if ($(".search-box")[0].value.length >= 3) {
+		const $x = $(".dropdown-content");
+		$x.html("");
+		const len = $(".search-box")[0].value.length;
+		if (len >= 4) {
 			$x.css("display", "flex");
+			return true;
 		} else {
 			$x.css("display", "none");
+			return false;
 		}
 	}
 	
 	function hamburgerMenu() {
 		$(".hamburger-menu").toggleClass("visible");
 	}
-	
-	showQueryResults("Games");
-	showQueryResults("Platforms");
-	showQueryResults("Developers");
-	showQueryResults("All");
 </script>
 
 <!-- GOOGLE -->
@@ -105,8 +137,8 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		<li class="search">
 			<!-- Esportare in 50x50 per ottimizzare -->
 			<a class="logo" href="#"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
-			<form action="#" class="dropdown">
-				<input class="search-box" type="search" placeholder="Search..." oninput="suggestion()">
+			<form action="#" class="dropdown" onsubmit="showQueryResults()">
+				<input class="search-box" type="search" placeholder="Search..." id="nav-search">
 				<span class="dropdown-content"></span>
 				<span class="icon"><i class="material-icons">search</i></span>
 			</form>
