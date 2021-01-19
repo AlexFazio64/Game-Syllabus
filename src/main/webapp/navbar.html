@@ -47,17 +47,15 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		});
 	}
 	
-	// risultati falsi per adesso
 	//ragionare sulle dimensioni-max delle parti
 	async function showQueryResults() {
 		if (suggestion()) {
-			// return;
 			const arr = await requestSuggestion($(".search-box")[0].value);
 			arr.forEach(a => {
 				var cover;
 				var platform;
 				try {
-					cover = "https://images.igdb.com/igdb/image/upload/t_cover_small/{hash}.jpg".replace("{hash}", a.cover.image_id);
+					cover = "https://images.igdb.com/igdb/image/upload/t_cover_small/$.jpg".replace("$", a.cover.image_id);
 					platform = a.platforms[0].name;
 				} catch (e) {
 					console.log("missing non-critical data...");
@@ -73,10 +71,16 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 				$res.append(img);
 				$res.append(n);
 				$res.append(p);
-				
-				$(".dropdown-content").append($res);
+				var $link = $("<a>");
+				$link.attr("href", "http://localhost:8080/game?name="+a.name);
+				$link.append($res);
+				$(".dropdown-content").append($link);
 			});
 		}
+	}
+	
+	function empty(){
+		$("span.dropdown-content").empty();
 	}
 	
 	//visualizza o nasconde i risultati suggeriti
@@ -137,11 +141,11 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		<li class="search">
 			<!-- Esportare in 50x50 per ottimizzare -->
 			<a class="logo" href="http://localhost:8080/"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
-			<form action="#" class="dropdown" onsubmit="showQueryResults()">
-				<input class="search-box" type="search" placeholder="Search..." id="nav-search">
+			<div class="dropdown">
+				<input class="search-box" type="search" placeholder="Search..." id="nav-search" onemptied="empty()" onsearch="showQueryResults()">
 				<span class="dropdown-content"></span>
-				<span class="icon"><i class="material-icons">search</i></span>
-			</form>
+				<span class="icon" onclick="showQueryResults()"><i class="material-icons">search</i></span>
+			</div>
 			<span class="icon hamburger" onclick="hamburgerMenu()"><i class="material-icons">menu</i></span>
 			<span class="hamburger-menu">
 				<a href="#">Games</a>
