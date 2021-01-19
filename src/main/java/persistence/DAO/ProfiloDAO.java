@@ -10,7 +10,7 @@ public interface ProfiloDAO {
     Profilo findByPrimaryKey(String email); //RETRIEVE
     List<Profilo> findAll();
     void update (Profilo profilo); // UPDATE
-    void delete(Profilo profilo); //DELETE
+    void delete(String emailUtente); //DELETE
 
 
 }
