@@ -8,4 +8,9 @@ public class Controller {
 	public String index(){
 		return "index";
 	}
+
+	@GetMapping("/chooseUsername")
+	public String chooseUsername(){
+		return "chooseUsername";
+	}
 }
