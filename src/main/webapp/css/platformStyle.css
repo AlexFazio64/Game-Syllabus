@@ -20,10 +20,10 @@ body{
 .info-grid{
     display: grid;
     grid-template-columns: 20% auto;
-    grid-template-rows: 25% 30% auto;
+/*    grid-template-rows: 25% 30% auto;*/
     margin: auto;
     background-color: white;
-    height: 375px;
+/*    height: 375px;*/
 }
 
 .platform-name{
@@ -35,11 +35,29 @@ body{
     border-width: 0 0 15px 0;
     border-style: solid;
     border-color: #9966cc;
+    text-transform: uppercase;
+    padding-top: 10px;
+    overflow-wrap: anywhere;
 }
 
 .platform-description{
     grid-column: 2;
     grid-row:2;
+    overflow: hidden;
+    max-height: 145px;
+    padding-right: 5px;
+}
+
+.box-button{
+    background-color: #9966cc;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.box-button:hover{
+    background-color: #3B1162;
 }
 
 .platform-logo{
@@ -50,8 +68,8 @@ body{
 }
 
 .platform-logo img{
-    max-height: 160px;
-    max-width: 160px;
+    max-width: 180px;
+    max-height: 250px;
 }
 
 .other-info{
@@ -59,7 +77,6 @@ body{
     display: flex;
     justify-content: space-between;
     grid-column: 2;
-    grid-row: 3;
 }
 
 .other-three{
@@ -67,10 +84,9 @@ body{
 }
 
 .lista-giochi{
-    margin: auto;
-    margin-top: 50px;
+    margin: 50px auto auto;
     background-color: white;
-
+    border-radius: 25px 25px 0 0;
 }
 
 .lista-giochi h1{
@@ -81,25 +97,49 @@ body{
     border-color: #9966cc;
 }
 
-.dev-logo-game{
-    padding: 1% 1% 0 1%;
+.elencoLista{
+    list-style-type: none;
+    padding-left: 10px;
 }
 
-.gioco-1{
-    display: -webkit-box;
+.cardInside{
+    display: grid;
+    grid-template-columns: 1fr 4fr auto;
+    margin: 22px;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+    min-height: 130px;
+    transition: all 0.3s ease;
 }
 
-.altre-info{
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: baseline;
-    padding-top: 1%;
+.cardInside:hover{
+    box-shadow: 5px 5px 3px 3px #888888;
+    transform: translateY(-20px);
 }
 
-.altre-info a{
+.cardInside img{
+    border-radius: 5px;
+}
+
+.cardInside > a:last-of-type{
+    border-color: #3B1162;
+    border-radius: 8px;
+    background-color: #9966cc;
     text-decoration: none;
-    color: #121212;
+    color: white;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
     font-weight: 600;
-    text-align: center;
+}
+
+.cardInside > a:hover{
+    background-color: #3B1162;
+}
+
+.column{
+    float: left;
+    width: 50%;
+    padding: 10px;
 }
