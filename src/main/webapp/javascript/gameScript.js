@@ -50,7 +50,7 @@ function loadGameBasicInfo(game) {
                     var platform = document.createElement('a');
                     platform.innerText = txt.platforms[i].name;
                     platform.className = "info";
-                    platform.href = "http://localhost:8080/platform?name=" + txt.platforms[i].name;
+                    platform.href = "http://localhost:8080/platform?name=" + encode(txt.platforms[i].name);
                     document.getElementById("console").appendChild(platform);
                 }
             }
@@ -110,7 +110,7 @@ function loadGameBasicInfo(game) {
                 if (txt.genres.length > 0) {
                     for (var i = 0; i < txt.genres.length; i++) {
                         var link = document.createElement('a');
-                        link.href = "http://localhost:8080/genre?genreName=" + txt.genres[i].name;
+                        link.href = "http://localhost:8080/genre?genreName=" + encode(txt.genres[i].name);
                         link.className = "info";
                         var genre = document.createElement('span');
                         genre.innerHTML = txt.genres[i].name;
@@ -132,7 +132,7 @@ function loadGameBasicInfo(game) {
                     }
                 }
             }
-            if (!(("involved_conpanies" in txt) == 0)) {
+            if (!(("involved_companies" in txt) == 0)) {
                 if (txt.involved_companies.length > 0) {
                     for (var i = 0; i < txt.involved_companies.length; i++) {
                         var developer = document.createElement('span');
@@ -167,4 +167,17 @@ function loadGameBasicInfo(game) {
     ;
 }
 
-
+function encode(url){
+    var codedUrl=url;
+    codedUrl=codedUrl.replaceAll("&","%26");
+    codedUrl=codedUrl.replaceAll("$","%24");
+    codedUrl=codedUrl.replaceAll("+","%2B");
+    codedUrl=codedUrl.replaceAll(",","%2C");
+    codedUrl=codedUrl.replaceAll("/","%2F");
+    codedUrl=codedUrl.replaceAll(";","3A");
+    codedUrl=codedUrl.replaceAll("=","%3D");
+    codedUrl=codedUrl.replaceAll("?","%3F");
+    codedUrl=codedUrl.replaceAll("@","%40");
+    console.log(codedUrl);
+    return codedUrl;
+}
