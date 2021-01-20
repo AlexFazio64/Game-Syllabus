@@ -34,7 +34,7 @@ main > section > section {
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	top: -20px;
+	top: -30px;
 	background-color: white;
 	height: 80px;
 	border-radius: 10px 10px 0 0;
@@ -90,7 +90,7 @@ a.edit-btn:hover {
 	background-color: var(--secondary);
 }
 
-.info-panel {
+.info-edit-panel {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -136,8 +136,70 @@ a.edit-btn:hover {
 	outline: none;
 }
 
+.reviews {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.reviews:before{
+	content: "My Game Reviews";
+	display: block;
+	width: 80%;
+	margin: 40px auto 25px auto;
+	padding: 5px;
+    box-shadow: #ececec 0 -10px 12px 1px;
+
+	font-size: 2rem;
+	font-weight: 600;
+	text-align: center;
+	border-bottom: solid var(--primary) 5px;
+	border-radius: 15px 15px 0 0;
+}
+
+.review {
+	border-top: solid lightgrey 1px;
+	border-bottom: solid lightgrey 1px;
+	cursor: pointer;
+	display: flex;
+	column-gap: 15px;
+	min-height: 260px;
+	width: 100%;
+}
+
+.review .game-img {
+	display: flex;
+	width: 200px;
+	justify-content: center;
+	align-items: center;
+}
+
+.game-img img{
+	width: 200px;
+}
+
+.rev-info {
+	height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	row-gap: 15px;
+	align-items: flex-start;
+}
+
+.rev-info p {
+	overflow: hidden;
+	text-align: justify;
+}
+
 .about-panel {
 	display: block;
+}
+
+.edit-about-panel {
+	display: none;
 }
 
 .list-panel {
@@ -169,7 +231,7 @@ a.edit-btn:hover {
 }
 
 @media screen and (max-width: 1200px) {
-	.info-panel {
+	.info-edit-panel {
 		flex-direction: column-reverse;
 		justify-content: space-between;
 		align-items: center;
@@ -191,5 +253,11 @@ a.edit-btn:hover {
 
 	.usrnm {
 		top: -2em;
+	}
+}
+
+@media screen and (max-width: 980px){
+	main > section{
+		width: 100%;
 	}
 }
