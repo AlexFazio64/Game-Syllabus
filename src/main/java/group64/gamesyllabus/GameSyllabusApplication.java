@@ -2,10 +2,12 @@ package group64.gamesyllabus;
 
 import Model.ListaGiochi;
 import Model.Profilo;
+import Model.Recensione;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import persistence.DAO.JDBC.ListaGiochiDAOPG;
 import persistence.DAO.JDBC.ProfiloDAOPG;
+import persistence.DAO.JDBC.RecensioneDAOPG;
 
 
 @SpringBootApplication
@@ -13,6 +15,8 @@ public class GameSyllabusApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GameSyllabusApplication.class, args);
+
+
         /*
         PER CREARE UN PROFILO:
         1- CREARE UN OGGETTO PROFILO
