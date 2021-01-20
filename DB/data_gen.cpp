@@ -79,8 +79,8 @@ int main(){
 		games.push_back(g.game());
 
 	string s1 = ("INSERT INTO profilo (email, password, username) values\n");
-	string s2 = ("INSERT INTO recensione (valutazione, testo, \"idGioco\", \"scrittaDa\") values\n");
-	string s3 = ("INSERT INTO listagiochi (\"emailUtente\", \"idGioco\") values\n");
+	string s2 = ("INSERT INTO recensione (valutazione, testo, idgioco, scrittada) values\n");
+	string s3 = ("INSERT INTO listagiochi (emailutente, idgioco) values\n");
 
 	for (int i = 0; i < users.size(); ++i)
 		un1.insert(insertProfilo(users.at(i).email, users.at(i).password, users.at(i).username));
