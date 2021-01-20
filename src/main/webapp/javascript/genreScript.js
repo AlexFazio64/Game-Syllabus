@@ -1,5 +1,7 @@
 function genreInfo(genere){
+    console.log(genere);
     $.ajax({
+
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
         type: "POST",
         crossDomain: true,
