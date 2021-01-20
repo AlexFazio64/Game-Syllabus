@@ -12,6 +12,11 @@ public class Controller {
 		return "index";
 	}
 
+	@GetMapping("/getNavbar")
+	public String navbar () {
+		return "navbar";
+	}
+
 	@GetMapping("/chooseUsername")
 	public String chooseUsername(){
 		return "chooseUsername";

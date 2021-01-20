@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,12 +15,18 @@
 <div id="nav-placeholder"></div>
 <script>
     $(function () {
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
 <main class="content">
-    <div>
+    <div class="divBenvenuto">
+        <c:if test="${emailLogged == null}">
         <h3>Welcome, visitor</h3>
+        </c:if>
+        <c:if test="${emailLogged != null}">
+            <p>Welcome back, </p>
+            <p class="utenteLogged">${emailLogged}</p>
+        </c:if>
     </div>
     <div>
         <h3 class="trend">Most Recent</h3>

@@ -49,7 +49,7 @@
 </div>
 <script>
     $(function () {
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
 
