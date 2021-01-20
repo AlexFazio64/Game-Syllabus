@@ -1,26 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>${start}</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="../../javascript/developersScript.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/developersStyle.css">
-    <script type="text/javascript"> var lastIndex;</script>
-</head>
-<body>
-<div id="nav-placeholder">
-</div>
-<script>
-    $(function () {
-        $("#nav-placeholder").load("navbar.html");
-    });
-</script>
-<script defer>
+function loadDevelopers(start){
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/involved_companies",
         type: "POST",
@@ -30,7 +8,7 @@
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: 'fields id,company.name,company.logo.image_id; limit 40; sort id asc; where developer = true & id > ${start}; ',
+        data: 'fields id,company.name,company.logo.image_id; limit 40; sort id asc; where developer = true & id >'+start+'; ',
         dataType: "json",
         success: function (results) {
             var alreadyPresent = [];
@@ -66,14 +44,12 @@
                             i++;
                             if (alreadyPresent.length >= 20) {
                                 finish = true;
-                                lastIndex=cont;
+                                lastIndex = cont;
                                 break;
                             }
 
                         }
                         cont++;
-                        // console.log(alreadyPresent.length);
-
                     }
                 }
             }
@@ -81,34 +57,9 @@
             alert(status);
         }
     });
-</script>
-
-<main id="developers">
-    <h3>Developers<br></h3>
-    <div id="row0" class="row" style="height: 15px"></div>
-    <div id="row1" class="row" style="height: 15px"></div>
-    <div id="row2" class="row" style="height: 15px"></div>
-    <div id="row3" class="row" style="height: 15px"></div>
-    <div id="row4" class="row" style="height: 15px"></div>
-</main>
-<div class="center">
-    <div id="numPage" class="pagination">
-
-        <a id="page1"></a>
-        <a id="page2" class="active"></a>
-        <a id="page3"></a>
-        <a id="page4"></a>
-        <a id="page5"></a>
-        <a id="page6"></a>
-
-    </div>
-</div>
-<footer>
-    <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
-    <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
-</footer>
-<script defer>
-    var s = parseInt(${start});
+}
+function loadPagination(start){
+    var s = parseInt(start);
     if (s < 20) {
         document.getElementById("page1").className = "active";
         document.getElementById("page2").classList.replace("active", null);
@@ -128,21 +79,17 @@
         var starts = [parseInt(s - 20), parseInt(s + 20), parseInt(s + 40), parseInt(s + 60), parseInt(s + 80), parseInt(s + 100)];
         if (starts[0] < 20)
             starts[0] = 0;
-        document.getElementById("page1").href = "http://localhost:8080/developers?start=" +starts[0];
-        document.getElementById("page2").href = "http://localhost:8080/developers?start="+starts[1];
-        document.getElementById("page3").href = "http://localhost:8080/developers?start="+starts[2];
-        document.getElementById("page4").href = "http://localhost:8080/developers?start="+starts[3];
-        document.getElementById("page5").href = "http://localhost:8080/developers?start="+starts[4];
-        document.getElementById("page6").href = "http://localhost:8080/developers?start="+starts[5];
+        document.getElementById("page1").href = "http://localhost:8080/developers?start=" + starts[0];
+        document.getElementById("page2").href = "http://localhost:8080/developers?start=" + starts[1];
+        document.getElementById("page3").href = "http://localhost:8080/developers?start=" + starts[2];
+        document.getElementById("page4").href = "http://localhost:8080/developers?start=" + starts[3];
+        document.getElementById("page5").href = "http://localhost:8080/developers?start=" + starts[4];
+        document.getElementById("page6").href = "http://localhost:8080/developers?start=" + starts[5];
         document.getElementById("page1").innerText = (currentPage - 1).toString();
-        document.getElementById("page2").innerText= (currentPage).toString();
+        document.getElementById("page2").innerText = (currentPage).toString();
         document.getElementById("page3").innerText = (currentPage + 1).toString();
         document.getElementById("page4").innerText = (currentPage + 2).toString();
         document.getElementById("page5").innerText = (currentPage + 3).toString();
         document.getElementById("page6").innerText = (currentPage + 4).toString();
     }
-
-
-</script>
-</body>
-</html>
+}
