@@ -11,14 +11,15 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
-    @PostMapping("/doLogin")
+    @PostMapping("doLogin")
     public String login(HttpSession session, @RequestParam String email, @RequestParam String password) {
         if (loginOk(email, password)) {
             session.setAttribute("emailLogged", email);
-            System.out.println(session.getAttribute("emailLogged"));
-            return "index";
+            return "redirect:/index";
         }else {
-            return "regPage";
+            Boolean error = true;
+            session.setAttribute("error", true);
+            return "redirect:/index";
         }
     }
 

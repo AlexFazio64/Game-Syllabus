@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
+    <link rel="stylesheet" href="../../css/regError.css">
 </head>
 <body>
-    <h1>${errorType} already used. You will be redirected in 3s..</h1>
-    <script defer>
-            setTimeout(redirect,3000);
-            function redirect(){
-                window.location.href = "http://localhost:8080/regPage";
+<div class="testo">
+    <h1 class="parametro">${errorType}</h1>
+    <h1>already used. You will be redirected in</h1>
+    <h1 id="countdown" class="parametro">3</h1>
+</div>
+
+<script defer>
+    setTimeout(redirect,3000);
+    function redirect() {
+        window.location.href = "http://localhost:8080/regPage";
+    }
+    var startSeconds = 3;
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown(){
+        if (startSeconds > 0) {
+            startSeconds--;
+            countdownEl.innerText = startSeconds;
         }
-    </script>
+    }
+    setInterval(updateCountdown,1000);
+
+</script>
 </body>
 </html>

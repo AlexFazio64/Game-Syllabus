@@ -24,7 +24,7 @@
                 <input type="text" class="form-control" placeholder="Enter username.." id="usr">
             </div>
         </form>
-        <button onclick=window.location.href="http://localhost:8080/index.html" type="submit" class="btn btn-primary color-purple">Submit</button>
+        <button onclick=window.location.href="http://localhost:8080/" type="submit" class="btn btn-primary color-purple">Submit</button>
     </div>
 </div>
 </body>

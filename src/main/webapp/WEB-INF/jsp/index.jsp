@@ -10,15 +10,38 @@
     <link rel="stylesheet" href="../../css/indexStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="../../javascript/indexScript.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body>
 <div id="nav-placeholder"></div>
+<c:if test="${error == true}">
+    <script defer>
+        swal({
+            title: "Login issue!",
+            text: "Invalid credentials!",
+            icon: "error",
+            button: "Ok",
+
+        });
+
+    </script>
+</c:if>
 <script>
     $(function () {
         $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
 <main class="content">
+    <a href="#" onclick="signOut();">Sign out</a>
+    <script>
+        function signOut() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }
+    </script>
     <div class="divBenvenuto">
         <c:if test="${emailLogged == null}">
         <h3>Welcome, visitor</h3>

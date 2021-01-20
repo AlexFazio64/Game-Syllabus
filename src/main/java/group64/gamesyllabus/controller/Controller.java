@@ -5,15 +5,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 
+import javax.servlet.http.HttpSession;
+
 @org.springframework.stereotype.Controller
 public class Controller {
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String index(){
 		return "index";
 	}
 
 	@GetMapping("/getNavbar")
-	public String navbar () {
+	public String navbar (HttpSession session) {
+		Boolean error = false;
+		session.setAttribute("error", error);
 		return "navbar";
 	}
 

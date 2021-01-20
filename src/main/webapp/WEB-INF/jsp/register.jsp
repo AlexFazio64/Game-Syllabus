@@ -69,49 +69,60 @@
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
             </div>
-            <div class="loginButtons">
-                <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
-                     data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                <div id="my-signin2"></div>
-                <script>
-                    function onSuccess(googleUser) {
-                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-                        var profile = googleUser.getBasicProfile();
-                        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                        console.log('Name: ' + profile.getName());
-                        console.log('Image URL: ' + profile.getImageUrl());
-                        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-                        scegliUsername();
-                    }
-
-                    function onFailure(error) {
-                        console.log(error);
-                    }
-
-                    function scegliUsername() {
-                        window.location.href = 'http://localhost:8080/chooseUsername';
-
-                    }
-
-                    function renderButton() {
-                        gapi.signin2.render('my-signin2', {
-                            'scope': 'profile email',
-                            'width': 173,
-                            'height': 28,
-                            'longtitle': true,
-                            'theme': 'dark',
-                            'onsuccess': onSuccess,
-                            'onfailure': onFailure
-                        });
-                    }
-                </script>
-            </div>
             <div class="divBottone">
                 <button type="submit" class="bottone color-purple">Submit</button>
             </div>
-
         </form>
+        <div class="oppure">
+            <h3>Oppure accedi con:</h3>
+        </div>
 
+        <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+        </script>
+        <div class="loginButtons">
+            <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
+                 data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+            <div id="my-signin2"></div>
+            <script>
+
+                function onSuccess(googleUser) {
+                    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                    var profile = googleUser.getBasicProfile();
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                    scegliUsername();
+                }
+
+                function onFailure(error) {
+                    console.log(error);
+                }
+
+                function scegliUsername() {
+                    window.location.href = 'http://localhost:8080/chooseUsername';
+
+                }
+
+                function renderButton() {
+                    gapi.signin2.render('my-signin2', {
+                        'scope': 'profile email',
+                        'width': 173,
+                        'height': 28,
+                        'longtitle': true,
+                        'theme': 'dark',
+                        'onsuccess': onSuccess,
+                        'onfailure': onFailure
+                    });
+                }
+            </script>
+        </div>
 
         <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
