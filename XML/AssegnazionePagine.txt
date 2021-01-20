@@ -16,13 +16,13 @@ Daniele:
 Alex:
 10- Pagina su di noi (About)
 12- Pagina con i giochi suggeriti da noi
-8 - Pagina ultime uscite
-14 - Pagina modifica utente
+14 - Sezione modifica utente + sezione profilo utente ( + database)
 17 - Modifica Navbar
 
 Simone:
 10- Pagina su di noi (About)
 5 - Pagina singola console
 7 - Pagina singolo sviluppatore
-13 - Pagina profilo utente
+13 - Sezione lista ( + database)
 16 - Pagina risultati ricerche
+Dao update e bla bla
