@@ -84,6 +84,28 @@ public class ProfiloDAOPG implements ProfiloDAO {
 
     @Override
     public void update(Profilo profilo) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getDataSource().getConnection();
+            String update = "UPDATE profilo SET password = ?, username = ?, descrizione = ? WHERE email = ?";
+            PreparedStatement st = connection.prepareStatement(update);
+            st.setString(1, profilo.getPassword());
+            st.setString(2, profilo.getUsername());
+            st.setString(3, profilo.getDescrizione());
+            /*st.setBytes(4, profilo.getImmagine());*/
+            st.setString(4, profilo.getEmail());
+
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
 
     }
 

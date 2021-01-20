@@ -15,9 +15,24 @@ import java.util.List;
 public class RecensioneDAOPG implements RecensioneDAO{
 
 
+    //Funziona
     @Override
     public void save(Recensione recensione) {
+        Connection connection;
+        try {
+            connection = DBManager.getDataSource().getConnection();
+            String queryUpdate = "INSERT INTO recensione values(?, ?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(queryUpdate);
+            st.setInt(1, recensione.getId());
+            st.setInt(2, recensione.getValutazione());
+            st.setString(3, recensione.getTesto());
+            st.setString(4, recensione.getIdGioco());
+            st.setString(5, recensione.getScrittaDa());
+            st.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -53,13 +68,50 @@ public class RecensioneDAOPG implements RecensioneDAO{
         return recensioni;
     }
 
+    /*Funziona ma da vedere con gli altri*/
     @Override
     public void update(Recensione recensione) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getDataSource().getConnection();
+            String update = "UPDATE recensione SET valutazione = ?, testo = ? WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(update);
+            st.setInt(1, recensione.getValutazione());
+            st.setString(2, recensione.getTesto());
+            st.setInt(3, recensione.getId());
 
+            st.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
     }
 
+    //Funziona
     @Override
     public void delete(Recensione recensione) {
+        Connection connection = null;
+        try {
+            connection = DBManager.getDataSource().getConnection();
+            String delete = "DELETE FROM recensione WHERE id = ?";
+            PreparedStatement st = connection.prepareStatement(delete);
+            st.setInt(1, recensione.getId());
+            st.executeUpdate();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e.getMessage());
+            }
+        }
     }
 }
