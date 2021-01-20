@@ -8,7 +8,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="/js/igdbQuery.js">
-        var txt;
+        var result;
     </script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -47,8 +47,8 @@
             content = content.substring(0, content.lastIndexOf("]"));
             console.log(content);
 
-            txt = JSON.parse(content);
-            document.getElementById("summary").innerHTML = txt.summary;
+            result = JSON.parse(content);
+            document.getElementById("summary").innerHTML = result.summary;
             $.ajax({
                 url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
                 type: "POST",
@@ -58,7 +58,7 @@
                     "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
                     "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
                 },
-                data: "fields image_id;where game= " + txt.id + ";",
+                data: "fields image_id;where game= " + result.id + ";",
                 dataType: "json",
                 success: function (results) {
                     var datas = JSON.stringify(results).replace("[", "");

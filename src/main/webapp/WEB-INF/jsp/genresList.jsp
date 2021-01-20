@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>${start}</title>
+	<title>Genres</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,6 @@
 </main>
 <script src="../../javascript/Vibrant.min.js"></script>
 <script defer type="text/javascript">
-
 	listaGeneri();
 	function getColors(img) {
 		var vibrant = new Vibrant(img, 128, 1);

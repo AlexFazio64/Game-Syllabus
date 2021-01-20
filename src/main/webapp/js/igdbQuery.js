@@ -48,7 +48,7 @@ function loadScreenshots() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields image_id,url,height,width;where game= " + txt.id + ";",
+        data: "fields image_id,url,height,width;where game= " + result.id + ";",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -81,7 +81,7 @@ function loadVideos() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields video_id;where game=" + txt.id + ";",
+        data: "fields video_id;where game=" + result.id + ";",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -119,7 +119,7 @@ function loadWebsites() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields url,category;where game= " + txt.id + "; sort category asc; limit 18;",
+        data: "fields url,category;where game= " + result.id + "; sort category asc; limit 18;",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -154,7 +154,7 @@ function loadReleaseDate() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields date; where game = " + txt.id + "; ",
+        data: "fields date; where game = " + result.id + "; ",
         dataType: "json",
         success: function (results) {
             var dates = JSON.stringify(results);
@@ -196,7 +196,7 @@ function loadGenres() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields name; where id = (" + txt.genres + "); ",
+        data: "fields name; where id = (" + result.genres + "); ",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -233,7 +233,7 @@ function loadDeveloper() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields name; where developed = [ " + txt.id + "]; ",
+        data: "fields name; where developed = [ " + result.id + "]; ",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -269,7 +269,7 @@ function loadGameplayType() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields name; where id = ( " + txt.game_modes + "); ",
+        data: "fields name; where id = ( " + result.game_modes + "); ",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
@@ -305,7 +305,7 @@ function loadDLCName() {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: "fields name; where id = ( " + txt.dlcs + "); ",
+        data: "fields name; where id = ( " + result.dlcs + "); ",
         dataType: "json",
         success: function (results) {
             var datas = JSON.stringify(results);
