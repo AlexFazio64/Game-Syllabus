@@ -110,14 +110,14 @@ ALTER TABLE ONLY public.profilo
 -- Name: fki_emailFK; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX "fki_emailFK" ON public.listagiochi USING btree ("emailUtente");
+CREATE INDEX "fki_emailFK" ON public.listagiochi USING btree (emailutente);
 
 
 --
 -- Name: fki_profiloFK; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX "fki_profiloFK" ON public.recensione USING btree ("scrittaDa");
+CREATE INDEX "fki_profiloFK" ON public.recensione USING btree (scrittada);
 
 
 --
@@ -125,7 +125,7 @@ CREATE INDEX "fki_profiloFK" ON public.recensione USING btree ("scrittaDa");
 --
 
 ALTER TABLE ONLY public.listagiochi
-    ADD CONSTRAINT "emailFK" FOREIGN KEY ("emailUtente") REFERENCES public.profilo(email) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "emailFK" FOREIGN KEY (emailutente) REFERENCES public.profilo(email) ON UPDATE CASCADE ON DELETE CASCADE;
 
 
 --
@@ -133,4 +133,4 @@ ALTER TABLE ONLY public.listagiochi
 --
 
 ALTER TABLE ONLY public.recensione
-    ADD CONSTRAINT "profiloFK" FOREIGN KEY ("scrittaDa") REFERENCES public.profilo(email) ON UPDATE CASCADE ON DELETE CASCADE;
+    ADD CONSTRAINT "profiloFK" FOREIGN KEY (scrittada) REFERENCES public.profilo(email) ON UPDATE CASCADE ON DELETE CASCADE;
