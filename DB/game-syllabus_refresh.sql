@@ -19,8 +19,8 @@ CREATE TABLE public.recensione (
     id integer NOT NULL,
     valutazione integer NOT NULL,
     testo character varying(255) NOT NULL,
-    "idGioco" character varying(255) NOT NULL,
-    "scrittaDa" character varying(320) NOT NULL
+    idgioco character varying(255) NOT NULL,
+    scrittada character varying(320) NOT NULL
 );
 
 
@@ -49,8 +49,8 @@ ALTER SEQUENCE public."Recensione_id_seq" OWNED BY public.recensione.id;
 --
 
 CREATE TABLE public.listagiochi (
-    "emailUtente" character varying(320) NOT NULL,
-    "idGioco" character varying(255) NOT NULL
+    emailutente character varying(320) NOT NULL,
+    idgioco character varying(255) NOT NULL
 );
 
 
@@ -95,7 +95,7 @@ ALTER TABLE ONLY public.recensione
 --
 
 ALTER TABLE ONLY public.listagiochi
-    ADD CONSTRAINT "email-gioco" PRIMARY KEY ("emailUtente", "idGioco");
+    ADD CONSTRAINT "email-gioco" PRIMARY KEY (emailutente, idgioco);
 
 
 --
