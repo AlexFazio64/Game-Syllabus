@@ -11,11 +11,11 @@ function loadGameBasicInfo(game) {
         data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,involved_companies.company.name; search "' + game + '"; limit 1;',
         dataType: "json",
         success: function (result) {
+            console.log(result);
             var content = JSON.stringify(result);
             content = content.replace("[", "");
             content = content.substring(0, content.lastIndexOf("]"));
             txt = JSON.parse(content);
-
             if (!(("summary" in txt) == 0))
                 document.getElementById("summary").innerText = txt.summary;
             $.ajax({
@@ -94,15 +94,17 @@ function loadGameBasicInfo(game) {
             if (!(("videos" in txt) == 0)) {
                 if (txt.videos.length > 0) {
                     for (var i = 0; i < txt.videos.length; i++) {
+                        var container = document.createElement('span');
+                        container.className = "video-player";
                         var newPlayer = document.createElement('iframe');
-                        newPlayer.className = "video-player";
-                        newPlayer.width = 560;
-                        newPlayer.height = 345;
+                        newPlayer.width = 640;
+                        newPlayer.height = 385;
                         newPlayer.frameBorder = "0";
                         newPlayer.allowFullscreen = true;
                         newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                         newPlayer.src = "https://www.youtube.com/embed/" + txt.videos[i].video_id;
-                        document.getElementById("videos").appendChild(newPlayer);
+                        container.appendChild(newPlayer);
+                        document.getElementById("videos").appendChild(container);
                     }
                 }
             }
@@ -128,7 +130,6 @@ function loadGameBasicInfo(game) {
                         newLink.text = type[i];
                         newLink.className = "info";
                         document.getElementById("websites").append(newLink);
-
                     }
                 }
             }
@@ -167,17 +168,17 @@ function loadGameBasicInfo(game) {
     ;
 }
 
-function encode(url){
-    var codedUrl=url;
-    codedUrl=codedUrl.replaceAll("&","%26");
-    codedUrl=codedUrl.replaceAll("$","%24");
-    codedUrl=codedUrl.replaceAll("+","%2B");
-    codedUrl=codedUrl.replaceAll(",","%2C");
-    codedUrl=codedUrl.replaceAll("/","%2F");
-    codedUrl=codedUrl.replaceAll(";","3A");
-    codedUrl=codedUrl.replaceAll("=","%3D");
-    codedUrl=codedUrl.replaceAll("?","%3F");
-    codedUrl=codedUrl.replaceAll("@","%40");
+function encode(url) {
+    var codedUrl = url;
+    codedUrl = codedUrl.replaceAll("&", "%26");
+    codedUrl = codedUrl.replaceAll("$", "%24");
+    codedUrl = codedUrl.replaceAll("+", "%2B");
+    codedUrl = codedUrl.replaceAll(",", "%2C");
+    codedUrl = codedUrl.replaceAll("/", "%2F");
+    codedUrl = codedUrl.replaceAll(";", "3A");
+    codedUrl = codedUrl.replaceAll("=", "%3D");
+    codedUrl = codedUrl.replaceAll("?", "%3F");
+    codedUrl = codedUrl.replaceAll("@", "%40");
     console.log(codedUrl);
     return codedUrl;
 }

@@ -1,33 +1,31 @@
+label {
+    text-align: center;
+    padding: 20px;
+    display: block;
+    font-size: 37px;
+    font-weight: bolder;
+}
+
 .comp-logo {
-
     width: auto;
-
     height: auto;
-
     margin-left: auto;
-
     margin-right: auto;
-
     display: flex;
-
     overflow: hidden;
-
     justify-content: center;
-
     align-items: center;
-
     width: 40%;
 }
 
 .name {
-
     width: fit-content;
     margin: auto;
 }
 
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
 }
 
 /* Create two equal columns that floats next to each other */
@@ -62,7 +60,6 @@
 }
 
 .card {
-
     height: 240px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
@@ -72,7 +69,6 @@
     display: grid;
     align-items: center;
     grid-template-rows: 3fr 1fr;
-
 }
 
 .card:hover {
@@ -88,7 +84,6 @@ main#developers {
     margin-left: auto;
     margin-right: auto;
     display: table;
-
 }
 
 .center {
@@ -109,13 +104,12 @@ main#developers {
     margin: 0 4px;
 }
 
-.pagination a.active {
-    background-color: rebeccapurple;
-    color: white;
-    border: 1px solid rebeccapurple;
-}
 
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination a:hover {
+    background-color: #d5dddd;
+    transition: all 0.3s ease;
+    font-size: xx-large;
+}
 
 footer {
     font-weight: 500;
