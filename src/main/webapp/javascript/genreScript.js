@@ -59,6 +59,7 @@ function genreInfo(genere){
                 } else {
                     date.innerHTML = "Missing dates.."
                 }
+
                 card.appendChild(image);
                 lista.appendChild(name);
                 lista.appendChild(date);

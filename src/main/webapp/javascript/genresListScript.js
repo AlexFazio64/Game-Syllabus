@@ -11,14 +11,13 @@ function listaGeneri(){
         data: 'fields name; limit 300; sort name asc;',
         dataType: "json",
         success: function (result) {
-            var content = JSON.stringify(result).replaceAll("'", " ");
-            //content = content.replace("[", "");
-            //content = content.substring(0, content.lastIndexOf("]"));
-            var txt = [];
-            txt = JSON.parse(content);
-            for (var i = 0; i < txt.length; i++) {
+            encodeURIComponent("${result}");
+
+            for (var i = 0; i < result.length; i++) {
                 var link = document.createElement('a');
-                link.href = "http://localhost:8080/genre?genreName=" + txt[i].name;
+                console.log(result[i].name);
+                link.href = "http://localhost:8080/genre?genreName=" + result[i].name;
+                link.href = link.href.replace(/&/, "%26");
                 link.className = "linkMod";
                 const card = document.createElement('div');
                 card.classList.add("cardInside");
@@ -26,17 +25,17 @@ function listaGeneri(){
                 genInit.className = "genInit";
                 var iniziale = document.createElement('h1');
                 var name = document.createElement('p');
-                if (!('name' in txt[i]) == 0 && !(txt[i].name).localeCompare("Hack and slash/Beat  em up") == 0) {
-                    iniziale.innerHTML = txt[i].name[0];
-                    name.innerHTML = txt[i].name;
-                } else if ((txt[i].name).localeCompare("Hack and slash/Beat  em up") == 0) {
-                    iniziale.innerHTML = txt[i].name[0];
+                if (!('name' in result[i]) == 0 && !(result[i].name).localeCompare("Hack and slash/Beat 'em up") == 0) {
+                    iniziale.innerHTML = result[i].name[0];
+                    name.innerHTML = result[i].name;
+                } else if ((result[i].name).localeCompare("Hack and slash/Beat 'em up") == 0) {
+                    iniziale.innerHTML = result[i].name[0];
                     name.innerHTML = "Hack and slash";
                     var copia = {
                         id: 25,
                         name: "Beat \u0027em up"
                     };
-                    txt.push(copia);
+                    result.push(copia);
                 }
                 const background = document.createElement('img');
                 background.addEventListener("load", function () {
@@ -46,7 +45,7 @@ function listaGeneri(){
                 });
 
                 background.className = "bg";
-                background.setAttribute("src", "../../images/imagesBackground/" + txt[i].id + ".jpg");
+                background.setAttribute("src", "../../images/imagesBackground/" + result[i].id + ".jpg");
                 card.appendChild(background);
                 genInit.appendChild(iniziale);
                 card.appendChild(genInit);

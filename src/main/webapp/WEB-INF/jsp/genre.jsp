@@ -71,7 +71,7 @@
             </div>
     </div>
 </main>
-
+<script src="../../javascript/Vibrant.min.js"></script>
 <script defer type="text/javascript">
     genreInfo("${genre}");
 </script>
