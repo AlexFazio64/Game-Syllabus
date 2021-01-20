@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface ProfiloDAO {
 
-    void save(Profilo profilo); // CREATE
+    boolean save(Profilo profilo); // CREATE
     Profilo findByPrimaryKey(String email); //RETRIEVE
+    Profilo findByUsername(String username); //NEEDED
     List<Profilo> findAll();
     void update (Profilo profilo); // UPDATE
     void delete(String emailUtente); //DELETE

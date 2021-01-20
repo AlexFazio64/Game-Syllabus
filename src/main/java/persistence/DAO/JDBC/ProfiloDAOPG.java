@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProfiloDAOPG implements ProfiloDAO {
     @Override
-    public void save(Profilo profilo) {
+    public boolean save(Profilo profilo) {
         Connection connection;
         try {
             connection = DBManager.getDataSource().getConnection();
@@ -24,9 +24,10 @@ public class ProfiloDAOPG implements ProfiloDAO {
             st.setString(2, profilo.getPassword());
             st.setString(3, profilo.getUsername());
             st.executeUpdate();
-
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -39,6 +40,31 @@ public class ProfiloDAOPG implements ProfiloDAO {
             String query = "select * from profilo where email=?";
             PreparedStatement st = connection.prepareStatement(query);
             st.setString(1, email);
+            ResultSet result = st.executeQuery();
+            if (result.next()){
+                Profilo profilo1 = new Profilo();
+                profilo1.setEmail(result.getString("email"));
+                profilo1.setUsername(result.getString("username"));
+                profilo1.setPassword(result.getString("password"));
+                profilo1.setDescrizione(result.getString("descrizione"));
+
+                profilo = profilo1;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return profilo;
+    }
+
+    @Override
+    public Profilo findByUsername(String username) {
+        Profilo profilo = null;
+        Connection connection = null;
+        try {
+            connection = DBManager.getDataSource().getConnection();
+            String query = "select * from profilo where username=?";
+            PreparedStatement st = connection.prepareStatement(query);
+            st.setString(1, username);
             ResultSet result = st.executeQuery();
             if (result.next()){
                 Profilo profilo1 = new Profilo();
