@@ -24,7 +24,10 @@ public class Controller {
 
 
 	@GetMapping ("regPage")
-	public String registerPage (){
+	public String registerPage (HttpSession session){
+		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
+		int iscritti = profiloDAOPG.findAll().size();
+		session.setAttribute("nIscritti", iscritti);
 		return "register";
 	}
 
