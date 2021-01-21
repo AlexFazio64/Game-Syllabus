@@ -18,7 +18,7 @@ $("#nav-placeholder").load("navbar.html");
     $('<link>').appendTo('head').attr({
         type: 'text/css',
         rel: 'stylesheet',
-        href: 'css/navbar.css'
+        href: 'http://localhost:8080/css/navbar.css'
     });
 
     $('<meta>').appendTo('head').attr({
@@ -143,7 +143,7 @@ $("#nav-placeholder").load("navbar.html");
     <ul class="nav">
         <li class="search">
             <!-- Esportare in 50x50 per ottimizzare -->
-            <a class="logo" href="http://localhost:8080/"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
+            <a class="logo" href="http://localhost:8080/"><img src="http://localhost:8080/images/logo.png" width="50" height="50" alt="logo"></a>
             <div class="dropdown">
                 <input class="search-box" type="search" placeholder="Search..." id="nav-search" onemptied="empty()"
                        onsearch="showQueryResults()">
@@ -158,7 +158,8 @@ $("#nav-placeholder").load("navbar.html");
 				<a href="#">Platforms</a>
 				<a href="http://localhost:8080/genres">Genres</a>
 				<c:if test="${usernameLogged != null}">
-                    <a class="item" href="#">${usernameLogged}</a>
+                    <a class="item" href="http://localhost:8080/account/${usernameLogged}">${usernameLogged}</a>
+                    <a class="item" href="http://localhost:8080/doLogout">Logout</a>
                 </c:if>
                 <c:if test="${usernameLogged == null}">
                     <a class="register" href="http://localhost:8080/regPage">Register</a>
@@ -179,10 +180,11 @@ $("#nav-placeholder").load("navbar.html");
         <!-- usare showAccountInfo(true|false) -->
         <li class="item account">
             <c:if test="${usernameLogged != null}">
-                <a class="item" href="#">
+                <a class="item" href="http://localhost:8080/account/${usernameLogged}">
                     <span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
                     <span class="profile-name">${usernameLogged}</span> <!-- Lunghezza massima?? -->
                 </a>
+                <a class="item" href="http://localhost:8080/doLogout"><i class="material-icons">exit_to_app</i></a>
             </c:if>
             <c:if test="${usernameLogged == null}">
                 <a class="register" href="http://localhost:8080/regPage">Register</a>
