@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 
+import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
@@ -21,8 +22,10 @@ public class Controller {
 		return "navbar";
 	}
 
-	@GetMapping("/chooseUsername")
-	public String chooseUsername(){
+	@PostMapping("/chooseUsername")
+	public String chooseUsername(@RequestParam String emailGoogle, @RequestParam String passwordGoogle, HttpSession session){
+		session.setAttribute("emailGoogle", emailGoogle);
+		session.setAttribute("passwordGoogle", passwordGoogle);
 		return "chooseUsername";
 	}
 
@@ -39,8 +42,14 @@ public class Controller {
 	}
 
 	//Register user
+
 	@PostMapping("/register")
-	public String registerUser (@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
+	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
+
+		if (session.getAttribute("emailGoogle")!=null){
+			email = session.getAttribute("emailGoogle").toString();
+			password = session.getAttribute("passwordGoogle").toString();
+		}
 
 		Profilo profilo = new Profilo();
 		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
@@ -58,7 +67,9 @@ public class Controller {
 
 		if (emailUsata == false && usernameUsato == false) {
 			profiloDAOPG.save(profilo);
-			return index();
+			session.setAttribute("email",email);
+			session.setAttribute("password", password);
+			return "redirect:/doLogin";
 		}
 		else if (usernameUsato && emailUsata){
 			return showRegError("Username and Email", model);

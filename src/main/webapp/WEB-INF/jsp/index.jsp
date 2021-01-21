@@ -14,6 +14,7 @@
 
 </head>
 <body>
+
 <div id="nav-placeholder"></div>
 <c:if test="${error == true}">
     <script defer>
@@ -22,9 +23,7 @@
             text: "Invalid credentials!",
             icon: "error",
             button: "Ok",
-
         });
-
     </script>
 </c:if>
 <script>
@@ -33,15 +32,6 @@
     });
 </script>
 <main class="content">
-    <a href="#" onclick="signOut();">Sign out</a>
-    <script>
-        function signOut() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                console.log('User signed out.');
-            });
-        }
-    </script>
     <div class="divBenvenuto">
         <c:if test="${emailLogged == null}">
         <h3>Welcome, visitor</h3>

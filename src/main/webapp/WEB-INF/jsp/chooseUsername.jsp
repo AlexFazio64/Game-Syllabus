@@ -18,13 +18,15 @@
     <div>
         <div class="syllabus">
         </div>
-        <form action="http://localhost:8080/index.html">
+        <form method="post" action="http://localhost:8080/register">
             <div class="form-group">
                 <label for="usr">Username:</label>
-                <input type="text" class="form-control" placeholder="Enter username.." id="usr">
+                <input type="text" class="form-control" placeholder="Enter username.." id="usr" name="username">
+                <input type="hidden" name="email">
+                <input type="hidden" name="password">
             </div>
+            <button type="submit" class="btn btn-primary color-purple">Submit</button>
         </form>
-        <button onclick=window.location.href="http://localhost:8080/" type="submit" class="btn btn-primary color-purple">Submit</button>
     </div>
 </div>
 </body>

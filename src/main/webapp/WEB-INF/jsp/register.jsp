@@ -56,58 +56,47 @@
     <div>
         <div class="syllabus">
         </div>
-        <form method="post" action="http://localhost:8080/register">
+        <form method="post" action="http://localhost:8080/register" id="formReg">
             <div class="form-group">
                 <label for="email">Email address:</label>
                 <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
             </div>
             <div class="form-group">
                 <label for="usr">Username:</label>
-                <input type="text" class="form-control" placeholder="Enter username" id="usr" name="username">
+                <input type="text" required class="form-control" placeholder="Enter username" id="usr" name="username">
             </div>
             <div class="form-group">
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
             </div>
             <div class="divBottone">
-                <button type="submit" class="bottone color-purple">Submit</button>
+                <button type="submit" class="bottone color-purple" id="submitButton">Submit</button>
             </div>
         </form>
         <div class="oppure">
             <h3>Oppure accedi con:</h3>
         </div>
 
-        <script>
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
-        </script>
         <div class="loginButtons">
             <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
                  data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
             <div id="my-signin2"></div>
             <script>
-
                 function onSuccess(googleUser) {
                     console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
                     var profile = googleUser.getBasicProfile();
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                    document.getElementById("email").setAttribute("value", profile.getEmail());
+                    document.getElementById("pwd").setAttribute("value", profile.getId());
+                    document.getElementById("email").setAttribute("type", "hidden");
+                    document.getElementById("pwd").setAttribute("type", "hidden");
+                    /*console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                     console.log('Name: ' + profile.getName());
                     console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-                    scegliUsername();
+                    console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.*/
                 }
 
                 function onFailure(error) {
                     console.log(error);
-                }
-
-                function scegliUsername() {
-                    window.location.href = 'http://localhost:8080/chooseUsername';
-
                 }
 
                 function renderButton() {
@@ -125,6 +114,20 @@
         </div>
 
         <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+        <a href="#" onclick="signOut();" hidden id="linkLogout">Sign out</a>
+        <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+                document.getElementById("email").setAttribute("type", "email");
+                document.getElementById("pwd").setAttribute("type", "password");
+                document.getElementById("email").setAttribute("value", "");
+                document.getElementById("pwd").setAttribute("value", "");
+            }
+            document.getElementById("linkLogout").click();
+        </script>
 
     </div>
 </div>
