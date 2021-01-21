@@ -2,24 +2,31 @@ package group64.gamesyllabus.controller;
 
 import Model.Profilo;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import persistence.DAO.JDBC.ProfiloDAOPG;
+
+import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-	@GetMapping("/")
+	@GetMapping("/index")
 	public String index(){
 		return "index";
 	}
 
-	@GetMapping("/chooseUsername")
-	public String chooseUsername(){
-		return "chooseUsername";
+	@GetMapping("/getNavbar")
+	public String navbar (HttpSession session) {
+		session.setAttribute("error", false);
+		return "navbar";
 	}
-
-
+	
 	@GetMapping ("regPage")
-	public String registerPage (){
+	public String registerPage (HttpSession session){
+		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
+		int iscritti = profiloDAOPG.findAll().size();
+		session.setAttribute("nIscritti", iscritti);
 		return "register";
 	}
 
@@ -31,7 +38,12 @@ public class Controller {
 
 	//Register user
 	@PostMapping("/register")
-	public String registerUser (@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
+	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
+
+		if (session.getAttribute("emailGoogle")!=null){
+			email = session.getAttribute("emailGoogle").toString();
+			password = session.getAttribute("passwordGoogle").toString();
+		}
 
 		Profilo profilo = new Profilo();
 		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
@@ -47,9 +59,11 @@ public class Controller {
 		if (profiloDAOPG.findByUsername(username) != null)
 			usernameUsato = true;
 
-		if (emailUsata == false && usernameUsato == false) {
+		if ( !emailUsata && !usernameUsato ) {
 			profiloDAOPG.save(profilo);
-			return index();
+			session.setAttribute("email",email);
+			session.setAttribute("password", password);
+			return "redirect:/doLogin";
 		}
 		else if (usernameUsato && emailUsata){
 			return showRegError("Username and Email", model);
@@ -58,11 +72,8 @@ public class Controller {
 		else if (usernameUsato){
 			return showRegError("Username", model);
 		}
-
 		else{
 			return showRegError("Email", model);
 		}
-
-
 	}
 }

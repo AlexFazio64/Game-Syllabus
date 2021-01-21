@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +44,10 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v9.0&appId=904598133610405&autoLogAppEvents=1"
         nonce="e8iPCl2W"></script>
-<button onclick="window.location.href='http://localhost:8080/';" class="bottone color-purple">Back</button>
+
+<%--<div class="back">
+    <button onclick="window.location.href='http://localhost:8080/';" class="bottone color-purple">Back</button>
+</div>--%>
 <!--<div id="nav-placeholder">
 </div>
 
@@ -51,24 +58,34 @@
     });
 </script>
 -->
+<div class="regBackground" id="bg">
+</div>
+<div class="divisor">
+    <div class="form">
+        <div class="container">
+            <div class="syllabus">
+            </div>
+            <form method="post" action="http://localhost:8080/register" id="formReg">
+                <div class="form-group">
+                    <label for="email" id="stringEmail">Email address:</label>
+                    <input type="email" required class="form-control" placeholder="Enter email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="usr" id="stringUsername">Username:</label>
+                    <input type="text" required class="form-control" placeholder="Enter username" id="usr" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="pwd" id="stringPassword">Password:</label>
+                    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
+                </div>
+                <div class="divBottone">
+                    <button type="submit" class="bottone color-purple" id="submitButton">Submit</button>
+                </div>
+            </form>
+            <div class="oppure">
+                <h3>Oppure accedi con:</h3>
+            </div>
 
-<div class="form">
-    <div>
-        <div class="syllabus">
-        </div>
-        <form method="post" action="http://localhost:8080/register">
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
-            </div>
-            <div class="form-group">
-                <label for="usr">Username:</label>
-                <input type="text" class="form-control" placeholder="Enter username" id="usr" name="username">
-            </div>
-            <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
-            </div>
             <div class="loginButtons">
                 <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
                      data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
@@ -77,20 +94,22 @@
                     function onSuccess(googleUser) {
                         console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
                         var profile = googleUser.getBasicProfile();
-                        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                        document.getElementById("email").setAttribute("value", profile.getEmail());
+                        document.getElementById("pwd").setAttribute("value", profile.getId());
+                        document.getElementById("email").setAttribute("type", "hidden");
+                        document.getElementById("pwd").setAttribute("type", "hidden");
+                        document.getElementById("stringEmail").setAttribute("class", "toHide");
+                        document.getElementById("stringPassword").setAttribute("class", "toHide");
+                        /*console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                         console.log('Name: ' + profile.getName());
                         console.log('Image URL: ' + profile.getImageUrl());
-                        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-                        scegliUsername();
+                        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.*/
                     }
+
 
                     function onFailure(error) {
                         console.log(error);
-                    }
-
-                    function scegliUsername() {
-                        window.location.href = 'http://localhost:8080/chooseUsername';
-
+                        signOut();
                     }
 
                     function renderButton() {
@@ -106,16 +125,50 @@
                     }
                 </script>
             </div>
-            <div class="divBottone">
-                <button type="submit" class="bottone color-purple">Submit</button>
-            </div>
 
-        </form>
+            <script src="https://apis.google.com/js/platform.js?onload=renderButton" async></script>
+            <%--AUTO LOGOUT ON PAGE CHANGE--%>
+            <script>
+                window.onbeforeunload = function (e) {
+                    gapi.auth2.getAuthInstance().signOut();
+                };
 
-
-        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                        console.log('User signed out.');
+                    });
+                    document.getElementById("email").setAttribute("type", "email");
+                    document.getElementById("pwd").setAttribute("type", "password");
+                    document.getElementById("email").setAttribute("value", "");
+                    document.getElementById("pwd").setAttribute("value", "");
+                }
+                //document.getElementById("logout").firstElementChild.click();
+            </script>
+        </div>
+    </div>
+    <div class="iscritti">
+        <div class="containerInfo">
+            <p>Iscriviti anche tu, ci sono gia' ${nIscritti} iscritti! </p>
+        </div>
     </div>
 </div>
+
+<script>
+    const gifs = ["https://media.giphy.com/media/S9iZRMT7341RZW9paH/source.gif",
+        "https://media.giphy.com/media/3o7btQ9ep8sZXmfFra/source.gif",
+        "https://media.giphy.com/media/dwiWXA8CUNTqITVQ8y/source.gif",
+        "https://media.giphy.com/media/Do5pJNQNDDAfS/giphy.gif",
+        "https://media.giphy.com/media/UvQ2W4OYg3EKahV5Xe/giphy.gif",
+        "https://media.giphy.com/media/69JWtI3j8j5miUPs4H/source.gif",
+        "https://media.giphy.com/media/l49JKCSoloVTGjmWQ/giphy.gif",
+        "https://media.giphy.com/media/3ktKmy0RZxM1kBUnua/giphy.gif",
+        "https://media.giphy.com/media/fSpC2w245xoVyCCuVx/giphy.gif",
+        "https://media.giphy.com/media/XdIyBvPFzxyXXuFPjQ/giphy.gif"];
+    const random = Math.floor(Math.random()*gifs.length);
+    document.getElementById("bg").style.backgroundImage = "url("+gifs[random]+")";
+    console.log(gifs[random]);
+</script>
+
 </body>
 </html>

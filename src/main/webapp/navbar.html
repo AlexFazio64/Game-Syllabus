@@ -149,12 +149,12 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 			<span class="icon hamburger" onclick="hamburgerMenu()"><i class="material-icons">menu</i></span>
 			<span class="hamburger-menu">
 				<a href="#">Games</a>
-				<a href="#">Developers</a>
+				<a href="http://localhost:8080/developers?start=0">Developers</a>
 				<a href="#">About Us</a>
 				<a href="#">Platforms</a>
 				<a href="http://localhost:8080/genres">Genres</a>
 				<a class="item" href="#">VeryLongUsernameOver</a>
-				<a class="register" href="http://localhost:8080/register.html">Register</a>
+				<a class="register" href="http://localhost:8080/regPage">Register</a>
 				<a href="#" class="login" id="myBtn2" data-toggle="modal" data-target="#myModal">Login</a>
 			</span>
 		</li>
@@ -162,7 +162,7 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		<li class="item">
 			<span class="menu material-icons">menu</span>
 			<a href="#">Games</a>
-			<a href="#">Developers</a>
+			<a href="http://localhost:8080/developers?start=0">Developers</a>
 			<a href="#">About Us</a>
 			<a href="#">Platforms</a>
 			<a href="http://localhost:8080/genres">Genres</a>   <!-- Muovere in About us? -->
@@ -174,7 +174,7 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 				<span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
 				<span class="profile-name">VeryLongUsernameOver</span> <!-- Lunghezza massima?? -->
 			</a>
-			<a class="register" href="http://localhost:8080/register.html">Register</a>
+			<a class="register" href="http://localhost:8080/regPage">Register</a>
 			<a class="login" id="myBtn" href="#" data-toggle="modal" data-target="#myModal">Login</a>
 		</li>
 	</ul>
@@ -189,11 +189,11 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 			<h1>Login</h1>
 		</div>
 		<div class="modal-body">
-			<form action="">
+			<form method="post" action="http://localhost:8080/doLogin">
 				<p class="campo">Email</p>
-				<input type="email" placeholder="Insert your email..">
+				<input type="email" placeholder="Insert your email.." name="email">
 				<p class="campo">Password</p>
-				<input type="password" placeholder="Insert your password..">
+				<input type="password" placeholder="Insert your password.." name="password">
 				<div class="loginButtons">
 					<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
 					     data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>

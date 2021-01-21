@@ -9,7 +9,6 @@ import persistence.DAO.JDBC.ListaGiochiDAOPG;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 import persistence.DAO.JDBC.RecensioneDAOPG;
 
-
 @SpringBootApplication
 public class GameSyllabusApplication {
 
