@@ -47,6 +47,10 @@
 	color: white;
 }
 
+
+.toHide{
+	display: none;
+}
 .syllabus {
 	margin-bottom: 20px;
 	background-image: url("../images/sillabus.png");

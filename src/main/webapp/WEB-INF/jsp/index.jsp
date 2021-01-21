@@ -33,12 +33,12 @@
 </script>
 <main class="content">
     <div class="divBenvenuto">
-        <c:if test="${emailLogged == null}">
+        <c:if test="${usernameLogged == null}">
         <h3>Welcome, visitor</h3>
         </c:if>
-        <c:if test="${emailLogged != null}">
+        <c:if test="${usernameLogged != null}">
             <p>Welcome back, </p>
-            <p class="utenteLogged">${emailLogged}</p>
+            <p class="utenteLogged">${usernameLogged}</p>
         </c:if>
     </div>
     <div>

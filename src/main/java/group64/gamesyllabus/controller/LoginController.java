@@ -11,10 +11,13 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class LoginController {
+
+    //Login post request
     @PostMapping("/doLogin")
     public String login(HttpSession session, @RequestParam String email, @RequestParam String password) {
         if (loginOk(email, password)) {
-            session.setAttribute("emailLogged", email);
+            ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
+            session.setAttribute("usernameLogged",profiloDAOPG.findByPrimaryKey(email).getUsername());
             return "redirect:/index";
         } else {
             Boolean error = true;
@@ -23,10 +26,12 @@ public class LoginController {
         }
     }
 
+    //Login after registration need a get request
     @GetMapping("/doLogin")
     public String loginAfterReg(HttpSession session) {
         if (loginOk(session.getAttribute("email").toString(), session.getAttribute("password").toString())) {
-            session.setAttribute("emailLogged", session.getAttribute("email"));
+            ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
+            session.setAttribute("usernameLogged", profiloDAOPG.findByPrimaryKey(session.getAttribute("email").toString()).getUsername());
             return "redirect:/index";
         } else {
             Boolean error = true;
@@ -35,15 +40,14 @@ public class LoginController {
         }
     }
 
-
+    //Logout from session
     @GetMapping("doLogout")
     public String logout(HttpSession session) {
         session.invalidate();
 
         return "redirect:/index";
-//		return "logoutSuccess";
     }
-
+    //Check if DB has the credentials
     private boolean loginOk(String email, String password) {
         ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
         Profilo profilo = profiloDAOPG.findByPrimaryKey(email);

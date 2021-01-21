@@ -28,7 +28,7 @@ $("#nav-placeholder").load("navbar.html");
 
     //regola la visualizzazione dell' account nella navbar
     /*function showAccountInfo() {
-        if (${emailLogged}) {
+        if (${usernameLogged}) {
 			$(".register").remove();
 			$(".login").remove();
 		} else {
@@ -157,10 +157,10 @@ $("#nav-placeholder").load("navbar.html");
 				<a href="#">About Us</a>
 				<a href="#">Platforms</a>
 				<a href="http://localhost:8080/genres">Genres</a>
-				<c:if test="${emailLogged != null}">
-                    <a class="item" href="#">${emailLogged}</a>
+				<c:if test="${usernameLogged != null}">
+                    <a class="item" href="#">${usernameLogged}</a>
                 </c:if>
-                <c:if test="${emailLogged == null}">
+                <c:if test="${usernameLogged == null}">
                     <a class="register" href="http://localhost:8080/regPage">Register</a>
                     <a href="#" class="login" id="myBtn2" data-toggle="modal" data-target="#myModal">Login</a>
                 </c:if>
@@ -178,13 +178,13 @@ $("#nav-placeholder").load("navbar.html");
 
         <!-- usare showAccountInfo(true|false) -->
         <li class="item account">
-            <c:if test="${emailLogged != null}">
+            <c:if test="${usernameLogged != null}">
                 <a class="item" href="#">
                     <span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
-                    <span class="profile-name">${emailLogged}</span> <!-- Lunghezza massima?? -->
+                    <span class="profile-name">${usernameLogged}</span> <!-- Lunghezza massima?? -->
                 </a>
             </c:if>
-            <c:if test="${emailLogged == null}">
+            <c:if test="${usernameLogged == null}">
                 <a class="register" href="http://localhost:8080/regPage">Register</a>
                 <a class="login" id="myBtn" href="#" data-toggle="modal" data-target="#myModal">Login</a>
             </c:if>
@@ -194,7 +194,7 @@ $("#nav-placeholder").load("navbar.html");
 </nav>
 
 <!-- MODAL FORM -->
-<c:if test="${emailLogged  == null}">
+<c:if test="${usernameLogged  == null}">
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">

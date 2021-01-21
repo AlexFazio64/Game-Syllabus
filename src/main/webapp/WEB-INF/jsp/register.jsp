@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,15 +62,15 @@
         </div>
         <form method="post" action="http://localhost:8080/register" id="formReg">
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" placeholder="Enter email" id="email" name="email">
+                <label for="email" id="stringEmail">Email address:</label>
+                <input type="email" required class="form-control" placeholder="Enter email" id="email" name="email">
             </div>
             <div class="form-group">
-                <label for="usr">Username:</label>
+                <label for="usr" id="stringUsername">Username:</label>
                 <input type="text" required class="form-control" placeholder="Enter username" id="usr" name="username">
             </div>
             <div class="form-group">
-                <label for="pwd">Password:</label>
+                <label for="pwd" id="stringPassword">Password:</label>
                 <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
             </div>
             <div class="divBottone">
@@ -89,14 +93,18 @@
                     document.getElementById("pwd").setAttribute("value", profile.getId());
                     document.getElementById("email").setAttribute("type", "hidden");
                     document.getElementById("pwd").setAttribute("type", "hidden");
+                    document.getElementById("stringEmail").setAttribute("class", "toHide");
+                    document.getElementById("stringPassword").setAttribute("class", "toHide");
                     /*console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
                     console.log('Name: ' + profile.getName());
                     console.log('Image URL: ' + profile.getImageUrl());
                     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.*/
                 }
 
+
                 function onFailure(error) {
                     console.log(error);
+                    signOut();
                 }
 
                 function renderButton() {
@@ -113,9 +121,13 @@
             </script>
         </div>
 
-        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-        <a href="#" onclick="signOut();" hidden id="linkLogout">Sign out</a>
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async></script>
+        <%--AUTO LOGOUT ON PAGE CHANGE--%>
         <script>
+            window.onbeforeunload = function (e) {
+                gapi.auth2.getAuthInstance().signOut();
+            };
+
             function signOut() {
                 var auth2 = gapi.auth2.getAuthInstance();
                 auth2.signOut().then(function () {
@@ -126,7 +138,8 @@
                 document.getElementById("email").setAttribute("value", "");
                 document.getElementById("pwd").setAttribute("value", "");
             }
-            document.getElementById("linkLogout").click();
+
+            //document.getElementById("logout").firstElementChild.click();
         </script>
 
     </div>
