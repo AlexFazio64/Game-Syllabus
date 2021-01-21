@@ -1,4 +1,3 @@
-
 function loadComingSoon(start) {
     var today = Math.round(new Date().getTime() / 1000);
     $.ajax({
@@ -11,11 +10,11 @@ function loadComingSoon(start) {
             "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
         },
         data: 'fields name,first_release_date ,platforms.name,cover.url,release_dates.human, status; limit 80   ; ' +
-            'where first_release_date > ' + today + ' & id >'+start+';sort first_release_date asc;',
+            'where first_release_date > ' + today + ' & id >' + start + ';sort first_release_date asc;',
         dataType: "json",
         success: function (result) {
             console.log(result);
-          var lastIndex=result[result.length-1].id;
+            var lastIndex = result[result.length - 1].id;
             console.log(lastIndex);
             for (var k = 0; k < 2; k++) {
                 for (var i = parseInt(k * result.length / 2); i < parseInt((result.length / 2)) * (k + 1); i++) {

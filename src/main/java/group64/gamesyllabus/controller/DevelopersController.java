@@ -20,7 +20,6 @@ public class DevelopersController {
         model.addAttribute("start", start);
         model.addAttribute("previous",previous);
         return "developers";
-
     }
 }
 

@@ -8,7 +8,7 @@ function loadDevelopers(previous, start) {
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: 'fields company.name,company.logo.image_id,company.id; limit 50;where developer = true & id >' + start + '; sort id asc;  ',
+        data: 'fields company.name,company.logo.image_id,company.id; limit 45;where developer = t & id >' + start + '; sort id asc;  ',
         dataType: "json",
         success: function (results) {
             var alreadyPresent = [];
@@ -56,14 +56,15 @@ function loadDevelopers(previous, start) {
                     }
                 }
             }
-            loadPagination(start, lastIndex, previous);
+            console.log(previous);
+            loadPagination(start, lastIndex, previous, cont - 1);
         }, error: function (xhr, status, error) {
             alert(status);
         }
     });
 }
 
-function loadPagination(firstIndex, lastIndex, previous) {
+function loadPagination(firstIndex, lastIndex, previous, counter) {
     if (firstIndex <= 0) {
         var element = document.getElementById('previous');
         element.parentNode.removeChild(element);
@@ -72,13 +73,15 @@ function loadPagination(firstIndex, lastIndex, previous) {
     } else if (firstIndex >= 111741) {
         var element = document.getElementById('next');
         element.parentNode.removeChild(element);
-        document.getElementById("previous").href = "http://localhost:8080/developers?start=" + previous;
+        document.getElementById("next").href = "http://localhost:8080/developers?start=" + previous;
         document.getElementById("previous").innerHTML = '&laquo;';
     } else {
+        console.log(firstIndex);
         var next = parseInt(lastIndex);
-        if (next < 137)
-            next = 0;
-        document.getElementById("previous").href = "http://localhost:8080/developers?start=" + previous;
+        if (firstIndex < 137)
+            document.getElementById("previous").href = "http://localhost:8080/developers?start=0";
+        else
+            document.getElementById("previous").href = "http://localhost:8080/developers/next?start=" + previous + "&previous=" + (previous - 100);
         document.getElementById("next").href = "http://localhost:8080/developers/next?start=" + next + "&previous=" + firstIndex;
         document.getElementById("previous").innerHTML = '&laquo;';
         document.getElementById("next").innerHTML = '&raquo;';
