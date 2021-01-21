@@ -22,13 +22,6 @@ public class Controller {
 		return "navbar";
 	}
 
-	@PostMapping("/chooseUsername")
-	public String chooseUsername(@RequestParam String emailGoogle, @RequestParam String passwordGoogle, HttpSession session){
-		session.setAttribute("emailGoogle", emailGoogle);
-		session.setAttribute("passwordGoogle", passwordGoogle);
-		return "chooseUsername";
-	}
-
 
 	@GetMapping ("regPage")
 	public String registerPage (){
