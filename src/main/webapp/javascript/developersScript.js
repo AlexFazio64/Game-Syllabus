@@ -1,4 +1,4 @@
-function loadDevelopers(start){
+function loadDevelopers(previous, start) {
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/involved_companies",
         type: "POST",
@@ -8,7 +8,7 @@ function loadDevelopers(start){
             "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
             "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
         },
-        data: 'fields company.name,company.logo.image_id,company.id; limit 45;where developer = true & id >'+start+'; sort id asc;  ',
+        data: 'fields company.name,company.logo.image_id,company.id; limit 50;where developer = true & id >' + start + '; sort id asc;  ',
         dataType: "json",
         success: function (results) {
             var alreadyPresent = [];
@@ -26,7 +26,7 @@ function loadDevelopers(start){
                         if (!(alreadyPresent.includes(dev[cont].company.name))) {
                             alreadyPresent.push(dev[cont].company.name);
                             var link = document.createElement('a');
-                            link.href="http://localhost:8080/platform?name="+dev[cont].company.name;;
+                            link.href = "http://localhost:8080/platform?name=" + dev[cont].company.name;
                             var container = document.createElement('section');
                             container.className = "column card";
                             var devName = document.createElement('div')
@@ -48,41 +48,38 @@ function loadDevelopers(start){
                             i++;
                             if (alreadyPresent.length >= 20) {
                                 finish = true;
-                                lastIndex=dev[cont].id;
+                                lastIndex = dev[cont].id;
                                 break;
                             }
                         }
                         cont++;
-                        // console.log(alreadyPresent.length);
                     }
                 }
             }
-            loadPagination(start,lastIndex,cont);
+            loadPagination(start, lastIndex, previous);
         }, error: function (xhr, status, error) {
             alert(status);
         }
     });
 }
-function loadPagination(firstIndex, lastIndex,counter) {
-    console.log("counter: "+counter);
+
+function loadPagination(firstIndex, lastIndex, previous) {
     if (firstIndex <= 0) {
         var element = document.getElementById('previous');
         element.parentNode.removeChild(element);
-        document.getElementById("next").href = "http://localhost:8080/developers?start=" + lastIndex;
+        document.getElementById("next").href = "http://localhost:8080/developers/next?start=" + lastIndex + "&previous=0";
         document.getElementById("next").innerHTML = '&raquo;';
-    } else if (firstIndex > 111741) {
-        var previous = firstIndex - 20;
-        var element = document.getElementById('previous');
+    } else if (firstIndex >= 111741) {
+        var element = document.getElementById('next');
         element.parentNode.removeChild(element);
-        document.getElementById("next").href = "http://localhost:8080/developers?start=" + previous;
-        document.getElementById("next").innerHTML = '&laquo;';
+        document.getElementById("previous").href = "http://localhost:8080/developers?start=" + previous;
+        document.getElementById("previous").innerHTML = '&laquo;';
     } else {
-        var starts = [parseInt(firstIndex-counter), parseInt(lastIndex)];
-        if (starts[0] < 137)
-            starts[0] = 0;
-        console.log("s: " + starts);
-        document.getElementById("previous").href = "http://localhost:8080/developers?start=" + starts[0];
-        document.getElementById("next").href = "http://localhost:8080/developers?start=" + starts[1];
+        var next = parseInt(lastIndex);
+        if (next < 137)
+            next = 0;
+        document.getElementById("previous").href = "http://localhost:8080/developers?start=" + previous;
+        document.getElementById("next").href = "http://localhost:8080/developers/next?start=" + next + "&previous=" + firstIndex;
         document.getElementById("previous").innerHTML = '&laquo;';
         document.getElementById("next").innerHTML = '&raquo;';
     }

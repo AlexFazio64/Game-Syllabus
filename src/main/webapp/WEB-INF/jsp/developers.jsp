@@ -38,7 +38,7 @@
     </div>
 </div>
 <script>
-    loadDevelopers("${start}");
+    loadDevelopers("${previous}","${start}");
 </script>
 <footer>
     <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
