@@ -1,6 +1,7 @@
 
 
 function getCommon(){
+    var todayDate =  Math.round(new Date().getTime()/1000);
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
         type: "POST",
@@ -10,7 +11,7 @@ function getCommon(){
             "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
             "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
         },
-        data: 'fields name, cover.image_id, rating, first_release_date; limit 15; where first_release_date>1601510400 & rating>70  & aggregated_rating_count > 5; sort first_release_date desc;',
+        data: 'fields name, cover.image_id, rating, first_release_date; limit 15; where first_release_date<='+todayDate+' & aggregated_rating_count >= 1; sort first_release_date desc;',
         dataType: "json",
         success: function (result) {
             for (var i = 0; i < result.length; i++) {

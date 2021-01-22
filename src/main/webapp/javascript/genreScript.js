@@ -54,7 +54,7 @@ function genreInfo(genere) {
                     var platform = document.createElement('li');
                     var name = document.createElement('li');
                     if (!('name' in txt[i]) == 0) {
-                        name.innerHTML = txt[i].id;
+                        name.innerHTML = txt[i].name;
                     } else {
                         name.innerHTML = "Missing name.."
                     }
