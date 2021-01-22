@@ -21,6 +21,8 @@ label {
 .name {
     width: fit-content;
     margin: auto;
+    text-decoration: none;
+    color: black;
 }
 
 * {

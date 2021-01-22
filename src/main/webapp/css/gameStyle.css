@@ -1,9 +1,19 @@
-
+#main{
+     font-size: 23px;
+    font-family: Arial, sans-serif;
+}
 * {
-    font-size: 23px;
     font-family: Arial, sans-serif;
 }
 
+.Myreview {
+    border: 2px solid #4747ec;
+    background-color: #7e7eff;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 10px;
+    width: fit-content;
+}
 .color-purple {
     background-color: #9966cc;
     border-color: #9966cc;
@@ -113,13 +123,13 @@ footer
     top: 0;
 }
 
-.content-responsive .main {
-    align-items: center;
-    width: 220px;
-    height: 300px;
-    border: 1px solid black;
-    display: flex;
-}
+/*.content-responsive .main {*/
+/*    align-items: center;*/
+/*    width: 220px;*/
+/*    height: 300px;*/
+/*    border: 1px solid black;*/
+/*    display: flex;*/
+/*}*/
 
 .sticky-top {
     width: 100%;
@@ -169,11 +179,9 @@ footer
     padding-left: 2px;
     width: 50%;
     height: auto;
+    cursor: pointer;
 }
 
-#screenshots .screenshot-image:hover {
-    opacity: 0.7;
-}
 
 .review {
     border: 2px solid #acacff;
@@ -184,20 +192,18 @@ footer
     width: fit-content;
 }
 
-/* Chat containers */
+
 #cover {
     width: auto;
     height: fit-content;
 }
 
 
-/* Darker chat container */
 .darker {
     border-color: #ccc;
     background-color: #ddd;
 }
 
-/* Clear floats */
 .review::after {
     content: "";
     clear: both;
@@ -205,20 +211,12 @@ footer
 
 }
 
-/* Style images */
 .review img {
     float: left;
     max-width: 60px;
     width: 100%;
     margin-right: 20px;
     border-radius: 50%;
-}
-
-/* Style the right image */
-.review img.right {
-    float: right;
-    margin-left: 20px;
-    margin-right: 0;
 }
 
 #review-container {
@@ -278,8 +276,12 @@ button {
     border-radius: 7px;
     background-color: #7b7bff;
     transition: all 0.3s ease;
+    height: 50px;
+    width: 50px;
 }
 
 button:hover {
     background-color: #acacff;
 }
+
+

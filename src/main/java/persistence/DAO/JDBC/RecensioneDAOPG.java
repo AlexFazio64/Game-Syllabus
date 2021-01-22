@@ -66,7 +66,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
     @Override
     public Recensione findReviewByEmail(String email, String idGame) {
         Connection connection;
-        Recensione recensione = new Recensione();
+        Recensione recensione = null;
         try {
             connection = DBManager.getDataSource().getConnection();
             PreparedStatement statement;
@@ -76,6 +76,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
             statement.setString(2, idGame);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
+                recensione=new Recensione();
                 recensione.setId(result.getInt("id"));
                 recensione.setValutazione(result.getInt("valutazione"));
                 recensione.setTesto(result.getString("testo"));
