@@ -29,7 +29,7 @@
 
 
 #all-info {
-    grid-template-columns: auto auto auto auto;
+    /*grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     background-color: #DDF;
     padding: 13px;
@@ -43,7 +43,20 @@
     left: 50%;
     transform: translate(-50%, -85%);
     box-shadow: 12px 11px 20px 11px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;*/
+
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    background-color: #DDF;
+    padding: 13px;
+    border-radius: 0 0 25px 25px;
+    justify-content: center;
+    display: flex;
+    width: fit-content;
+    box-shadow: 12px 11px 20px 11px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    margin: auto;
+    filter: blur(0);
 }
 
 .info {
@@ -74,22 +87,24 @@ ul li {
     width: 100%;
     height: auto;
 }
+.bkgcolor>* {
+    filter: blur(1.2px);
+
+}
 
 .bkgcolor {
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
     height: 60%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.5;
 }
 
 
 footer {
+    filter: blur(0);
     font-weight: 500;
 }
-
+footer
 .nav {
     width: 100%;
     height: auto;
@@ -247,9 +262,11 @@ a.info:visited {
 
 section.other-info {
     display: grid;
-    margin: 6px 30px 10px 30px;
+    margin: 40px 30px 10px 30px;
     background-color: #DDF;
     border-radius: 25px 25px 25px 25px;
+
+    filter: blur(0);
 }
 
 section {

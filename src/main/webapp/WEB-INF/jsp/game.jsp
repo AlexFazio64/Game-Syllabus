@@ -33,8 +33,8 @@
         console.log(document.getElementById("reviewText").value);
     }
 </script>
-<main id="main">
-    <div id="bkg" class="bkgcolor" style="background-image:url('../../images/devLogoNotFound.webp') "></div>
+<main id="main" class="bkgcolor"  style="background-image:url('../../images/devLogoNotFound.webp') ">
+    <div id="bkg"></div>
     <div id="all-info" style="opacity: 1">
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
@@ -71,7 +71,8 @@
                     <span class="fa fa-star"></span>
                 </section>
                 <section>
-                    <textarea onkeyup="textAreaAdjust(this)" cols="40" style="resize: none" id="reviewText"></textarea>
+                        <textarea onkeyup="textAreaAdjust(this)" cols="40" style="resize: none"
+                                  id="reviewText"></textarea>
                     <button onclick="sendReview()">Invia</button>
                 </section>
             </div>
@@ -114,8 +115,9 @@
                 </div>
             </div>
         </div>
+
     </section>
-    <footer>
+    <footer style="filter: blur(0)">
         <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
         <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
     </footer>

@@ -36,7 +36,7 @@ function loadGameBasicInfo(game) {
                         var cover = JSON.parse(datas);
                         var image = document.getElementById("cover");
                         image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-                        var bkg = document.getElementById("bkg");
+                        var bkg = document.getElementById("main");
                         bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
                         bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
                     }
