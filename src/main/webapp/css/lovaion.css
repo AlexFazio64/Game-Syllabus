@@ -1,0 +1,68 @@
+*{
+    font-family: Arial,sans-serif;
+    color: white;
+}
+
+.content{
+    padding-top: 25px;
+    width: 75%;
+    margin:auto;
+    line-height: 1.5;
+    background-color: #121212;
+}
+
+.profilePic{
+    width: 200px;
+}
+
+.sourceImg{
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.personalInfo{
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    place-items: center;
+    background-color: #282828;
+    margin: 25px;
+    border-radius: 20px;
+}
+
+.things{
+    margin: 25px;
+    border-radius: 20px;
+}
+
+.game-img{
+    background-color: #282828;
+}
+.cardInside{
+    display: grid;
+    align-items: center;
+    grid-template-rows: 1fr;
+    height: 100%;
+    width: 200px;
+    margin: auto;
+}
+
+.name{
+    text-align: center;
+    background: #404040;
+}
+
+.cardsCont{
+    margin: 20px 0;
+    display: flex;
+    padding: 20px 0;
+    border-radius: 8px;
+    background: #181818;
+}
+
+.sourceCard{
+    width: 100%;
+    object-fit: cover;
+    height: 270px;
+}
