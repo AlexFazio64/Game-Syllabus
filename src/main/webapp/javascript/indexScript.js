@@ -19,7 +19,7 @@ function getCommon(){
                 card.classList.add("color1");
                 var link = document.createElement('a');
                 link.className ="linkMod";
-                link.href = "http://localhost:8080/game?name="+result[i].name;
+                link.href = "http://localhost:8080/game?id="+result[i].id;
 
                 var bgImage = document.createElement('div');
                 bgImage.className = "bgImage";
@@ -77,7 +77,7 @@ function getTrending () {
 
                     var link = document.createElement('a');
                     link.className ="linkMod";
-                    link.href = "http://localhost:8080/game?name="+result[i].name;
+                    link.href = "http://localhost:8080/game?id="+result[i].id;
 
                     if (!('name' in result[i]) == 0) {
                         name.innerHTML = result[i].name;

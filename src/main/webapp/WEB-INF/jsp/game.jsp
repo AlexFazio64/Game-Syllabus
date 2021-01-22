@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${game}</title>
+    <title>Game</title>
     <link rel="stylesheet" href="css/gameStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +39,7 @@
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
         <ul id="basicInformation">
-            <li><span class="gameName">${game} </span></li>
+            <li><span id="game-name" class="gameName"> </span></li>
             <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date: </strong></span></li>
             <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type: </strong> </span></li>
             <li><span id="console"><strong>Available for:</strong></span></li>

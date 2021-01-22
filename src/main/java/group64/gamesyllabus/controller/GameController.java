@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class GameController {
     @GetMapping("/game")
-    public String loadGame(@RequestParam String name, Model model) {
-        model.addAttribute("game",name);
-
+    public String loadGame(@RequestParam String id, Model model) {
+        model.addAttribute("game",id);
         return "game";
     }
 
