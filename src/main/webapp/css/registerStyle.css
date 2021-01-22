@@ -110,13 +110,13 @@ body {
 .container{
 	padding: 10px;
 	text-align: center;
-	background: #181818;
+	background: #18181840;
 	border-radius: 20px;
 	transition: all 0.3s ease-in;
 }
 
 .container:hover{
-	box-shadow: 0px -6px 8px 3px #6e6d6d5c;
+	box-shadow: 0px 8px 14px 3px #6e6d6d5c;
 }
 
 .divisor{
@@ -137,7 +137,7 @@ body {
 
 .containerInfo{
 	text-align: center;
-	background: #181818;
+	background: #18181820;
 	border-radius: 20px;
 	transition: all 0.3s ease-in;
 	padding: inherit;
