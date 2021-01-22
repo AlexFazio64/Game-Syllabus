@@ -58,7 +58,7 @@
     <section>
         <section class="account-options">
             <div>
-                <img src="../../images/8e6d345.gif" alt="avatar" class="avatar-img">
+                <img src="${immagine}" alt="avatar" class="avatar-img">
                 <p class="usrnm">${username}</p>
             </div>
             <div class="btn">
@@ -252,7 +252,7 @@
                     <p>Email</p>
                     <input type="email" name="email" value="${email}">
                     <p>Password</p>
-                    <input type="password" name="password">
+                    <input type="password" name="password" value="${password}">
                     <p>Picture</p>
                     <input type="file" name="image" accept="image/*">
                     <a href="#" class="delete-btn">Delete your account</a>
@@ -260,7 +260,7 @@
                 </div>
                 <div class="bio">
                     <p>About me</p>
-                    <textarea name="bio">${descrizione}</textarea>
+                    <textarea name="descrizione">${descrizione}</textarea>
                 </div>
             </form>
         </section>
