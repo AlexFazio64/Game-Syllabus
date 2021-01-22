@@ -141,3 +141,37 @@ body{
     padding: 10px;
     background: aliceblue;
 }
+
+.showMore{
+    border-color: #3B1162;
+    border-radius: 8px;
+    background-color: #9966cc;
+    text-decoration: none;
+    color: white;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: auto;
+    width: fit-content;
+    transform: translateY(-20px);
+    display: none;
+}
+
+.backTop{
+    font-size: 40px!important;
+    transition: all 0.3s ease;
+}
+
+.material-icons{
+    color: #9966cc;
+}
+html{
+    scroll-behavior: smooth;
+}
+.backTop:hover{
+    color: #3B1162;
+    cursor: pointer;
+}
+.showMore:hover{
+    background-color: #3B1162;
+}
