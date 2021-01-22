@@ -8,14 +8,14 @@ function loadGameBasicInfo(game) {
             "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
             "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
-        data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,involved_companies.company.name; search "' + game + '"; limit 1;',
+        data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,dlcs.id,involved_companies.company.name; where id='+game+';',
         dataType: "json",
         success: function (result) {
             var content = JSON.stringify(result);
             content = content.replace("[", "");
             content = content.substring(0, content.lastIndexOf("]"));
             txt = JSON.parse(content);
-
+            document.getElementById("game-name").innerText=txt.name;
             if (!(("summary" in txt) == 0))
                 document.getElementById("summary").innerText = txt.summary;
             $.ajax({
@@ -36,7 +36,7 @@ function loadGameBasicInfo(game) {
                         var cover = JSON.parse(datas);
                         var image = document.getElementById("cover");
                         image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-                        var bkg = document.getElementById("bkg");
+                        var bkg = document.getElementById("main");
                         bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
                         bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
                     }
@@ -54,12 +54,10 @@ function loadGameBasicInfo(game) {
                     document.getElementById("console").appendChild(platform);
                 }
             }
-            console.log(txt);
             if (!(("game_modes" in txt) == 0)) {
                 if (txt.game_modes.length > 0) {
                     for (var i = 0; i < txt.game_modes.length; i++) {
                         var newType = document.createElement('span');
-
                         newType.innerHTML = txt.game_modes[i].name;
                         newType.className = "info";
                         document.getElementById("gameplay-type").append(newType);
@@ -87,22 +85,23 @@ function loadGameBasicInfo(game) {
                         newImg.className = "screenshot-image";
                         newImg.src = "https://images.igdb.com/igdb/image/upload/t_original/" + txt.screenshots[i].image_id + ".jpg";
                         document.getElementById("screenshots").appendChild(newImg);
-
                     }
                 }
             }
             if (!(("videos" in txt) == 0)) {
                 if (txt.videos.length > 0) {
                     for (var i = 0; i < txt.videos.length; i++) {
+                        var container = document.createElement('span');
+                        container.className = "video-player";
                         var newPlayer = document.createElement('iframe');
-                        newPlayer.className = "video-player";
-                        newPlayer.width = 560;
-                        newPlayer.height = 345;
+                        newPlayer.width = 640;
+                        newPlayer.height = 385;
                         newPlayer.frameBorder = "0";
                         newPlayer.allowFullscreen = true;
                         newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
                         newPlayer.src = "https://www.youtube.com/embed/" + txt.videos[i].video_id;
-                        document.getElementById("videos").appendChild(newPlayer);
+                        container.appendChild(newPlayer);
+                        document.getElementById("videos").appendChild(container);
                     }
                 }
             }
@@ -128,7 +127,6 @@ function loadGameBasicInfo(game) {
                         newLink.text = type[i];
                         newLink.className = "info";
                         document.getElementById("websites").append(newLink);
-
                     }
                 }
             }
@@ -138,7 +136,7 @@ function loadGameBasicInfo(game) {
                         var developer = document.createElement('span');
                         var link = document.createElement('a');
                         link.className = "info";
-                        link.href = "http://localhost:8080/game?developer=" + txt.involved_companies[i].company.name;
+                        link.href = "http://localhost:8080/developer?name=" + txt.involved_companies[i].company.name;
                         developer.innerHTML = txt.involved_companies[i].company.name;
                         link.appendChild(developer);
                         document.getElementById("Developer").append(link);
@@ -153,7 +151,8 @@ function loadGameBasicInfo(game) {
                         var dlc = document.createElement('a');
                         dlc.innerText = txt.dlcs[i].name;
                         dlc.className = "info";
-                        dlc.href = "http://localhost:8080/game?name=" + txt.dlcs[i].name;
+                        dlc.href = "http://localhost:8080/game?idGame=" + txt.dlcs[i].id;
+
                         document.getElementById("dlc").append(dlc);
                     }
                 }
@@ -167,17 +166,17 @@ function loadGameBasicInfo(game) {
     ;
 }
 
-function encode(url){
-    var codedUrl=url;
-    codedUrl=codedUrl.replaceAll("&","%26");
-    codedUrl=codedUrl.replaceAll("$","%24");
-    codedUrl=codedUrl.replaceAll("+","%2B");
-    codedUrl=codedUrl.replaceAll(",","%2C");
-    codedUrl=codedUrl.replaceAll("/","%2F");
-    codedUrl=codedUrl.replaceAll(";","3A");
-    codedUrl=codedUrl.replaceAll("=","%3D");
-    codedUrl=codedUrl.replaceAll("?","%3F");
-    codedUrl=codedUrl.replaceAll("@","%40");
+function encode(url) {
+    var codedUrl = url;
+    codedUrl = codedUrl.replaceAll("&", "%26");
+    codedUrl = codedUrl.replaceAll("$", "%24");
+    codedUrl = codedUrl.replaceAll("+", "%2B");
+    codedUrl = codedUrl.replaceAll(",", "%2C");
+    codedUrl = codedUrl.replaceAll("/", "%2F");
+    codedUrl = codedUrl.replaceAll(";", "3A");
+    codedUrl = codedUrl.replaceAll("=", "%3D");
+    codedUrl = codedUrl.replaceAll("?", "%3F");
+    codedUrl = codedUrl.replaceAll("@", "%40");
     console.log(codedUrl);
     return codedUrl;
 }

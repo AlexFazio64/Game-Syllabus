@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${game}</title>
+    <title>Game</title>
     <link rel="stylesheet" href="css/gameStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,13 +33,13 @@
         console.log(document.getElementById("reviewText").value);
     }
 </script>
-<main id="main">
-    <div id="bkg" class="bkgcolor" style="background-image:url('../../images/devLogoNotFound.webp') "></div>
+<main id="main" class="bkgcolor"  style="background-image:url('../../images/devLogoNotFound.webp') ">
+    <div id="bkg"></div>
     <div id="all-info" style="opacity: 1">
         <img id="cover"
              src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
         <ul id="basicInformation">
-            <li><span class="gameName">${game} </span></li>
+            <li><span id="game-name" class="gameName"> </span></li>
             <li><span id="release_date" onclick="loadReleaseDate()"><strong>Release Date: </strong></span></li>
             <li><span id="gameplay-type" onclick="loadGameplayType()"><strong>Gameplay Type: </strong> </span></li>
             <li><span id="console"><strong>Available for:</strong></span></li>
@@ -71,7 +71,8 @@
                     <span class="fa fa-star"></span>
                 </section>
                 <section>
-                    <textarea onkeyup="textAreaAdjust(this)" cols="40" style="resize: none" id="reviewText"></textarea>
+                        <textarea onkeyup="textAreaAdjust(this)" cols="40" style="resize: none"
+                                  id="reviewText"></textarea>
                     <button onclick="sendReview()">Invia</button>
                 </section>
             </div>
@@ -114,8 +115,9 @@
                 </div>
             </div>
         </div>
+
     </section>
-    <footer>
+    <footer style="filter: blur(0)">
         <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
         <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
     </footer>
