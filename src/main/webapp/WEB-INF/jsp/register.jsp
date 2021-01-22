@@ -143,7 +143,6 @@
                     document.getElementById("email").setAttribute("value", "");
                     document.getElementById("pwd").setAttribute("value", "");
                 }
-                //document.getElementById("logout").firstElementChild.click();
             </script>
         </div>
     </div>
@@ -155,16 +154,25 @@
 </div>
 
 <script>
-    const gifs = ["https://media.giphy.com/media/S9iZRMT7341RZW9paH/source.gif",
-        "https://media.giphy.com/media/3o7btQ9ep8sZXmfFra/source.gif",
-        "https://media.giphy.com/media/dwiWXA8CUNTqITVQ8y/source.gif",
-        "https://media.giphy.com/media/Do5pJNQNDDAfS/giphy.gif",
-        "https://media.giphy.com/media/UvQ2W4OYg3EKahV5Xe/giphy.gif",
-        "https://media.giphy.com/media/69JWtI3j8j5miUPs4H/source.gif",
-        "https://media.giphy.com/media/l49JKCSoloVTGjmWQ/giphy.gif",
-        "https://media.giphy.com/media/3ktKmy0RZxM1kBUnua/giphy.gif",
-        "https://media.giphy.com/media/fSpC2w245xoVyCCuVx/giphy.gif",
-        "https://media.giphy.com/media/XdIyBvPFzxyXXuFPjQ/giphy.gif"];
+    const gifs = [
+        "https://media.giphy.com/media/S9iZRMT7341RZW9paH/source.gif", //deathstranding
+        "https://media.giphy.com/media/3o7btQ9ep8sZXmfFra/source.gif", //nier
+        "https://media.giphy.com/media/O1DrvejiJbwZLNBpl6/giphy.gif", //lol
+        "https://media.giphy.com/media/Do5pJNQNDDAfS/giphy.gif", // mass
+        "https://media.giphy.com/media/UvQ2W4OYg3EKahV5Xe/giphy.gif", // ff
+        "https://media.giphy.com/media/69JWtI3j8j5miUPs4H/source.gif", //demon soul
+        "https://media.giphy.com/media/l49JKCSoloVTGjmWQ/giphy.gif", // ds1
+        "https://media.giphy.com/media/h5pMOQA6TyRcgrZ7cn/giphy-downsized-large.gif", // sea of thieves
+        "https://media.giphy.com/media/fSpC2w245xoVyCCuVx/giphy.gif", //cynerpunk
+        "https://media.giphy.com/media/izyy2cD6xSftxfGQiU/giphy.gif", //sword adn shield
+        "https://media.giphy.com/media/AO5qaphTxRnyw/source.gif", //shovelknight
+        "https://media.giphy.com/media/Jmn0cHknbudA5iGnrY/source.gif", //
+        "https://media.giphy.com/media/fVbewaMFrOoC38gvFZ/source.gif", // castlevaina
+        "https://media.giphy.com/media/LpiA8MVudQO8pitF4c/giphy.gif",
+        "https://media.giphy.com/media/izyy2cD6xSftxfGQiU/giphy.gif", //unlimmited flat
+        "https://media.giphy.com/media/3ohzdKgSnQwjEbkxry/giphy.gif", //unlimited cose
+        "https://media.giphy.com/media/LkfPKsQwgNU3ILEOZk/giphy-downsized-large.gif", //fallout
+        ];
     const random = Math.floor(Math.random()*gifs.length);
     document.getElementById("bg").style.backgroundImage = "url("+gifs[random]+")";
     console.log(gifs[random]);

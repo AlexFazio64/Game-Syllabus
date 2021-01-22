@@ -207,9 +207,9 @@ $("#nav-placeholder").load("navbar.html");
             <div class="modal-body">
                 <form method="post" action="http://localhost:8080/doLogin">
                     <p class="campo">Email</p>
-                    <input type="email" placeholder="Insert your email.." name="email">
+                    <input type="email" placeholder="Insert your email.." name="email" id="email">
                     <p class="campo">Password</p>
-                    <input type="password" placeholder="Insert your password.." name="password">
+                    <input type="password" placeholder="Insert your password.." name="password" id="password">
                     <div class="loginButtons">
                         <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
                              data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
@@ -218,10 +218,9 @@ $("#nav-placeholder").load("navbar.html");
                             function onSuccess(googleUser) {
                                 console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
                                 var profile = googleUser.getBasicProfile();
-                                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                                console.log('Name: ' + profile.getName());
-                                console.log('Image URL: ' + profile.getImageUrl());
-                                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                                document.getElementById("email").setAttribute("value", profile.getEmail());
+                                document.getElementById("password").setAttribute("value", profile.getId());
+                                document.getElementById("submitButton").click();
                             }
 
                             function onFailure(error) {
@@ -241,9 +240,22 @@ $("#nav-placeholder").load("navbar.html");
                                     'onfailure': onFailure
                                 });
                             }
+
+                        </script>
+                        <%--Logout on reload--%>
+                        <script>
+                            window.onbeforeunload = function (e) {
+                                gapi.auth2.getAuthInstance().signOut();
+                            };
+                            function signOut() {
+                                var auth2 = gapi.auth2.getAuthInstance();
+                                auth2.signOut().then(function () {
+                                    console.log('User signed out.');
+                                });
+                            }
                         </script>
                     </div>
-                    <input type="submit" value="Login" class="modalLogin">
+                    <input type="submit" value="Login" class="modalLogin" id="submitButton">
                 </form>
             </div>
         </div>

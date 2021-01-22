@@ -116,7 +116,7 @@ public class ProfiloDAOPG implements ProfiloDAO {
 		Connection conn = null;
 		try {
 			conn = DBManager.getDataSource().getConnection();
-			String query = "UPDATE profilo SET email =?,password =?,username =?, descrizione =?,immagine =? WHERE email = ?;";
+			String query = "UPDATE profilo SET email =?,password =?, username =?, descrizione =?, immagine = ? WHERE email = ?;";
 			PreparedStatement row = conn.prepareStatement(query);
 			row.setString(1, profilo.getEmail());
 			row.setString(2, profilo.getPassword());
