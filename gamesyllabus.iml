@@ -25,6 +25,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="postgresql-42.2.9" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-rest:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-rest-webmvc:3.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-rest-core:3.4.2" level="project" />
@@ -98,6 +99,5 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.41" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt:ecj:3.18.0" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
-    <orderEntry type="library" name="postgresql-42.2.9" level="project" />
   </component>
 </module>

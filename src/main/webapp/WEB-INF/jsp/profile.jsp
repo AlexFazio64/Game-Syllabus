@@ -6,16 +6,16 @@
 <head>
     <meta charset="UTF-8">
     <title>${username}</title>
-    <link rel="stylesheet" href="../../css/account_edit.css">
+    <link rel="stylesheet" href="../../css/profile.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 <body>
 <div id="nav-placeholder"></div>
-<!--<script>
+<script>
     $(function () {
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
-</script>-->
+</script>
 <script>
     function showAbout() {
         $('.about-panel').css('display', 'block');
@@ -58,7 +58,7 @@
     <section>
         <section class="account-options">
             <div>
-                <img src="../../images/8e6d345.gif" alt="avatar" class="avatar-img">
+                <img src="${immagine}" alt="avatar" class="avatar-img">
                 <p class="usrnm">${username}</p>
             </div>
             <div class="btn">
@@ -68,8 +68,10 @@
             </div>
         </section>
         <section class="about-panel">
-            <h3>About</h3>
-            <p class="description">${descrizione}</p>
+            <c:if test="${descrizione != null}">
+                <h3>About</h3>
+                <p class="description">${descrizione}</p>
+            </c:if>
             <section class="reviews">
                 <div class="review">
                     <div class="game-img">
@@ -243,14 +245,14 @@
             </section>
         </section>
         <section class="edit-about-panel">
-            <form action="#" class="info-edit-panel">
+            <form method="post" action="http://localhost:8080/account/edit" class="info-edit-panel" enctype="multipart/form-data">
                 <div class="info">
                     <p>Username</p>
                     <input type="text" name="username" value="${username}">
                     <p>Email</p>
                     <input type="email" name="email" value="${email}">
                     <p>Password</p>
-                    <input type="password" name="password">
+                    <input type="password" name="password" value="${password}">
                     <p>Picture</p>
                     <input type="file" name="image" accept="image/*">
                     <a href="#" class="delete-btn">Delete your account</a>
@@ -258,7 +260,7 @@
                 </div>
                 <div class="bio">
                     <p>About me</p>
-                    <textarea name="bio">${descrizione}</textarea>
+                    <textarea name="descrizione">${descrizione}</textarea>
                 </div>
             </form>
         </section>

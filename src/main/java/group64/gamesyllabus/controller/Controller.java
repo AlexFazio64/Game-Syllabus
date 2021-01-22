@@ -2,10 +2,11 @@ package group64.gamesyllabus.controller;
 
 import Model.Profilo;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 
-import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
@@ -17,12 +18,10 @@ public class Controller {
 
 	@GetMapping("/getNavbar")
 	public String navbar (HttpSession session) {
-		Boolean error = false;
-		session.setAttribute("error", error);
+		session.setAttribute("error", false);
 		return "navbar";
 	}
-
-
+	
 	@GetMapping ("regPage")
 	public String registerPage (HttpSession session){
 		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
@@ -38,7 +37,6 @@ public class Controller {
 	}
 
 	//Register user
-
 	@PostMapping("/register")
 	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
 
@@ -61,7 +59,7 @@ public class Controller {
 		if (profiloDAOPG.findByUsername(username) != null)
 			usernameUsato = true;
 
-		if (emailUsata == false && usernameUsato == false) {
+		if ( !emailUsata && !usernameUsato ) {
 			profiloDAOPG.save(profilo);
 			session.setAttribute("email",email);
 			session.setAttribute("password", password);
@@ -74,11 +72,8 @@ public class Controller {
 		else if (usernameUsato){
 			return showRegError("Username", model);
 		}
-
 		else{
 			return showRegError("Email", model);
 		}
-
-
 	}
 }
