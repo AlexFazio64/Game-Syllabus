@@ -12,6 +12,7 @@
     <title>Sign up</title>
     <link rel="stylesheet" href="../../css/registerStyle.css">
     <link rel="stylesheet" href="../../css/indexStyle.css">
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
 
@@ -63,36 +64,35 @@
 <div class="divisor">
     <div class="form">
         <div class="container">
-            <div class="syllabus">
+            <div class="syllabus" onclick="window.location.href='http://localhost:8080/index'" title="Go back to home-page">
             </div>
             <form method="post" action="http://localhost:8080/register" id="formReg">
                 <div class="form-group">
                     <label for="email" id="stringEmail">Email address:</label>
-                    <input type="email" required class="form-control" placeholder="Enter email" id="email" name="email">
+                    <input type="email" required class="form-control" placeholder="Enter your email.." id="email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="usr" id="stringUsername">Username:</label>
-                    <input type="text" required class="form-control" placeholder="Enter username" id="usr" name="username">
+                    <input type="text" required class="form-control" placeholder="Enter a username.." id="usr" name="username">
                 </div>
                 <div class="form-group">
                     <label for="pwd" id="stringPassword">Password:</label>
-                    <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="password">
+                    <input type="password" required class="form-control" placeholder="Enter a password.." id="pwd" name="password">
                 </div>
                 <div class="divBottone">
                     <button type="submit" class="bottone color-purple" id="submitButton">Submit</button>
                 </div>
             </form>
-            <div class="oppure">
+            <div class="oppure" id="oppure">
                 <h3>Oppure accedi con:</h3>
             </div>
 
-            <div class="loginButtons">
+            <div class="loginButtons" id="loginButtons">
                 <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
                      data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                 <div id="my-signin2"></div>
                 <script>
                     function onSuccess(googleUser) {
-                        console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
                         var profile = googleUser.getBasicProfile();
                         document.getElementById("email").setAttribute("value", profile.getEmail());
                         document.getElementById("pwd").setAttribute("value", profile.getId());
@@ -100,10 +100,8 @@
                         document.getElementById("pwd").setAttribute("type", "hidden");
                         document.getElementById("stringEmail").setAttribute("class", "toHide");
                         document.getElementById("stringPassword").setAttribute("class", "toHide");
-                        /*console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                        console.log('Name: ' + profile.getName());
-                        console.log('Image URL: ' + profile.getImageUrl());
-                        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.*/
+                        document.getElementById("loginButtons").setAttribute("class", "toHide");
+                        document.getElementById("oppure").setAttribute("class", "toHide");
                     }
 
 
@@ -136,7 +134,6 @@
                 function signOut() {
                     var auth2 = gapi.auth2.getAuthInstance();
                     auth2.signOut().then(function () {
-                        console.log('User signed out.');
                     });
                     document.getElementById("email").setAttribute("type", "email");
                     document.getElementById("pwd").setAttribute("type", "password");
@@ -175,7 +172,6 @@
         ];
     const random = Math.floor(Math.random()*gifs.length);
     document.getElementById("bg").style.backgroundImage = "url("+gifs[random]+")";
-    console.log(gifs[random]);
 </script>
 
 </body>

@@ -11,6 +11,7 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../../javascript/genreScript.js"></script>
     <script src="../../javascript/utility.js"></script>
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <script>
@@ -72,13 +73,18 @@
         <div class="card" id="card">
         </div>
     </div>
-    <div class="buttonShow">
-        <a href="#bottom" id="showButton" class="showMore">Show more</a>
-        <span onclick="window.location.href='#top'" id="backTop" class="material-icons backTop">
+</main>
+
+<div class="buttonShow">
+    <a href="#bottom" id="showButton" class="showMore">Show more</a>
+    <span onclick="window.location.href='#top'" id="backTop" class="material-icons backTop">
             arrow_circle_up
         </span>
-    </div>
-</main>
+</div>
+<footer>
+    <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
+    <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
+</footer>
 <script src="../../javascript/Vibrant.min.js"></script>
 <script defer type="text/javascript">
     genreInfo("${genre}");

@@ -145,21 +145,28 @@ body{
 .showMore{
     border-color: #3B1162;
     border-radius: 8px;
+    font-size: 70px;
     background-color: #9966cc;
     text-decoration: none;
     color: white;
-    padding: 8px 20px;
     transition: all 0.3s ease;
     font-weight: 600;
     margin: auto;
-    width: fit-content;
-    transform: translateY(-20px);
+    width: 60%;
+    justify-content: center;
     display: none;
 }
 
 .backTop{
     font-size: 40px!important;
     transition: all 0.3s ease;
+    display: inline-block;
+    position: sticky;
+    height: 10%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .material-icons{
@@ -174,4 +181,12 @@ html{
 }
 .showMore:hover{
     background-color: #3B1162;
+}
+
+footer {
+    font-family: Arial, sans-seris;
+    font-size: 20px;
+    background-color: #9966cc;
+    color: white;
+    text-align: center;
 }

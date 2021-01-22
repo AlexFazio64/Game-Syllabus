@@ -54,7 +54,7 @@ function genreInfo(genere) {
                     var platform = document.createElement('li');
                     var name = document.createElement('li');
                     if (!('name' in txt[i]) == 0) {
-                        name.innerHTML = txt[i].name;
+                        name.innerHTML = txt[i].id;
                     } else {
                         name.innerHTML = "Missing name.."
                     }
@@ -87,13 +87,17 @@ function genreInfo(genere) {
                     info.appendChild(lista);
                     card.appendChild(info);
                     var link = document.createElement('a');
-                    link.href = "http://localhost:8080/game?name=" + txt[i].name;
+                    link.href = "http://localhost:8080/game?id=" + txt[i].id;
                     link.innerHTML = "More";
                     card.appendChild(link);
                     document.getElementById("col" + i % 2).appendChild(card);
                 }
             }
-            document.getElementById("showButton").style.display = "flex";
+            if (tempLimit === txt.length)
+                document.getElementById("showButton").style.display = "none";
+            else
+                document.getElementById("showButton").style.display = "flex";
+
             document.getElementById("backTop").style.display = "inline-block";
         },
         error: function (xhr, status, error) {
