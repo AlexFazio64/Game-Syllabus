@@ -15,18 +15,20 @@ import java.util.List;
 public class ListaGiochiDAOPG implements ListaGiochiDAO {
     //AGGIUNGE UN COLLEGAMENTO TRA EMAIL E GIOCO PER LA LISTA
     @Override
-    public void save(ListaGiochi listaGiochi) {
+    public boolean save(String idUtente, String idGioco) {
         Connection connection;
         try {
             connection = DBManager.getDataSource().getConnection();
             String queryUpdate = "INSERT INTO listagiochi values(?, ?)";
             PreparedStatement st = connection.prepareStatement(queryUpdate);
-            st.setString(1, listaGiochi.getEmailUtente());
-            st.setString(2, listaGiochi.getIdGioco());
-            st.executeUpdate();
-
+            st.setString(1, idUtente);
+            st.setString(2, idGioco);
+            int value = st.executeUpdate();
+            connection.close();
+            return value != 0;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -48,6 +50,7 @@ public class ListaGiochiDAOPG implements ListaGiochiDAO {
                 listaGiochiFind.setIdGioco(result.getString("idGioco"));
                 listaGiochi.add(listaGiochiFind);
             }
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -80,31 +83,27 @@ public class ListaGiochiDAOPG implements ListaGiochiDAO {
         return listaGiochi;
     }
 
-    //INUTILE?
+    //INUTILE? mudamudamuda
     @Override
-    public void update(ListaGiochi listaGiochi) {
-
+    public boolean update(ListaGiochi listaGiochi) {
+        return false;
     }
 
+    //ELIMINA IL COLLEGAMENTO TRA IL GIOCO E L'UTENTE
     @Override
-    public void delete(ListaGiochi listaGiochi) {
+    public boolean delete(String idUtente, String idGioco) {
         Connection connection = null;
         try {
             connection = DBManager.getDataSource().getConnection();
             String delete = "delete FROM listagiochi WHERE emailutente = ? and idgioco = ? ";
             PreparedStatement statement = connection.prepareStatement(delete);
-            statement.setString(1, listaGiochi.getEmailUtente());
-            statement.setString(2, listaGiochi.getIdGioco());
-            statement.executeUpdate();
-
+            statement.setString(1, idUtente);
+            statement.setString(2, idGioco);
+            int value = statement.executeUpdate();
+            connection.close();
+            return value != 0;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                throw new RuntimeException(e.getMessage());
-            }
         }
     }
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Game Syllabus</title>
     <link rel="stylesheet" href="../../css/indexStyle.css">
+    <link rel="stylesheet" href="../../css/common.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="../../javascript/indexScript.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -34,7 +35,7 @@
 <main class="content">
     <div class="divBenvenuto">
         <c:if test="${usernameLogged == null}">
-        <h3>Welcome, visitor</h3>
+            <h3>Welcome, visitor</h3>
         </c:if>
         <c:if test="${usernameLogged != null}">
             <p>Welcome back, </p>
@@ -44,12 +45,28 @@
     <div>
         <h3 class="trend">Most Recent</h3>
         <div class="mostCommon" id="common">
+            <div class="loader"></div>
         </div>
     </div>
 
     <div>
         <h3 class="trend">Most voted of all time</h3>
         <div class="mostCommon" id="mostVoted">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="trend">Recent updates</h3>
+        <div class="mostCommon" id="relevant">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <div>
+        <h3 class="trend">Recent updates</h3>
+        <div class="mostCommon" id="consoles">
+            <div class="loader"></div>
         </div>
     </div>
 
@@ -202,9 +219,9 @@
     <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
     <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
 </footer>
-    <script defer type="text/javascript">
-        getCommon();
-        getTrending();
-    </script>
+<script defer type="text/javascript">
+    //joinare tutte le query in una unica mega query
+    getCommon();
+</script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package group64.gamesyllabus.controller;
 
 import Model.Profilo;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ public class LoginController {
         if (loginOk(email, password)) {
             ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
             session.setAttribute("usernameLogged",profiloDAOPG.findByPrimaryKey(email).getUsername());
+            session.setAttribute("emailLogged", email);
             return "redirect:/index";
         } else {
             Boolean error = true;
@@ -32,6 +34,7 @@ public class LoginController {
         if (loginOk(session.getAttribute("email").toString(), session.getAttribute("password").toString())) {
             ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
             session.setAttribute("usernameLogged", profiloDAOPG.findByPrimaryKey(session.getAttribute("email").toString()).getUsername());
+            session.setAttribute("emailLogged", session.getAttribute("email").toString());
             return "redirect:/index";
         } else {
             Boolean error = true;
@@ -51,10 +54,9 @@ public class LoginController {
     private boolean loginOk(String email, String password) {
         ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
         Profilo profilo = profiloDAOPG.findByPrimaryKey(email);
-
+        //controllo se la password criptata è giusta
         if (profilo != null) {
-            if (profilo.getEmail().equals(email) && profilo.getPassword().equals(password))
-                return true;
+            return profilo.getEmail().equals(email) && BCrypt.checkpw(password, profilo.getPassword());
         }
         return false;
     }

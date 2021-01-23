@@ -5,6 +5,7 @@ import Model.Profilo;
 import Model.Recensione;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import persistence.DAO.JDBC.ListaGiochiDAOPG;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 import persistence.DAO.JDBC.RecensioneDAOPG;
@@ -31,7 +32,6 @@ public class GameSyllabusApplication {
         Per creare una correlazione tra un profilo ed un gioco è un concetto simile a quello sopra
         ma questa volta per favore vediti il DAOPG che capisci bene penso dai
          */
-
 
     }
 

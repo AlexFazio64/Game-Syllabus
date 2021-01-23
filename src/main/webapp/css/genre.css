@@ -141,3 +141,62 @@ body{
     padding: 10px;
     background: aliceblue;
 }
+
+.showMore{
+    border-color: #3B1162;
+    border-radius: 8px;
+    font-size: 70px;
+    background-color: #9966cc;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: auto;
+    width: 60%;
+    justify-content: center;
+    display: none;
+}
+
+.backTop{
+    font-size: 40px!important;
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: sticky;
+    height: 10%;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.material-icons{
+    color: #9966cc;
+}
+html{
+    scroll-behavior: smooth;
+}
+.backTop:hover{
+    color: #3B1162;
+    cursor: pointer;
+}
+.showMore:hover{
+    background-color: #3B1162;
+}
+
+footer {
+    font-family: Arial, sans-seris;
+    font-size: 20px;
+    background-color: #9966cc;
+    color: white;
+    text-align: center;
+}
+
+.elencoLista li a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+}
+
+.elencoLista li a:hover{
+    color: #9966cc;
+}

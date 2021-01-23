@@ -1,6 +1,7 @@
 package group64.gamesyllabus.controller;
 
 import Model.Profilo;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,7 @@ public class Controller {
 	@PostMapping("/register")
 	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
 
+		//Se fai il login con google
 		if (session.getAttribute("emailGoogle")!=null){
 			email = session.getAttribute("emailGoogle").toString();
 			password = session.getAttribute("passwordGoogle").toString();
@@ -49,7 +51,7 @@ public class Controller {
 		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
 		profilo.setEmail(email);
 		profilo.setUsername(username);
-		profilo.setPassword(password);
+		profilo.setPassword(BCrypt.hashpw(password,BCrypt.gensalt(12)));
 
 		boolean emailUsata = false;
 		boolean usernameUsato = false;
