@@ -1,7 +1,8 @@
-#main{
-     font-size: 23px;
+#main {
+    font-size: 23px;
     font-family: Arial, sans-serif;
 }
+
 * {
     font-family: Arial, sans-serif;
 }
@@ -14,6 +15,7 @@
     margin: 10px 10px;
     width: fit-content;
 }
+
 .color-purple {
     background-color: #9966cc;
     border-color: #9966cc;
@@ -97,9 +99,9 @@ ul li {
     width: 100%;
     height: auto;
 }
-.bkgcolor>* {
-    filter: blur(1.2px);
 
+.bkgcolor > * {
+    filter: blur(1.2px);
 }
 
 .bkgcolor {
@@ -114,8 +116,8 @@ footer {
     filter: blur(0);
     font-weight: 500;
 }
-footer
-.nav {
+
+footer .nav {
     width: 100%;
     height: auto;
     position: -webkit-sticky; /* solo per safari */
@@ -179,7 +181,6 @@ footer
     padding-left: 2px;
     width: 50%;
     height: auto;
-    cursor: pointer;
 }
 
 
