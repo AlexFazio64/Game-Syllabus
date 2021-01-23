@@ -4,7 +4,7 @@
     <title>${developer}</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="../../css/developerStyle.css">
-    <script type="text/javascript" src="../../js/developerScript.js"></script>
+    <script type="text/javascript" src="../../javascript/developerScript.js"></script>
 </head>
 <body>
 

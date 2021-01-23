@@ -20,10 +20,8 @@ body{
 .info-grid{
     display: grid;
     grid-template-columns: 20% auto;
-/*    grid-template-rows: 25% 30% auto;*/
     margin: auto;
     background-color: white;
-/*    height: 375px;*/
 }
 
 .platform-name{
@@ -48,15 +46,16 @@ body{
     padding-right: 5px;
 }
 
-.box-button{
+#box-button{
     background-color: #9966cc;
     padding: 5px;
     border-radius: 5px;
     color: #fff;
     text-decoration: none;
+    display: none;
 }
 
-.box-button:hover{
+#box-button:hover{
     background-color: #3B1162;
 }
 
@@ -64,7 +63,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-row: 1/4;
+    grid-row: 1/5;
 }
 
 .platform-logo img{
@@ -77,6 +76,7 @@ body{
     display: flex;
     justify-content: space-between;
     grid-column: 2;
+    text-align: center;
 }
 
 .other-three{
