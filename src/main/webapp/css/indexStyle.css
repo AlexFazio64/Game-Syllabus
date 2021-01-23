@@ -54,7 +54,7 @@
 
 .mostCommon {
     margin-top: 20px;
-    border: 1px solid #ddd;
+    /*border: 1px solid #ddd;*/
     display: flex;
     overflow: auto hidden;
     padding: 20px;
