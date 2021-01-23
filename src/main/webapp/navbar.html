@@ -33,37 +33,73 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		}
 	}
 	
-	// risultati falsi per adesso
+	async function requestSuggestion(data) {
+		return $.ajax({
+			url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
+			type: "POST",
+			crossDomain: true,
+			dataType: "json",
+			headers: {
+				"Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
+				"Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
+			},
+			data: 'fields name, platforms.name, cover.image_id; search "$"; limit 4;'.replace("$", data)
+		});
+	}
+	
 	//ragionare sulle dimensioni-max delle parti
-	function showQueryResults(s) {
-		const itemImg = $("<img src='images/logo.png' width='50' height='50' alt='logo'>")
-		const itemName = $("<p>NieR: Automata</p>");
-		const itemType = $("<p>" + s + "</p>");
-		const result = $("<span class='result-item'></span>");
-		result.append(itemImg);
-		result.append(itemName);
-		result.append(itemType);
-		$(".dropdown-content").append(result);
+	async function showQueryResults() {
+		if (suggestion()) {
+			const arr = await requestSuggestion($(".search-box")[0].value);
+			arr.forEach(a => {
+				var cover;
+				var platform;
+				try {
+					cover = "https://images.igdb.com/igdb/image/upload/t_cover_small/$.jpg".replace("$", a.cover.image_id);
+					platform = a.platforms[0].name;
+				} catch (e) {
+					console.log("missing non-critical data...");
+					platform = "no data..."
+				}
+				const name = a.name;
+				
+				const img = $("<img>").prop("src", cover);
+				const n = $("<p>").html(name);
+				const p = $("<p>").html(platform);
+				var $res = $("<span>").addClass("result-item");
+				
+				$res.append(img);
+				$res.append(n);
+				$res.append(p);
+				var $link = $("<a>");
+				$link.attr("href", "http://localhost:8080/game?name="+a.name);
+				$link.append($res);
+				$(".dropdown-content").append($link);
+			});
+		}
+	}
+	
+	function empty(){
+		$("span.dropdown-content").empty();
 	}
 	
 	//visualizza o nasconde i risultati suggeriti
 	function suggestion() {
-		let $x = $(".dropdown-content");
-		if ($(".search-box")[0].value.length >= 3) {
+		const $x = $(".dropdown-content");
+		$x.html("");
+		const len = $(".search-box")[0].value.length;
+		if (len >= 4) {
 			$x.css("display", "flex");
+			return true;
 		} else {
 			$x.css("display", "none");
+			return false;
 		}
 	}
 	
 	function hamburgerMenu() {
 		$(".hamburger-menu").toggleClass("visible");
 	}
-	
-	showQueryResults("Games");
-	showQueryResults("Platforms");
-	showQueryResults("Developers");
-	showQueryResults("All");
 </script>
 
 <!-- GOOGLE -->
@@ -104,21 +140,21 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 	<ul class="nav">
 		<li class="search">
 			<!-- Esportare in 50x50 per ottimizzare -->
-			<a class="logo" href="#"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
-			<form action="#" class="dropdown">
-				<input class="search-box" type="search" placeholder="Search..." oninput="suggestion()">
+			<a class="logo" href="http://localhost:8080/"><img src="images/logo.png" width="50" height="50" alt="logo"></a>
+			<div class="dropdown">
+				<input class="search-box" type="search" placeholder="Search..." id="nav-search" onemptied="empty()" onsearch="showQueryResults()">
 				<span class="dropdown-content"></span>
-				<span class="icon"><i class="material-icons">search</i></span>
-			</form>
+				<span class="icon" onclick="showQueryResults()"><i class="material-icons">search</i></span>
+			</div>
 			<span class="icon hamburger" onclick="hamburgerMenu()"><i class="material-icons">menu</i></span>
 			<span class="hamburger-menu">
 				<a href="#">Games</a>
-				<a href="#">Developers</a>
-				<a href="#">Platforms</a>
+				<a href="http://localhost:8080/developers?start=0">Developers</a>
 				<a href="#">About Us</a>
-				<a href="#">Contacts</a>
+				<a href="#">Platforms</a>
+				<a href="http://localhost:8080/genres">Genres</a>
 				<a class="item" href="#">VeryLongUsernameOver</a>
-				<a class="register" href="http://localhost:8080/register.html">Register</a>
+				<a class="register" href="http://localhost:8080/regPage">Register</a>
 				<a href="#" class="login" id="myBtn2" data-toggle="modal" data-target="#myModal">Login</a>
 			</span>
 		</li>
@@ -126,10 +162,10 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 		<li class="item">
 			<span class="menu material-icons">menu</span>
 			<a href="#">Games</a>
-			<a href="#">Developers</a>
-			<a href="#">Platforms</a>
+			<a href="http://localhost:8080/developers?start=0">Developers</a>
 			<a href="#">About Us</a>
-			<a href="#">Contacts</a>   <!-- Muovere in About us? -->
+			<a href="#">Platforms</a>
+			<a href="http://localhost:8080/genres">Genres</a>   <!-- Muovere in About us? -->
 		</li>
 		
 		<!-- usare showAccountInfo(true|false) -->
@@ -138,7 +174,7 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 				<span class="profile-pic material-icons">account_circle</span> <!-- Cerchio?? -->
 				<span class="profile-name">VeryLongUsernameOver</span> <!-- Lunghezza massima?? -->
 			</a>
-			<a class="register" href="http://localhost:8080/register.html">Register</a>
+			<a class="register" href="http://localhost:8080/regPage">Register</a>
 			<a class="login" id="myBtn" href="#" data-toggle="modal" data-target="#myModal">Login</a>
 		</li>
 	</ul>
@@ -153,11 +189,11 @@ VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 			<h1>Login</h1>
 		</div>
 		<div class="modal-body">
-			<form action="">
+			<form method="post" action="http://localhost:8080/doLogin">
 				<p class="campo">Email</p>
-				<input type="email" placeholder="Insert your email..">
+				<input type="email" placeholder="Insert your email.." name="email">
 				<p class="campo">Password</p>
-				<input type="password" placeholder="Insert your password..">
+				<input type="password" placeholder="Insert your password.." name="password">
 				<div class="loginButtons">
 					<div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
 					     data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
