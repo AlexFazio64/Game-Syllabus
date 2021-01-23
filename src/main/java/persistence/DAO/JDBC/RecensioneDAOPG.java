@@ -1,6 +1,5 @@
 package persistence.DAO.JDBC;
 
-import Model.ListaGiochi;
 import Model.Recensione;
 import persistence.DAO.RecensioneDAO;
 import persistence.DBManager;
@@ -10,29 +9,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecensioneDAOPG implements RecensioneDAO {
 
 
     //Funziona
     @Override
-    public void save(Recensione recensione) {
+    public boolean save(Recensione recensione) {
         Connection connection;
         try {
             connection = DBManager.getDataSource().getConnection();
-            String queryUpdate = "INSERT INTO recensione values(?, ?, ?, ?, ?)";
+            String queryUpdate = "INSERT INTO recensione(valutazione, testo,idgioco,scrittada) values( ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(queryUpdate);
-            st.setInt(1, recensione.getId());
-            st.setInt(2, recensione.getValutazione());
-            st.setString(3, recensione.getTesto());
-            st.setString(4, recensione.getIdGioco());
-            st.setString(5, recensione.getScrittaDa());
+            st.setInt(1, recensione.getValutazione());
+            st.setString(2, recensione.getTesto());
+            st.setString(3, recensione.getIdGioco());
+            st.setString(4, recensione.getScrittaDa());
             st.executeUpdate();
-
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+
     }
 
     @Override
@@ -76,7 +75,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
             statement.setString(2, idGame);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
-                recensione=new Recensione();
+                recensione = new Recensione();
                 recensione.setId(result.getInt("id"));
                 recensione.setValutazione(result.getInt("valutazione"));
                 recensione.setTesto(result.getString("testo"));
@@ -149,7 +148,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
 
     /*Funziona ma da vedere con gli altri*/
     @Override
-    public void update(Recensione recensione) {
+    public boolean update(Recensione recensione) {
         Connection connection = null;
         try {
             connection = DBManager.getDataSource().getConnection();
@@ -160,21 +159,24 @@ public class RecensioneDAOPG implements RecensioneDAO {
             st.setInt(3, recensione.getId());
 
             st.executeUpdate();
-
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         } finally {
             try {
                 connection.close();
+                return false;
             } catch (SQLException e) {
                 throw new RuntimeException(e.getMessage());
             }
+
         }
+
     }
 
     //Funziona
     @Override
-    public void delete(Recensione recensione) {
+    public boolean delete(Recensione recensione) {
         Connection connection = null;
         try {
             connection = DBManager.getDataSource().getConnection();
@@ -182,12 +184,13 @@ public class RecensioneDAOPG implements RecensioneDAO {
             PreparedStatement st = connection.prepareStatement(delete);
             st.setInt(1, recensione.getId());
             st.executeUpdate();
-
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
         } finally {
             try {
                 connection.close();
+                return false;
             } catch (SQLException e) {
                 throw new RuntimeException(e.getMessage());
             }
