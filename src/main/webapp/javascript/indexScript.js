@@ -17,6 +17,7 @@ function getCommon() {
             for (var i = 0; i < result.length; i++) {
                 createGameCard(result[i], "common");
             }
+            $("#common")[0].scrollLeft = $("#common").width();
         },
         error: function (xhr, status, error) {
             $(".loader")[0].remove();
@@ -48,6 +49,7 @@ function getTrending() {
                 for (var i = 0; i < result.length; i++) {
                     createGameCard(result[i], "mostVoted");
                 }
+                $("#mostVoted")[0].scrollLeft = $("#mostVoted").width();
             },
             error: function (xhr, status, error) {
                 $(".loader")[0].remove();
@@ -81,10 +83,10 @@ async function IGN_IT() {
         }
     }
 
-    return findRelevandKeywords(titles, categories);
+    return findRelevantKeywords(titles, categories);
 }
 
-function findRelevandKeywords(parsed_titles, parsed) {
+function findRelevantKeywords(parsed_titles, parsed) {
     //find unique keywords
     parsed = new Array(...new Set(parsed));
 
@@ -131,7 +133,7 @@ async function VG247() {
         }
     }
 
-    return findRelevandKeywords(parsed_titles, parsed);
+    return findRelevantKeywords(parsed_titles, parsed);
 }
 
 function games(arr) {
@@ -169,10 +171,12 @@ async function getResults(argument) {
             for (var i = 0; i < result[0].result.length; i++) {
                 createGameCard(result[0].result[i], "relevant");
             }
+            $("#relevant")[0].scrollLeft = $("#relevant").width();
             $(".loader")[0].remove();
             for (var i = 0; i < result[1].result.length; i++) {
                 createPlatformCard(result[1].result[i], "consoles");
             }
+            $("#consoles")[0].scrollLeft = $("#consoles").width();
         },
         error: function (xhr, status, error) {
             console.log(error, status);
@@ -202,7 +206,7 @@ function createGameCard(result, id) {
     }
     if (result.cover) {
         bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result.cover.image_id + ".png)");
-    }else{
+    } else {
         bgImage.setAttribute("style", "background-image: url(http://localhost:8080/images/notFound.png");
     }
     card.appendChild(bgImage);
@@ -231,7 +235,7 @@ function createPlatformCard(result, id) {
     }
     if (result.platform_logo) {
         bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result.platform_logo.image_id + ".png)");
-    }else{
+    } else {
         bgImage.setAttribute("style", "background-image: url(http://localhost:8080/images/notFound.png");
     }
     card.appendChild(bgImage);
