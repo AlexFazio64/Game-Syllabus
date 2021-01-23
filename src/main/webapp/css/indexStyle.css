@@ -58,7 +58,8 @@
     display: flex;
     overflow: auto hidden;
     padding: 20px;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
+    box-shadow: -20px 0 0 0 black, 20px 0 0 0 black;
 }
 
 .mostCommon::-webkit-scrollbar {
