@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Game Syllabus</title>
     <link rel="stylesheet" href="../../css/indexStyle.css">
+    <link rel="stylesheet" href="../../css/common.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="../../javascript/indexScript.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

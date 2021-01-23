@@ -12,7 +12,7 @@ function listaGeneri(){
         dataType: "json",
         success: function (result) {
             encodeURIComponent("${result}");
-
+            $(".loader")[0].remove();
             for (var i = 0; i < result.length; i++) {
                 var link = document.createElement('a');
                 console.log(result[i].name);

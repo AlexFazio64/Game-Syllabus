@@ -7,6 +7,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../../css/genresList.css">
+	<link rel="stylesheet" href="../../css/common.css">
 	<script src="../../javascript/genresListScript.js"></script>
 </head>
 <body>
@@ -22,7 +23,7 @@
 	<div class="listaGeneri">
 		<h1>Genres list</h1>
 	</div>
-	
+	<div class="loader place"></div>
 	<div class="containerGeneri" id="contGens">
 		<div id="col0" class="column"></div>
 		<div id="col1" class="column"></div>

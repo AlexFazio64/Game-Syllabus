@@ -190,3 +190,13 @@ footer {
     color: white;
     text-align: center;
 }
+
+.elencoLista li a {
+    text-decoration: none;
+    color: black;
+    transition: all 0.2s ease;
+}
+
+.elencoLista li a:hover{
+    color: #9966cc;
+}
