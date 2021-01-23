@@ -73,18 +73,20 @@
                 </div>
                 <div class="form-group">
                     <label for="usr" id="stringUsername">Username:</label>
-                    <input type="text" required class="form-control" placeholder="Enter a username.." id="usr" name="username">
+                    <%--SOLAMENTE NUMERI E LETTERE--%>
+                    <input type="text" required minlength="5" class="form-control" pattern="[a-zA-Z0-9-]+"  title="Use only numbers and letters" placeholder="Enter a username.." id="usr" name="username">
                 </div>
                 <div class="form-group">
                     <label for="pwd" id="stringPassword">Password:</label>
-                    <input type="password" required class="form-control" placeholder="Enter a password.." id="pwd" name="password">
+                    <input type="password" required minlength="5" class="form-control" placeholder="Enter a password.." id="pwd" name="password">
                 </div>
                 <div class="divBottone">
                     <button type="submit" class="bottone color-purple" id="submitButton">Submit</button>
                 </div>
+
             </form>
             <div class="oppure" id="oppure">
-                <h3>Oppure accedi con:</h3>
+                <h3>Oppure registrati con:</h3>
             </div>
 
             <div class="loginButtons" id="loginButtons">
@@ -121,6 +123,11 @@
                             'onfailure': onFailure
                         });
                     }
+                    //NIENTE SPAZI NEI CAMPI HAI CAPITO?
+                    $('input').keypress(function( e ) {
+                        if(e.which === 32)
+                            return false;
+                    });
                 </script>
             </div>
 

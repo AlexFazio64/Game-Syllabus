@@ -29,7 +29,6 @@ public class GameSyllabusApplication {
         ma questa volta per favore vediti il DAOPG che capisci bene penso dai
          */
 
-
     }
 
 }

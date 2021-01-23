@@ -19,4 +19,12 @@ public class ListaGiochi {
     public void setIdGioco(String idGioco) {
         this.idGioco = idGioco;
     }
+
+    @Override
+    public String toString() {
+        return "ListaGiochi{" +
+                "emailUtente='" + emailUtente + '\'' +
+                ", idGioco='" + idGioco + '\'' +
+                '}';
+    }
 }
