@@ -12,44 +12,23 @@ function getCommon() {
         data: 'fields name, cover.image_id, rating, first_release_date; limit 15; where first_release_date<=' + todayDate + ' & aggregated_rating_count >= 1; sort first_release_date desc;',
         dataType: "json",
         success: function (result) {
+            setTimeout(getTrending, 100);
+            $(".loader")[0].remove();
             for (var i = 0; i < result.length; i++) {
-                var card = document.createElement('div');
-                card.classList.add("cardInside");
-                card.classList.add("color1");
-                var link = document.createElement('a');
-                link.className = "linkMod";
-                link.href = "http://localhost:8080/game?id=" + result[i].id;
-
-                var bgImage = document.createElement('div');
-                bgImage.className = "bgImage";
-                var divName = document.createElement('div');
-                divName.className = "name";
-                var name = document.createElement('p');
-
-                if (!('name' in result[i]) == 0) {
-                    name.innerHTML = result[i].name;
-                }
-                if (!('cover' in result[i]) == 0) {
-                    //bgImage.setAttribute("style", "background-image: url("+result[i].cover.url+")");
-                    bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result[i].cover.image_id + ".png)");
-                }
-
-                card.appendChild(bgImage);
-                divName.appendChild(name);
-                card.appendChild(divName);
-                link.appendChild(card);
-                document.getElementById("common").appendChild(link);
+                createGameCard(result[i], "common");
             }
         },
         error: function (xhr, status, error) {
-            alert(status);
+            $(".loader")[0].remove();
+            setTimeout(getTrending, 100);
+            $("#common").append($("<p>").text("Something went wrong 😳😳😳"));
         }
     })
     ;
 }
 
 function getTrending() {
-    setTimeout(trending, 1);
+    setTimeout(trending, 100);
 
     function trending() {
         $.ajax({
@@ -61,39 +40,19 @@ function getTrending() {
                 "Client-ID": "h78bpc6nx4cn1tct87c0w9wc6jknv7",
                 "Authorization": "Bearer vlng3tiiqsmjhc5spoog9544193m62"
             },
-            data: 'fields name, cover.image_id, rating, first_release_date; limit 15; where rating >= 90 & aggregated_rating_count > 10 ; sort first_release_date desc;',
+            data: 'fields name, cover.image_id, rating, first_release_date; limit 15; where rating >= 90 & aggregated_rating_count > 10 | name ~*"yorha"*; sort first_release_date desc;', //lol, nice find 👍
             dataType: "json",
             success: function (result) {
+                setTimeout(getResults, 100);
+                $(".loader")[0].remove();
                 for (var i = 0; i < result.length; i++) {
-                    var card = document.createElement('div');
-                    card.classList.add("cardInside");
-                    card.classList.add("color2");
-                    var bgImage = document.createElement('div');
-                    bgImage.className = "bgImage";
-                    var divName = document.createElement('div');
-                    divName.className = "name";
-                    var name = document.createElement('p');
-
-                    var link = document.createElement('a');
-                    link.className = "linkMod";
-                    link.href = "http://localhost:8080/game?id=" + result[i].id;
-
-                    if (!('name' in result[i]) == 0) {
-                        name.innerHTML = result[i].name;
-                    }
-                    if (!('cover' in result[i]) == 0) {
-                        //bgImage.setAttribute("style", "background-image: url("+result[i].cover.url+")");
-                        bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result[i].cover.image_id + ".png)");
-                    }
-                    card.appendChild(bgImage);
-                    divName.appendChild(name);
-                    card.appendChild(divName);
-                    link.appendChild(card);
-                    document.getElementById("mostVoted").appendChild(link);
+                    createGameCard(result[i], "mostVoted");
                 }
             },
             error: function (xhr, status, error) {
-                alert(status);
+                $(".loader")[0].remove();
+                setTimeout(getResults, 100);
+                $("#mostVoted").append($("<p>").text("Something went wrong 😳😳😳"));
             }
         })
         ;
@@ -204,39 +163,80 @@ async function getResults(argument) {
             "Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
             "Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
         },
-        data: 'query games "Games"{ fields name, cover.image_id; where ' + await games(keywords) + '; limit 20;};' + 'query platforms "platforms in news"{fields name; where ' + await platforms(keywords) + ';};',
+        data: 'query games "Games"{ fields name, cover.image_id; where ' + await games(keywords) + '; limit 20;};' + 'query platforms "platforms in news"{fields name, platform_logo.image_id; where ' + await platforms(keywords) + ';};',
         success: function (result) {
-            result = result[0].result.concat(result[1].result);
-            for (var i = 0; i < result.length; i++) {
-                var card = document.createElement('div');
-                card.classList.add("cardInside");
-                card.classList.add("color2");
-                var bgImage = document.createElement('div');
-                bgImage.className = "bgImage";
-                var divName = document.createElement('div');
-                divName.className = "name";
-                var name = document.createElement('p');
-
-                var link = document.createElement('a');
-                link.className = "linkMod";
-                link.href = "http://localhost:8080/game?id=" + result[i].id;
-
-                if (!('name' in result[i]) == 0) {
-                    name.innerHTML = result[i].name;
-                }
-                if (!('cover' in result[i]) == 0) {
-                    //bgImage.setAttribute("style", "background-image: url("+result[i].cover.url+")");
-                    bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result[i].cover.image_id + ".png)");
-                }
-                card.appendChild(bgImage);
-                divName.appendChild(name);
-                card.appendChild(divName);
-                link.appendChild(card);
-                document.getElementById("relevant").appendChild(link);
+            $(".loader")[0].remove();
+            for (var i = 0; i < result[0].result.length; i++) {
+                createGameCard(result[0].result[i], "relevant");
+            }
+            $(".loader")[0].remove();
+            for (var i = 0; i < result[1].result.length; i++) {
+                createPlatformCard(result[1].result[i], "consoles");
             }
         },
         error: function (xhr, status, error) {
-            $("body").html.append(status);
+            console.log(error, status);
+            $(".loader")[0].remove();
+            $("#relevant").append($("<p>").text("Something went wrong 😳😳😳"));
+            $("#consoles").append($("<p>").text("Something went wrong 😳😳😳"));
         }
     });
+}
+
+function createGameCard(result, id) {
+    var card = document.createElement('div');
+    card.classList.add("cardInside");
+    card.classList.add("color2");
+    var bgImage = document.createElement('div');
+    bgImage.className = "bgImage";
+    var divName = document.createElement('div');
+    divName.className = "name";
+    var name = document.createElement('p');
+
+    var link = document.createElement('a');
+    link.className = "linkMod";
+    link.href = "http://localhost:8080/game?id=" + result.id;
+
+    if (result.name) {
+        name.innerHTML = result.name;
+    }
+    if (result.cover) {
+        bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result.cover.image_id + ".png)");
+    }else{
+        bgImage.setAttribute("style", "background-image: url(http://localhost:8080/images/notFound.png");
+    }
+    card.appendChild(bgImage);
+    divName.appendChild(name);
+    card.appendChild(divName);
+    link.appendChild(card);
+    document.getElementById(id).appendChild(link);
+}
+
+function createPlatformCard(result, id) {
+    var card = document.createElement('div');
+    card.classList.add("cardInside");
+    card.classList.add("color2");
+    var bgImage = document.createElement('div');
+    bgImage.className = "bgImage";
+    var divName = document.createElement('div');
+    divName.className = "name";
+    var name = document.createElement('p');
+
+    var link = document.createElement('a');
+    link.className = "linkMod";
+    link.href = "http://localhost:8080/platform?id=" + result.id;
+
+    if (result.name) {
+        name.innerHTML = result.name;
+    }
+    if (result.platform_logo) {
+        bgImage.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + result.platform_logo.image_id + ".png)");
+    }else{
+        bgImage.setAttribute("style", "background-image: url(http://localhost:8080/images/notFound.png");
+    }
+    card.appendChild(bgImage);
+    divName.appendChild(name);
+    card.appendChild(divName);
+    link.appendChild(card);
+    document.getElementById(id).appendChild(link);
 }

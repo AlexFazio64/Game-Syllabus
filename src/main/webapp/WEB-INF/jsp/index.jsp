@@ -44,21 +44,30 @@
     <div>
         <h3 class="trend">Most Recent</h3>
         <div class="mostCommon" id="common">
+            <div class="loader"></div>
         </div>
     </div>
 
     <div>
         <h3 class="trend">Most voted of all time</h3>
         <div class="mostCommon" id="mostVoted">
+            <div class="loader"></div>
         </div>
     </div>
 
     <div>
         <h3 class="trend">Recent updates</h3>
         <div class="mostCommon" id="relevant">
+            <div class="loader"></div>
         </div>
     </div>
 
+    <div>
+        <h3 class="trend">Recent updates</h3>
+        <div class="mostCommon" id="consoles">
+            <div class="loader"></div>
+        </div>
+    </div>
 
     <div class="news">
         <div>
@@ -212,8 +221,6 @@
 <script defer type="text/javascript">
     //joinare tutte le query in una unica mega query
     getCommon();
-    setTimeout(getTrending, 2000);
-    setTimeout(getResults, 2000);
 </script>
 </body>
 </html>
