@@ -66,7 +66,9 @@ $("#nav-placeholder").load("navbar.html");
                 }
                 const name = a.name;
 
-                const img = $("<img>").prop("src", cover);
+                const img = $("<div>").css("background", 'url('+cover+') center / contain no-repeat');
+                img.css("width", '90px');
+                img.css("height", '120px');
                 const n = $("<p>").html(name);
                 const p = $("<p>").html(platform);
                 var $res = $("<span>").addClass("result-item");
