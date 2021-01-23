@@ -59,7 +59,7 @@
     overflow: auto hidden;
     padding: 20px;
     /*border-radius: 8px;*/
-    box-shadow: -20px 0 0 0 black, 20px 0 0 0 black;
+    box-shadow: -20px 0 10px -10px #00000040, 20px 0 10px -10px #00000040;
 }
 
 .mostCommon::-webkit-scrollbar {
