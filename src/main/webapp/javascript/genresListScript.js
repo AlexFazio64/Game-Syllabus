@@ -15,7 +15,6 @@ function listaGeneri(){
             $(".loader")[0].remove();
             for (var i = 0; i < result.length; i++) {
                 var link = document.createElement('a');
-                console.log(result[i].name);
                 link.href = "http://localhost:8080/genre?genreName=" + result[i].name;
                 link.href = link.href.replace(/&/, "%26");
                 link.className = "linkMod";

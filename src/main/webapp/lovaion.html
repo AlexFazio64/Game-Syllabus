@@ -94,11 +94,16 @@
             <div class="social">
                 <img src="images/aboutPage/lovaion/instagram.png" alt="Instagram" id="instagram" class="socialIcon">
             </div>
+            <div class="social">
+                <img src="images/aboutPage/lovaion/github.png" alt="Instagram" id="github" class="socialIcon">
+            </div>
         </div>
     </div>
 
 </main>
 <script>
+
+    /*VISITA SOCIAL*/
     function visitaTwitter() {
         window.location.href = "https://twitter.com/avolio_daniele";
     }
@@ -106,6 +111,10 @@
         window.location.href = "https://www.instagram.com/oh_dagne/";
 
     }
+    function visitaGit(){
+        window.location.href = "https://github.com/lovaion/lovaion";
+    }
+    /*VISITA COSE*/
 
     function visitaBerserk(){
         window.location.href = "https://it.wikipedia.org/wiki/Berserk_(manga)";
@@ -127,8 +136,10 @@
     }
 
 
+
     document.getElementById("twitter").setAttribute("onclick", "visitaTwitter()");
     document.getElementById("instagram").setAttribute("onclick", "visitaInstagram()");
+    document.getElementById("github").setAttribute("onclick", "visitaGit()");
     document.getElementById("aot").setAttribute("onclick", "visitaAot()");
     document.getElementById("jojo").setAttribute("onclick", "visitaJojo()");
     document.getElementById("berserk").setAttribute("onclick", "visitaBerserk()");

@@ -187,6 +187,7 @@ $("#nav-placeholder").load("navbar.html");
                     <span class="profile-name">${usernameLogged}</span> <!-- Lunghezza massima?? -->
                 </a>
                 <a class="item" href="http://localhost:8080/doLogout"><i class="material-icons">exit_to_app</i></a>
+
             </c:if>
             <c:if test="${usernameLogged == null}">
                 <a class="register" href="http://localhost:8080/regPage">Register</a>
@@ -212,6 +213,7 @@ $("#nav-placeholder").load("navbar.html");
                     <input type="email" placeholder="Insert your email.." name="email" id="email">
                     <p class="campo">Password</p>
                     <input type="password" placeholder="Insert your password.." name="password" id="password">
+                    <input type="hidden" name="googleLogin" id="google">
                     <div class="loginButtons">
                         <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with"
                              data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
@@ -222,8 +224,8 @@ $("#nav-placeholder").load("navbar.html");
                                 var profile = googleUser.getBasicProfile();
                                 document.getElementById("email").setAttribute("value", profile.getEmail());
                                 document.getElementById("password").setAttribute("value", profile.getId());
+                                document.getElementById("google").setAttribute("value", "yes");
                                 document.getElementById("submitButton").click();
-                                sessionStorage.setItem("googleLogin","yes");
                             }
 
                             function onFailure(error) {

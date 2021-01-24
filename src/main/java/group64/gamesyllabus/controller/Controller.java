@@ -40,12 +40,11 @@ public class Controller {
 
 	//Register user
 	@PostMapping("/register")
-	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password, Model model) {
+	public String registerUser (HttpSession session,@RequestParam String email,@RequestParam String username,@RequestParam String password,@RequestParam String googleLogin, Model model) {
 
 		//Se fai il login con google
-		if (session.getAttribute("emailGoogle")!=null){
-			email = session.getAttribute("emailGoogle").toString();
-			password = session.getAttribute("passwordGoogle").toString();
+		if (googleLogin.equals("yes")){
+			session.setAttribute("googleLogin",googleLogin);
 		}
 
 		Profilo profilo = new Profilo();
