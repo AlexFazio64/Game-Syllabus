@@ -8,14 +8,14 @@ function loadGameBasicInfo(game) {
             "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
             "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
-        data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,dlcs.id,involved_companies.company.name; where id='+game+';',
+        data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,dlcs.id,involved_companies.company.name; where id=' + game + ';',
         dataType: "json",
         success: function (result) {
             var content = JSON.stringify(result);
             content = content.replace("[", "");
             content = content.substring(0, content.lastIndexOf("]"));
             txt = JSON.parse(content);
-            document.getElementById("game-name").innerText=txt.name;
+            document.getElementById("game-name").innerText = txt.name;
             if (!(("summary" in txt) == 0))
                 document.getElementById("summary").innerText = txt.summary;
             $.ajax({
@@ -180,3 +180,38 @@ function encode(url) {
     console.log(codedUrl);
     return codedUrl;
 }
+
+function sendReview(review, email, game) {
+    if (review == 0 && email == 0) {
+        swal("Error!", "You must be logged to send a review,log into your account and try again", "warning");
+    } else if (document.getElementById('quantity').value <= 0 || document.getElementById('quantity').value > 10)
+        swal("Error!", "Check your rating and try again", "warning");
+    else if (document.getElementById('reviewText').value == 0)
+        swal("Error!", "You must write a review before confirm the operation", "warning");
+    else {
+        window.location.href = "http://localhost:8080/Review?id=" + game + "&rating=" + document.getElementById('quantity').value + "&text=" + document.getElementById('reviewText').value;
+    }
+}
+
+function loadGameRate(gameRate) {
+    console.log(gameRate);
+    if (gameRate == 0)
+        for (var i = 0; i < 10; ++i) {
+            var star = document.createElement('span');
+            star.className = "fa fa-star";
+            document.getElementById("game-rate").appendChild(star);
+        }
+    else {
+        for (var i = 0; i < parseInt(gameRate); i++) {
+            var checkedStar = document.createElement('span');
+            checkedStar.className = "fa fa-star checked";
+            document.getElementById("game-rate").appendChild(checkedStar);
+        }
+        for (var i = 0; i < 10 - parseInt(gameRate); i++) {
+            var star = document.createElement('span');
+            star.className = "fa fa-star";
+            document.getElementById("game-rate").appendChild(star);
+        }
+    }
+}
+

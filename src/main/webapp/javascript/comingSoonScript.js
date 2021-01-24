@@ -67,7 +67,7 @@ function loadComingSoon(start) {
                     info.appendChild(lista);
                     card.appendChild(info);
                     var link = document.createElement('a');
-                    link.href = "http://localhost:8080/game?name=" + result[i].name;
+                    link.href = "http://localhost:8080/game?id=" + result[i].id;
                     link.innerHTML = "More";
                     card.appendChild(link);
                     document.getElementById("col" + i % 2).appendChild(card);

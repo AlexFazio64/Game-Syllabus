@@ -9,8 +9,7 @@ $("#nav-placeholder").load("navbar.html");
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^-->
 
 <!-- css loading && GOOGLE meta injection -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
@@ -55,8 +54,8 @@ $("#nav-placeholder").load("navbar.html");
         if (suggestion()) {
             const arr = await requestSuggestion($(".search-box")[0].value);
             arr.forEach(a => {
-                var cover;
-                var platform;
+                let cover;
+                let platform;
                 try {
                     cover = "https://images.igdb.com/igdb/image/upload/t_cover_small/$.jpg".replace("$", a.cover.image_id);
                     platform = a.platforms[0].name;
@@ -66,7 +65,7 @@ $("#nav-placeholder").load("navbar.html");
                 }
                 const name = a.name;
 
-                const img = $("<div>").css("background", 'url('+cover+') center / contain no-repeat');
+                const img = $("<div>").css("background", 'url(' + cover + ') center / contain no-repeat');
                 img.css("width", '90px');
                 img.css("height", '120px');
                 const n = $("<p>").html(name);
@@ -145,7 +144,8 @@ $("#nav-placeholder").load("navbar.html");
     <ul class="nav">
         <li class="search">
             <!-- Esportare in 50x50 per ottimizzare -->
-            <a class="logo" href="http://localhost:8080/"><img src="http://localhost:8080/images/logo.png" width="50" height="50" alt="logo"></a>
+            <a class="logo" href="http://localhost:8080/"><img src="http://localhost:8080/images/logo.png" width="50"
+                                                               height="50" alt="logo"></a>
             <div class="dropdown">
                 <input class="search-box" type="search" placeholder="Search..." id="nav-search" onemptied="empty()"
                        onsearch="showQueryResults()">
@@ -231,7 +231,6 @@ $("#nav-placeholder").load("navbar.html");
                             }
 
 
-
                             function renderButton() {
                                 gapi.signin2.render('my-signin2', {
                                     'scope': 'profile email',
@@ -245,11 +244,12 @@ $("#nav-placeholder").load("navbar.html");
                             }
 
                         </script>
-                        <%--Logout on reload--%>
+                            <%--Logout on reload--%>
                         <script>
                             window.onbeforeunload = function (e) {
                                 gapi.auth2.getAuthInstance().signOut();
                             };
+
                             function signOut() {
                                 var auth2 = gapi.auth2.getAuthInstance();
                                 auth2.signOut().then(function () {

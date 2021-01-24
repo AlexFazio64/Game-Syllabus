@@ -1,0 +1,145 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #e7e7e7;
+    font-family: "Raleway", Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+.container{
+    padding-top: 25px;
+    width: 75%;
+    margin: auto;
+    line-height: 1.5;
+}
+
+.info-grid{
+    display: grid;
+    grid-template-columns: 20% auto;
+    margin: auto;
+    background-color: white;
+}
+
+.platform-name{
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.platform-name h1{
+    border-width: 0 0 15px 0;
+    border-style: solid;
+    border-color: #9966cc;
+    text-transform: uppercase;
+    padding-top: 10px;
+    overflow-wrap: anywhere;
+}
+
+.platform-description{
+    grid-column: 2;
+    grid-row:2;
+    overflow: hidden;
+    max-height: 145px;
+    padding-right: 5px;
+}
+
+#box-button{
+    background-color: #9966cc;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    display: none;
+}
+
+#box-button:hover{
+    background-color: #3B1162;
+}
+
+.platform-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: 1/5;
+}
+
+.platform-logo img{
+    max-width: 180px;
+    max-height: 250px;
+}
+
+.other-info{
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    grid-column: 2;
+    text-align: center;
+}
+
+.other-three{
+    margin-right: 25px;
+}
+
+.lista-giochi{
+    margin: 50px auto auto;
+    background-color: white;
+    border-radius: 25px 25px 0 0;
+}
+
+.lista-giochi h1{
+    padding-top: 1%;
+    text-align: center;
+    border-width: 0 0 5px 0;
+    border-style: solid;
+    border-color: #9966cc;
+}
+
+.elencoLista{
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.cardInside{
+    display: grid;
+    grid-template-columns: 1fr 4fr auto;
+    margin: 22px;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 8px;
+    min-height: 130px;
+    transition: all 0.3s ease;
+}
+
+.cardInside:hover{
+    box-shadow: 5px 5px 3px 3px #888888;
+    transform: translateY(-20px);
+}
+
+.cardInside img{
+    border-radius: 5px;
+}
+
+.cardInside > a:last-of-type{
+    border-color: #3B1162;
+    border-radius: 8px;
+    background-color: #9966cc;
+    text-decoration: none;
+    color: white;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.cardInside > a:hover{
+    background-color: #3B1162;
+}
+
+.column{
+    float: left;
+    width: 50%;
+    padding: 10px;
+}

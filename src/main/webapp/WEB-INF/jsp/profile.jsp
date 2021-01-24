@@ -17,6 +17,20 @@
     });
 </script>
 <script>
+    function deleteAccount() {
+        $.ajax({
+            url: "http://localhost:8080/account/delete",
+            type: "DELETE",
+            crossOrigin: false,
+            headers: {
+                "username": "${username}"
+            },
+            success: function (result) {
+                window.location.href = "http://localhost:8080" + result;
+            }
+        });
+    }
+
     function showAbout() {
         $('.about-panel').css('display', 'block');
         $('.edit-about-panel').css('display', 'none');
@@ -62,9 +76,9 @@
                 <p class="usrnm">${username}</p>
             </div>
             <div class="btn">
-                <a href="#" onclick="showAbout()">About me</a>
-                <a href="#" onclick="showList()">My list</a>
-                <a href="#" onclick="showEdit()" class="edit-btn">Edit</a>
+                <span onclick="showAbout()">About me</span>
+                <span onclick="showList()">My list</span>
+                <span onclick="showEdit()" class="edit-btn">Edit</span>
             </div>
         </section>
         <section class="about-panel">
@@ -245,17 +259,18 @@
             </section>
         </section>
         <section class="edit-about-panel">
-            <form method="post" action="http://localhost:8080/account/edit" class="info-edit-panel" enctype="multipart/form-data">
+            <form method="post" action="http://localhost:8080/account/edit" class="info-edit-panel"
+                  enctype="multipart/form-data">
                 <div class="info">
                     <p>Username</p>
                     <input type="text" name="username" value="${username}">
-                    <p>Email</p>
-                    <input type="email" name="email" value="${email}">
-                    <p>Password</p>
-                    <input type="password" name="password" value="${password}">
+                    <p>Old Password</p>
+                    <input type="password" name="password">
+                    <p>New Password</p>
+                    <input type="password" name="new_password">
                     <p>Picture</p>
                     <input type="file" name="image" accept="image/*">
-                    <a href="#" class="delete-btn">Delete your account</a>
+                    <p class="delete-btn" onclick="deleteAccount()">Delete your account</p>
                     <input type="submit" value="Confirm">
                 </div>
                 <div class="bio">

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index(){
 		return "index";
 	}

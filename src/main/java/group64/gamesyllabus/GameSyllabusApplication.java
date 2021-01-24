@@ -9,14 +9,17 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import persistence.DAO.JDBC.ListaGiochiDAOPG;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 import persistence.DAO.JDBC.RecensioneDAOPG;
+import persistence.DAO.RecensioneDAO;
+import persistence.DBManager;
+
+import java.sql.Connection;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class GameSyllabusApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GameSyllabusApplication.class, args);
-
-
         /*
         PER CREARE UN PROFILO:
         1- CREARE UN OGGETTO PROFILO

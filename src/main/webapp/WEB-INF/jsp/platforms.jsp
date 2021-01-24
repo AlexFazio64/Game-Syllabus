@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${start}</title>
+    <title>Platforms</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="../../javascript/platformsScript.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -17,13 +17,13 @@
 </div>
 <script>
     $(function () {
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
 
 
 <main id="developers">
-    <label>Developers</label>
+    <label>Platforms</label>
     <div id="row0" class="row" style="height: 15px"></div>
     <div id="row1" class="row" style="height: 15px"></div>
     <div id="row2" class="row" style="height: 15px"></div>

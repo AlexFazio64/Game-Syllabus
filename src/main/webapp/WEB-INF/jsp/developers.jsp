@@ -3,21 +3,20 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>${start}</title>
+    <title>Developers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="../../javascript/developersScript.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../../css/developersStyle.css">
-    <script type="text/javascript"> var lastIndex;</script>
 </head>
 <body>
 <div id="nav-placeholder">
 </div>
 <script>
     $(function () {
-        $("#nav-placeholder").load("navbar.html");
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
 

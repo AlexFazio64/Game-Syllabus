@@ -138,7 +138,7 @@ public class ProfiloDAOPG implements ProfiloDAO {
 		Connection conn = null;
 		try {
 			conn = DBManager.getDataSource().getConnection();
-			String query = "DELETE * FROM profilo WHERE email = ?;";
+			String query = "DELETE FROM profilo WHERE email = ?;";
 			PreparedStatement row = conn.prepareStatement(query);
 			row.setString(1, email);
 			boolean r = row.executeUpdate() != 0;
