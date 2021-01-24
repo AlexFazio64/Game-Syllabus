@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Game</title>
-    <link rel="stylesheet" href="css/gameStyle.css">
+    <link rel="stylesheet" href="../../css/gameStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="../../javascript/gameScript.js"></script>
@@ -30,14 +30,39 @@
         element.style.height = (25 + element.scrollHeight) + "px";
     }
 </script>
-
-<main id="main" class="bkgcolor" style="background-image:url('../../images/devLogoNotFound.webp') ">
+<main id="main" class="bkgcolor" style="background-image:url('../../images/notFound.png') ">
     <div id="bkg"></div>
     <div id="all-info" style="opacity: 1">
-        <img id="cover"
-             src="https://user-images.githubusercontent.com/24848110/33519396-7e56363c-d79d-11e7-969b-09782f5ccbab.png">
+        <ul>
+            <li>
+                <img id="cover"
+                     src="../../images/notFound.png">
+            </li>
+            <li>
+                <button id="list" onclick=addToList('${emailLogged}','${game}')>Add to game List</button>
+            </li>
+        </ul>
         <ul id="basicInformation">
-            <li><span id="game-name" class="gameName"> </span></li>
+            <li><span id="game-name" class="gameName"> </span>
+            </li>
+            <c:if test="${added!=null}">
+                <script>
+                    swal("Success!", "Game added to your list", "success");
+                </script>
+            </c:if>
+            <c:if test="${intoList!=null}">
+                <script defer>
+                    var listIcon = document.getElementById('list');
+                    listIcon.parentNode.removeChild(listIcon);
+                    var labelContainer = document.createElement('li');
+                    var label = document.createElement('label');
+                    label.innerHTML = "&#10004; Added to the list";
+                    labelContainer.append(label);
+                    var coverid = document.getElementById("cover");
+                    coverid.parentNode.append(labelContainer);
+                </script>
+            </c:if>
+
             <li><span id="game-rate"><strong>Rate: </strong></span></li>
             <li><span id="release_date"><strong>Release Date: </strong></span></li>
             <li><span id="gameplay-type"><strong>Gameplay Type: </strong> </span></li>
@@ -49,12 +74,13 @@
         </ul>
     </div>
     <section class="other-info">
+        <h3 id="summary-section" class="arguments">Summary</h3>
         <p id="summary"></p>
-        <h3 class="Arguments">Video</h3>
+        <h3 id="videos-section" class="Arguments">Video</h3>
         <div id="videos"></div>
-        <h3 class="Arguments">Screenshot</h3>
+        <h3 id="screenshots-section" class="Arguments">Screenshot</h3>
         <div id="screenshots"></div>
-        <div>
+        <div id="media-and-reviews">
             <h3 class="Arguments">Reviews</h3>
             <c:if test="${personalReview == null}">
                 <div class="review">
@@ -65,12 +91,14 @@
                     <section>
                         <textarea onkeyup="textAreaAdjust(this)" cols="72" style="resize: none"
                                   id="reviewText"></textarea>
-                        <button onclick=sendReview("${personalReview}","${emailLogged}","${game}")>Send</button>
+                        <button class="sendButton" onclick=sendReview("${personalReview}","${emailLogged}","${game}")>
+                            Send
+                        </button>
                     </section>
                 </div>
             </c:if>
             <c:if test="${personalReview !=null}">
-                <div class="Myreview">
+                <div id="userReview" class="Myreview">
                     <section>
                         <span>Your review</span>
                         <c:forEach begin="1" end="${personalReview.getValutazione()}">
@@ -90,12 +118,15 @@
                 <c:forEach var="rews" items="${reviews}">
                     <div class="review">
                         <span>${rews.getScrittaDa()}</span>
+
                         <c:forEach begin="1" end="${rews.getValutazione()}">
                             <span class="fa fa-star checked"></span>
                         </c:forEach>
+
                         <c:forEach begin="${rews.getValutazione()+1}" end="10">
                             <span class="fa fa-star"></span>
                         </c:forEach>
+
                         <p>${rews.getTesto()}</p>
                     </div>
                 </c:forEach>

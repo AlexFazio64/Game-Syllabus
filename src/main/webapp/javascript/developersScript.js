@@ -26,7 +26,7 @@ function loadDevelopers(previous, start) {
                         if (!(alreadyPresent.includes(dev[cont].company.name))) {
                             alreadyPresent.push(dev[cont].company.name);
                             var link = document.createElement('a');
-                            link.href = "http://localhost:8080/platform?name=" + dev[cont].company.name;
+                            link.href = "http://localhost:8080/developer?name=" + dev[cont].company.name;
                             var container = document.createElement('section');
                             container.className = "column card";
                             var devName = document.createElement('div')

@@ -18,33 +18,12 @@ function loadGameBasicInfo(game) {
             document.getElementById("game-name").innerText = txt.name;
             if (!(("summary" in txt) == 0))
                 document.getElementById("summary").innerText = txt.summary;
-            $.ajax({
-                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
-                type: "POST",
-                crossDomain: true,
-                headers: {
-                    'Accept': 'application/json',
-                    "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
-                    "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
-                },
-                data: "fields image_id;where game= " + window.txt.id + ";",
-                dataType: "json",
-                success: function (results) {
-                    if (results.length > 0) {
-                        var datas = JSON.stringify(results).replace("[", "");
-                        datas = datas.substring(0, datas.lastIndexOf("]"))
-                        var cover = JSON.parse(datas);
-                        var image = document.getElementById("cover");
-                        image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-                        var bkg = document.getElementById("main");
-                        bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
-                        bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.log("error on cover and background loading");
-                }
-            });
+            else {
+                var summaryLabel = document.getElementById('summary-section');
+                summaryLabel.parentNode.removeChild(summaryLabel);
+                var summary=document.getElementById("summary");
+                summary.parentNode.removeChild(summary);
+            }
             if (!(("platforms" in txt) == 0)) {
                 for (var i = 0; i < txt.platforms.length; i++) {
                     var platform = document.createElement('a');
@@ -78,33 +57,6 @@ function loadGameBasicInfo(game) {
                     }
                 }
             }
-            if (!(("screenshots" in txt) == 0)) {
-                if (txt.screenshots.length > 0) {
-                    for (var i = 0; i < txt.screenshots.length; i++) {
-                        var newImg = document.createElement('img');
-                        newImg.className = "screenshot-image";
-                        newImg.src = "https://images.igdb.com/igdb/image/upload/t_original/" + txt.screenshots[i].image_id + ".jpg";
-                        document.getElementById("screenshots").appendChild(newImg);
-                    }
-                }
-            }
-            if (!(("videos" in txt) == 0)) {
-                if (txt.videos.length > 0) {
-                    for (var i = 0; i < txt.videos.length; i++) {
-                        var container = document.createElement('span');
-                        container.className = "video-player";
-                        var newPlayer = document.createElement('iframe');
-                        newPlayer.width = 640;
-                        newPlayer.height = 385;
-                        newPlayer.frameBorder = "0";
-                        newPlayer.allowFullscreen = true;
-                        newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-                        newPlayer.src = "https://www.youtube.com/embed/" + txt.videos[i].video_id;
-                        container.appendChild(newPlayer);
-                        document.getElementById("videos").appendChild(container);
-                    }
-                }
-            }
             if (!(("genres" in txt) == 0)) {
                 if (txt.genres.length > 0) {
                     for (var i = 0; i < txt.genres.length; i++) {
@@ -134,7 +86,7 @@ function loadGameBasicInfo(game) {
             if (!(("involved_companies" in txt) == 0)) {
                 if (txt.involved_companies.length > 0) {
                     for (var i = 0; i < txt.involved_companies.length; i++) {
-                        if (txt.involved_companies[i].developer ==true) {
+                        if (txt.involved_companies[i].developer == true) {
                             var developer = document.createElement('span');
                             var link = document.createElement('a');
                             link.className = "info";
@@ -154,11 +106,77 @@ function loadGameBasicInfo(game) {
                         dlc.innerText = txt.dlcs[i].name;
                         dlc.className = "info";
                         dlc.href = "http://localhost:8080/game?idGame=" + txt.dlcs[i].id;
-
                         document.getElementById("dlc").append(dlc);
                     }
                 }
             }
+
+            $.ajax({
+                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/covers",
+                type: "POST",
+                crossDomain: true,
+                headers: {
+                    'Accept': 'application/json',
+                    "Client-ID": "yjev1wy79vlnwcv35gbdcvz91tg47u",
+                    "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
+                },
+                data: "fields image_id;where game= " + window.txt.id + ";",
+                dataType: "json",
+                success: function (results) {
+                    if (results.length > 0) {
+                        var datas = JSON.stringify(results).replace("[", "");
+                        datas = datas.substring(0, datas.lastIndexOf("]"))
+                        var cover = JSON.parse(datas);
+                        var image = document.getElementById("cover");
+                        image.src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+                        var bkg = document.getElementById("main");
+                        bkg.setAttribute("style", "background-image: url(https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg)");
+                        bkg.style.backgroundImage = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + cover.image_id + ".jpg";
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("error on cover and background loading");
+                }
+            });
+
+            if (!(("screenshots" in txt) == 0)) {
+                if (txt.screenshots.length > 0) {
+                    for (var i = 0; i < txt.screenshots.length; i++) {
+                        var newImg = document.createElement('img');
+                        newImg.className = "screenshot-image";
+                        newImg.src = "https://images.igdb.com/igdb/image/upload/t_original/" + txt.screenshots[i].image_id + ".jpg";
+                        document.getElementById("screenshots").appendChild(newImg);
+                    }
+                }
+            } else {
+                var screenshotsLabel = document.getElementById('screenshots-section');
+                screenshotsLabel.parentNode.removeChild(screenshotsLabel);
+                var screenContainer = document.getElementById('screenshots');
+                screenContainer.parentNode.removeChild(screenContainer);
+            }
+            if (!(("videos" in txt) == 0)) {
+                if (txt.videos.length > 0) {
+                    for (var i = 0; i < txt.videos.length; i++) {
+                        var container = document.createElement('span');
+                        container.className = "video-player";
+                        var newPlayer = document.createElement('iframe');
+                        newPlayer.width = 640;
+                        newPlayer.height = 385;
+                        newPlayer.frameBorder = "0";
+                        newPlayer.allowFullscreen = true;
+                        newPlayer.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+                        newPlayer.src = "https://www.youtube.com/embed/" + txt.videos[i].video_id;
+                        container.appendChild(newPlayer);
+                        document.getElementById("videos").appendChild(container);
+                    }
+                }
+            } else {
+                var videosLabel = document.getElementById('videos-section');
+                videosLabel.parentNode.removeChild(videosLabel);
+                var videoContainer = document.getElementById('videos');
+                videoContainer.parentNode.removeChild(videoContainer);
+            }
+
         },
         error: function (xhr, status, error) {
             alert(status);
@@ -219,9 +237,9 @@ function loadGameRate(gameRate) {
 
 function addToList(email, idGame) {
     if (email == 0) {
-        swal("Error!", "You must be logged to add the game to your list,log into your account and try again", "warning");
+        swal("Error!", "You must be logged to add the game to your list. Log into your account and try again", "warning");
     } else {
-        console.log("OKOKOKOK");
+
         window.location.href = "http://localhost:8080/addTo?id=" + idGame;
     }
 }
