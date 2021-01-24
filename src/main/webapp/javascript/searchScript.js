@@ -186,7 +186,6 @@ async function firstResearch(search) {
                 game_result.appendChild(game_info);
 
                 document.getElementById("research_box_id").appendChild(game_result);
-                /*document.getElementById("grid_layout").appendChild(figure_grid);*/
             }
         },
         error: function (xhr, status, error) {

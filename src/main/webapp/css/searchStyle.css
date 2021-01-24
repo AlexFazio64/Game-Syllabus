@@ -52,7 +52,6 @@ a quelli contenuti in .nome-gioco*/
 
 .game_info a:hover {
     color: #671cae;
-    transition-duration:0.3s;
 }
 
 .game_info li {

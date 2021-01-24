@@ -7,29 +7,32 @@
     <script type="text/javascript" src="../../javascript/searchScript.js"></script>
 </head>
 <body>
-        <div id="nav-placeholder">
+
+
+<div id="nav-placeholder">
+</div>
+<script>
+    $(function () {
+        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
+    });
+</script>
+
+<script type="text/javascript" defer>
+    firstResearch('${search}');
+</script>
+
+<main id="container">
+    <section class="layout_button">
+        <div class="btn">
+            <span id="search_result"></span>
+            <a href="#" onclick="showList()">List</a>
+            <a href="#" onclick="showGrid()">Grid</a>
         </div>
-        <script>
-            $(function () {
-                $("#nav-placeholder").load("navbar.html");
-            });
-        </script>
+    </section>
+    <div class="research_box_list" id="research_box_id"></div>
 
-        <script type="text/javascript" defer>
-            firstResearch('${search}');
-        </script>
-
-        <main id="container">
-            <section class="layout_button">
-                <div class="btn">
-                    <span id="search_result"></span>
-                    <a href="#" onclick="showList()">List</a>
-                    <a href="#" onclick="showGrid()">Grid</a>
-                </div>
-            </section>
-            <div class="research_box_list" id="research_box_id"></div>
-
-        </main>
+    <button onclick="topFunction()" id="top_button" title="Go to top">Top</button>
+</main>
 
 </body>
 </html>

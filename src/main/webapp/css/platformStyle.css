@@ -110,7 +110,7 @@ body{
     background: white;
     border-radius: 10px;
     padding: 8px;
-    min-height: 130px;
+    min-height: 135px;
     transition: all 0.3s ease;
 }
 
@@ -121,6 +121,20 @@ body{
 
 .cardInside img{
     border-radius: 5px;
+}
+
+.cardInside .title_game{
+    font-weight: 600;
+}
+
+.cardInside a {
+    text-decoration: none;
+    color: black;
+    transition-duration:0.3s;
+}
+
+.cardInside a:hover {
+    color: #671cae;
 }
 
 .cardInside > a:last-of-type{
