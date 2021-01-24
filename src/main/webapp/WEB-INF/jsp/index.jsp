@@ -221,6 +221,8 @@
 </footer>
 <script defer type="text/javascript">
     //joinare tutte le query in una unica mega query
+    if (sessionStorage.getItem("googleLogin") != null)
+        console.log("loggato con google")
     getCommon();
 </script>
 </body>
