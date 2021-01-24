@@ -200,3 +200,7 @@ footer {
 .elencoLista li a:hover{
     color: #9966cc;
 }
+
+.place{
+    margin: auto;
+}

@@ -223,6 +223,7 @@ $("#nav-placeholder").load("navbar.html");
                                 document.getElementById("email").setAttribute("value", profile.getEmail());
                                 document.getElementById("password").setAttribute("value", profile.getId());
                                 document.getElementById("submitButton").click();
+                                sessionStorage.setItem("googleLogin","yes");
                             }
 
                             function onFailure(error) {
