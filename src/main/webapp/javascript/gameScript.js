@@ -8,7 +8,7 @@ function loadGameBasicInfo(game) {
             "Client-ID": "hz61ow2zgltsan4v3gza0l3aex4euk",
             "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
-        data: 'fields name,platforms.name, release_dates.human, websites.url, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,dlcs.id,involved_companies.company.name; where id=' + game + ';',
+        data: 'fields name,platforms.name, release_dates.human, websites.url,websites.category, summary, screenshots.image_id, videos.video_id, genres.name,game_modes.name,dlcs.name,dlcs.id,involved_companies.company.name,involved_companies.developer; where id=' + game + ';',
         dataType: "json",
         success: function (result) {
             var content = JSON.stringify(result);
@@ -120,11 +120,12 @@ function loadGameBasicInfo(game) {
             }
             if (!(("websites" in txt) == 0)) {
                 if (txt.websites.length > 0) {
-                    var type = ["Official", "Wikia", "Wikipedia", "Facebook", "Twitter", "Twitch", "Instagram", "Youtube", "Iphone", "Ipad", "Android", "Steam", "Reddit", "Itch", "Epicgames", "Gog", "Discord"];
+                    var type = ["Official", "Wikia", "Wikipedia", "Facebook", "Twitter", "Twitch", " ", "Instagram", "Youtube", "Iphone", "Ipad", "Android", "Steam", "Reddit", "Itch", "Epicgames", "Gog", "Discord"];
                     for (var i = 0; i < txt.websites.length; i++) {
                         var newLink = document.createElement('a');
                         newLink.href = txt.websites[i].url;
-                        newLink.text = type[i];
+                        console.log(txt.websites[i].category);
+                        newLink.text = type[txt.websites[i].category - 1];
                         newLink.className = "info";
                         document.getElementById("websites").append(newLink);
                     }
@@ -133,14 +134,15 @@ function loadGameBasicInfo(game) {
             if (!(("involved_companies" in txt) == 0)) {
                 if (txt.involved_companies.length > 0) {
                     for (var i = 0; i < txt.involved_companies.length; i++) {
-                        var developer = document.createElement('span');
-                        var link = document.createElement('a');
-                        link.className = "info";
-                        link.href = "http://localhost:8080/developer?name=" + txt.involved_companies[i].company.name;
-                        developer.innerHTML = txt.involved_companies[i].company.name;
-                        link.appendChild(developer);
-                        document.getElementById("Developer").append(link);
-
+                        if (txt.involved_companies[i].developer ==true) {
+                            var developer = document.createElement('span');
+                            var link = document.createElement('a');
+                            link.className = "info";
+                            link.href = "http://localhost:8080/developer?name=" + txt.involved_companies[i].company.name;
+                            developer.innerHTML = txt.involved_companies[i].company.name;
+                            link.appendChild(developer);
+                            document.getElementById("Developer").append(link);
+                        }
                     }
                 }
             }
@@ -215,3 +217,11 @@ function loadGameRate(gameRate) {
     }
 }
 
+function addToList(email, idGame) {
+    if (email == 0) {
+        swal("Error!", "You must be logged to add the game to your list,log into your account and try again", "warning");
+    } else {
+        console.log("OKOKOKOK");
+        window.location.href = "http://localhost:8080/addTo?id=" + idGame;
+    }
+}
