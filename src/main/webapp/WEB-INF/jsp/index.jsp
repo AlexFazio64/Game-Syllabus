@@ -221,8 +221,12 @@
 </footer>
 <script defer type="text/javascript">
     //joinare tutte le query in una unica mega query
-    if (sessionStorage.getItem("googleLogin") != null)
+    <c:if test="${googleLogin == 'yes'}">
         console.log("loggato con google")
+    </c:if>
+    <c:if test="${googleLogin == null}">
+        console.log("non loggato con google")
+    </c:if>
     getCommon();
 </script>
 </body>

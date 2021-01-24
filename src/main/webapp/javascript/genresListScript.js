@@ -13,11 +13,35 @@ function listaGeneri(){
         success: function (result) {
             encodeURIComponent("${result}");
             $(".loader")[0].remove();
+            for (var i = 0; i < result.length; i++){
+                if ((result[i].name).localeCompare("Hack and slash/Beat 'em up") == 0) {
+                    var copia = {
+                        id: 37,
+                        name: "Beat \u0027em up"
+                    };
+                    result.push(copia);
+                }
+            }
+            //SORTING ARRAY TO GET BEAT EM UP ON THE TOP
+            result.sort(compare);
+            function compare(a, b){
+                if (a.name < b.name)
+                    return -1;
+                if (a.name > b.name)
+                    return 1;
+                return 0;
+            }
+
             for (var i = 0; i < result.length; i++) {
                 var link = document.createElement('a');
-                console.log(result[i].name);
-                link.href = "http://localhost:8080/genre?genreName=" + result[i].name;
-                link.href = link.href.replace(/&/, "%26");
+                if ((result[i].name).localeCompare("Beat \u0027em up") != 0) {
+                    link.href = "http://localhost:8080/genre?genreName=" + result[i].name;
+                    link.href = link.href.replace(/&/, "%26");
+                }
+                else{
+                    link.href = "http://localhost:8080/genre?genreName="+"Hack and slash/Beat \u0027em up";
+                    link.href = link.href.replace(/&/, "%26");
+                }
                 link.className = "linkMod";
                 const card = document.createElement('div');
                 card.classList.add("cardInside");
@@ -31,11 +55,6 @@ function listaGeneri(){
                 } else if ((result[i].name).localeCompare("Hack and slash/Beat 'em up") == 0) {
                     iniziale.innerHTML = result[i].name[0];
                     name.innerHTML = "Hack and slash";
-                    var copia = {
-                        id: 25,
-                        name: "Beat \u0027em up"
-                    };
-                    result.push(copia);
                 }
                 const background = document.createElement('img');
                 background.addEventListener("load", function () {

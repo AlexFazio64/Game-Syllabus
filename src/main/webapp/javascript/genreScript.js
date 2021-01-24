@@ -1,6 +1,5 @@
 
 function genreInfo(genere) {
-    console.log(genere);
     $.ajax({
 
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
@@ -24,7 +23,6 @@ function genreInfo(genere) {
             var tempLimit = 0;
             var limitBeforeChange = 0;
             function showMore() {
-                console.log(tempLimit +"temp limit");
                 if (tempLimit + 50 < txt.length) {
                     limitBeforeChange = tempLimit;
                     tempLimit += 50;
@@ -64,7 +62,7 @@ function genreInfo(genere) {
                         for (var j = 0; j < txt[i].platforms.length && j < 2; j++) {
                             var collegamento = document.createElement('a');
                             collegamento.innerHTML = listaConsole.concat(txt[i].platforms[j].name);
-                            collegamento.href = "#";
+                            collegamento.href = "http://localhost:8080/platform?name="+txt[i].platforms[j].name;
                             platform.appendChild(collegamento);
                             if (j == 0 && txt[i].platforms.length > 1) {
                                 collegamento.innerHTML = collegamento.innerHTML.concat(", ");
