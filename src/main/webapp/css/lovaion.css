@@ -4,11 +4,12 @@
 }
 
 .content{
-    padding-top: 25px;
+    padding: 25px;
     width: 75%;
     margin:auto;
     line-height: 1.5;
-    background-color: #121212;
+    /*background-color: #121212;*/
+    background-image: url("../images/aboutPage/lovaion/stars.gif");
 }
 
 .profilePic{
@@ -46,11 +47,20 @@
     height: 100%;
     width: 200px;
     margin: auto;
+    transition: all 0.5s ease;
 }
 
+.cardInside:hover{
+    transform: scale(1.13);
+}
+
+.cardInside:hover .name{
+    background: #9966cc;
+}
 .name{
     text-align: center;
     background: #404040;
+    transition: all 0.3s ease;
 }
 
 .cardsCont{
@@ -59,10 +69,41 @@
     padding: 20px 0;
     border-radius: 8px;
     background: #181818;
+    cursor: pointer;
 }
 
 .sourceCard{
     width: 100%;
     object-fit: cover;
     height: 270px;
+}
+
+
+.socials{
+    margin: auto;
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    background: #181818;
+    height: 100px;
+    width: 30%;
+}
+.social{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.socialIcon:hover{
+    transform: scale(1.5);
+}
+.socialIcon{
+    width: 40%;
+    height: auto;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+span{
+    color: #9966cc;
 }

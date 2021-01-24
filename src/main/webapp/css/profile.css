@@ -66,7 +66,8 @@ main > section > section {
 	transition: top 0.1s ease;
 }
 
-.btn a {
+.btn span {
+	cursor: pointer;
 	text-transform: capitalize;
 	padding: 10px;
 	font-size: 1.3em;
@@ -77,16 +78,16 @@ main > section > section {
 	margin-left: 10px;
 }
 
-.btn a:hover {
+.btn span:hover {
 	background-color: #777;
 }
 
-a.edit-btn {
+span.edit-btn {
 	color: white;
 	background-color: var(--primary);
 }
 
-a.edit-btn:hover {
+span.edit-btn:hover {
 	background-color: var(--secondary);
 }
 
@@ -101,7 +102,7 @@ a.edit-btn:hover {
 	grid-template-columns: 1fr 2fr;
 	row-gap: 10px;
 	column-gap: 20px;
-	width: 40%;
+	width: 50%;
 	font-size: 1.3em;
 }
 
@@ -116,10 +117,15 @@ a.edit-btn:hover {
 }
 
 .delete-btn {
+	cursor: pointer;
 	display: flex;
 	align-items: center;
 	font-size: 0.5em;
 	color: red;
+}
+
+.delete-btn:hover {
+	text-decoration: underline;
 }
 
 .bio {
@@ -144,13 +150,13 @@ a.edit-btn:hover {
 	row-gap: 10px;
 }
 
-.reviews:before{
+.reviews:before {
 	content: "My Game Reviews";
 	display: block;
 	width: 80%;
 	margin: 40px auto 25px auto;
 	padding: 5px;
-    box-shadow: #ececec 0 -10px 12px 1px;
+	box-shadow: #ececec 0 -10px 12px 1px;
 
 	font-size: 2rem;
 	font-weight: 600;
@@ -176,7 +182,7 @@ a.edit-btn:hover {
 	align-items: center;
 }
 
-.game-img img{
+.game-img img {
 	width: 200px;
 }
 
@@ -229,7 +235,15 @@ a.edit-btn:hover {
 	font-size: 2rem;
 	background: red;
 }
+@media screen and (max-width: 1340px) {
+	.info {
+		font-size: 1em;
+	}
 
+	.delete-btn {
+		font-size: 0.7em;
+	}
+}
 @media screen and (max-width: 1200px) {
 	.info-edit-panel {
 		flex-direction: column-reverse;
@@ -254,10 +268,14 @@ a.edit-btn:hover {
 	.usrnm {
 		top: -2em;
 	}
+
+	.delete-btn {
+		font-size: 0.7em;
+	}
 }
 
-@media screen and (max-width: 980px){
-	main > section{
+@media screen and (max-width: 980px) {
+	main > section {
 		width: 100%;
 	}
 }

@@ -1,6 +1,7 @@
 package group64.gamesyllabus.controller;
 
 import Model.Profilo;
+import org.eclipse.jdt.internal.compiler.ast.UsesStatement;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 @org.springframework.stereotype.Controller
 public class Controller {
-	@GetMapping("/index")
+	@GetMapping("/")
 	public String index(){
 		return "index";
 	}

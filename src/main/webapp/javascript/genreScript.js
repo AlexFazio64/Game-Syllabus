@@ -14,6 +14,7 @@ function genreInfo(genere) {
         data: 'fields name, platforms.name, release_dates.human, cover.url, status; limit 300; where genres.name="' + genere + '" & release_dates.date < 1614556800 ;sort first_release_date desc;',
         dataType: "json",
         success: function (result) {
+            $(".loader")[0].remove();
             var content = JSON.stringify(result).replaceAll("'", " ");
             //content = content.replace("[", "");
             //content = content.substring(0, content.lastIndexOf("]"));

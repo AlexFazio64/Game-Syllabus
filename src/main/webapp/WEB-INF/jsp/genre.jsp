@@ -6,6 +6,7 @@
           content="508493289721-mi2g5njrlan5oue6n1h64b2lroc28nu4.apps.googleusercontent.com">
     <title>${genre}</title>
     <link rel="stylesheet" href="../../css/genre.css">
+    <link rel="stylesheet" href="../../css/common.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -68,6 +69,7 @@
     </div>
     <div class="lista-giochi" id="list">
         <h1> Games list</h1>
+        <div class="loader place"></div>
         <div id="col0" class="column"></div>
         <div id="col1" class="column"></div>
         <div class="card" id="card">

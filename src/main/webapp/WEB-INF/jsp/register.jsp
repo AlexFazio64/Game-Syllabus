@@ -104,6 +104,7 @@
                         document.getElementById("stringPassword").setAttribute("class", "toHide");
                         document.getElementById("loginButtons").setAttribute("class", "toHide");
                         document.getElementById("oppure").setAttribute("class", "toHide");
+                        sessionStorage.setItem("googleLogin","yes");
                     }
 
 
