@@ -23,7 +23,7 @@
             type: "DELETE",
             crossOrigin: false,
             headers: {
-                "username": "alexfazio67"
+                "username": "${username}"
             },
             success: function (result) {
                 window.location.href = "http://localhost:8080" + result;
