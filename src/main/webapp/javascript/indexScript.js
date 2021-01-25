@@ -228,7 +228,7 @@ function createPlatformCard(result, id) {
 
     var link = document.createElement('a');
     link.className = "linkMod";
-    link.href = "http://localhost:8080/platform?id=" + result.id;
+    link.href = "http://localhost:8080/platform?name=" + result.name;
 
     if (result.name) {
         name.innerHTML = result.name;

@@ -77,6 +77,14 @@
             }
         });
     }
+
+    function filesize() {
+        const uploadField = $("#file")[0];
+        if (uploadField.files[0].size > (8 * 1024 * 1024)) {
+            alert("File is too big! Use an image file smaller than 8MB!");
+            uploadField.value = "";
+        }
+    }
 </script>
 <main>
 	<div class="background"></div>
@@ -165,7 +173,7 @@
 						       title="Use only numbers and letters">
 					</c:if>
 					<p>Picture</p>
-					<input type="file" name="image" accept="image/*">
+					<input type="file" name="image" id="file" accept="image/*" onchange="filesize()">
 					<p class="delete-btn" onclick="deleteAccount()">Delete your account</p>
 					<input type="submit" value="Confirm">
 				</div>
