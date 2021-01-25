@@ -25,16 +25,6 @@ $("#nav-placeholder").load("navbar.html");
         content: "508493289721-mi2g5njrlan5oue6n1h64b2lroc28nu4.apps.googleusercontent.com"
     });
 
-    //regola la visualizzazione dell' account nella navbar
-    /*function showAccountInfo() {
-        if (${usernameLogged}) {
-			$(".register").remove();
-			$(".login").remove();
-		} else {
-			$("a.item").remove();
-		}
-	}*/
-
     async function requestSuggestion(data) {
         return $.ajax({
             url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",

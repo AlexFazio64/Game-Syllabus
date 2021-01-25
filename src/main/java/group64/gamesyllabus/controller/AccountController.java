@@ -49,6 +49,8 @@ public class AccountController {
 		
 		if ( profilo.getImmagine() != null ) {
 			model.addAttribute("immagine", "data:image/*;base64," + Base64Utils.encodeToString(profilo.getImmagine()));
+		} else {
+			model.addAttribute("style", (int) ( Math.random() * 100 ) % 5 + 1);
 		}
 		
 		return "profile";
