@@ -21,7 +21,7 @@ function loadGameBasicInfo(game) {
             else {
                 var summaryLabel = document.getElementById('summary-section');
                 summaryLabel.parentNode.removeChild(summaryLabel);
-                var summary=document.getElementById("summary");
+                var summary = document.getElementById("summary");
                 summary.parentNode.removeChild(summary);
             }
             if (!(("platforms" in txt) == 0)) {
@@ -209,7 +209,7 @@ function sendReview(review, email, game) {
     else if (document.getElementById('reviewText').value == 0)
         swal("Error!", "You must write a review before confirm the operation", "warning");
     else {
-        window.location.href = "http://localhost:8080/Review?id=" + game + "&rating=" + document.getElementById('quantity').value + "&text=" + document.getElementById('reviewText').value;
+        window.location.href = "http://localhost:8080/Review?id=" + game + "&rating=" + parseInt(document.getElementById('quantity').value) + "&text=" + document.getElementById('reviewText').value;
     }
 }
 

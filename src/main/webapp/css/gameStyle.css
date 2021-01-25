@@ -12,20 +12,6 @@
     width: fit-content;
 }
 
-.color-purple {
-    background-color: #9966cc;
-    border-color: #9966cc;
-}
-
-.color-purple:hover {
-    background-color: rebeccapurple;
-    border-color: rebeccapurple;
-}
-
-.color-purple:focus-visible {
-    background-color: rebeccapurple;
-    border-color: rebeccapurple;
-}
 
 .arguments {
     text-decoration: underline;
@@ -56,7 +42,7 @@
     font-size: 22px;
 }
 
-ul li {
+#all-info ul li {
     list-style-type: none;
 }
 
@@ -92,13 +78,6 @@ footer {
     font-weight: 500;
 }
 
-footer .nav {
-    width: 100%;
-    height: auto;
-    position: -webkit-sticky; /* solo per safari */
-    position: sticky;
-    top: 0;
-}
 
 .sticky-top {
     width: 100%;
@@ -117,6 +96,7 @@ footer .nav {
 
 #list:hover {
     background-color: #7b7bff;
+    cursor: pointer;
 }
 
 button.add-remove {
@@ -141,6 +121,7 @@ button.add-remove {
 button.add-remove:hover {
     background-color: red;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 button.add-remove:hover:after {
@@ -179,8 +160,8 @@ button.sendButton {
     padding-right: 2px;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 640px;
+    height: 385px;
 }
 
 #screenshots {
@@ -308,13 +289,109 @@ input#quantity {
     outline: none;
 }
 
-@media (min-device-width : 320px) and (max-device-width : 640px) {
-        .other-info{
-        width: fit-content;
-        margin: 1vh 2vh 10px 2vw;
+@media (min-device-width: 280px) and (max-device-width: 640px) {
+    body {
+        font-size: 18px;
+    }
+
+    #all-info {
+        display: block;
+        padding: 0 11px;
+        /* max-width: -webkit-fill-available; */
+        max-width: 100vw;
+        overflow-wrap: break-word;
+    }
+
+    #cover {
+        display: none;
+    }
+
+    #videos {
+        display: none;
+    }
+
+    #videos-section {
+        display: none;
+    }
+
+
+    section.other-info {
+        display: block;
+        margin: 0;
+    }
+
+    #summary {
+        text-align: justify;
+    }
+
+    .arguments {
+        text-align: center;
+    }
+
+    .Myreview {
+        max-width: 100vw;
+
+    }
+
+    div.review {
+        max-width: 100vw;
+
+    }
+
+    #screenshots {
+        width: 100vw;
+    }
+
+    #screenshots .screenshot-image {
+
+        height: 30vh;
+        width: auto;
+    }
+
+    input#quantity {
+        height: 4vh;
     }
 }
 
-@media (min-device-width : 768px) and (max-device-width : 1024px) {
-    /* Tablet */
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    #all-info {
+        padding: 0 11px;
+        max-width: 100vw;
+        overflow-wrap: break-word;
+    }
+
+    section.other-info {
+        display: block;
+        margin: 0;
+    }
+
+    #summary {
+        text-align: justify;
+    }
+
+    .arguments {
+        text-align: center;
+    }
+
+    .Myreview {
+        max-width: 100vw;
+    }
+
+    div.review {
+        max-width: 100vw;
+    }
+
+    #screenshots {
+        width: 100vw;
+    }
+
+    #screenshots .screenshot-image {
+        height: 30vh;
+        width: auto;
+    }
+
+    input#quantity {
+        height: 4vh;
+    }
 }
