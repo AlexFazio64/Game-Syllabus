@@ -152,7 +152,7 @@ function searchGame(stringa) {
                 var date = document.createElement('li');
                 var platform = document.createElement('li');
                 var name = document.createElement('li');
-                name.className = title_game;
+                name.className = "title_game";
 
                 if (!('name' in newresult[i]) == 0) {
                     name.innerHTML = newresult[i].name;
