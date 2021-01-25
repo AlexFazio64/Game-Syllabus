@@ -24,6 +24,7 @@ public class ListaGiochiDAOPG implements ListaGiochiDAO {
             st.setString(1, idUtente);
             st.setString(2, idGioco);
             int value = st.executeUpdate();
+            System.out.println(value);
             connection.close();
             return value != 0;
         } catch (SQLException e) {

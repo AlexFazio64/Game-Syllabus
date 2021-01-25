@@ -9,7 +9,7 @@
     margin:auto;
     line-height: 1.5;
     /*background-color: #121212;*/
-    background-image: url("../images/aboutPage/lovaion/stars.gif");
+    background-image: url("../images/aboutPage/lovaion/snow.gif");
 }
 
 .profilePic{
@@ -48,6 +48,7 @@
     width: 200px;
     margin: auto;
     transition: all 0.5s ease;
+    cursor: pointer;
 }
 
 .cardInside:hover{
@@ -69,7 +70,6 @@
     padding: 20px 0;
     border-radius: 8px;
     background: #181818;
-    cursor: pointer;
 }
 
 .sourceCard{

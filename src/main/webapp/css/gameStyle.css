@@ -41,22 +41,6 @@
 
 
 #all-info {
-    /*grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
-    background-color: #DDF;
-    padding: 13px;
-    border-radius: 0 0 25px 25px;
-    margin: auto;
-    justify-content: center;
-    display: flex;
-    width: fit-content;
-    top: 50%;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -85%);
-    box-shadow: 12px 11px 20px 11px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;*/
-
     grid-template-columns: auto auto auto auto;
     grid-gap: 10px;
     background-color: #DDF;
@@ -100,10 +84,6 @@ ul li {
     height: auto;
 }
 
-.bkgcolor > * {
-    filter: blur(1.2px);
-}
-
 .bkgcolor {
     height: 60%;
     background-position: center;
@@ -125,16 +105,48 @@ footer .nav {
     top: 0;
 }
 
-/*.content-responsive .main {*/
-/*    align-items: center;*/
-/*    width: 220px;*/
-/*    height: 300px;*/
-/*    border: 1px solid black;*/
-/*    display: flex;*/
-/*}*/
-
 .sticky-top {
     width: 100%;
+}
+
+#list{
+    border-radius: 7px;
+    background-color: #acacff;
+    transition: all 0.3s ease;
+    height: fit-content;
+    float: left;
+    padding: 0.5vh;
+    width: 100%;
+}
+#list:hover {
+    background-color: #7b7bff;
+}
+label{
+    border-radius: 7px;
+    background-color: #0b8f0b;
+    height: fit-content;
+    float: left;
+    width: 100%;
+    text-align: center;
+}
+button.sendButton {
+    border-radius: 7px;
+    background-color: #acacff;
+    transition: all 0.3s ease;
+    height: 2vh;
+    margin-left: 10px;
+    border-radius: 7px;
+    height: 50px;
+    width: 50px;
+
+}
+.sendButton:hover{
+    background-color: #7b7bff;
+}
+
+img {
+    height: 4vh;
+    width: 2vw;
 }
 
 #videos {
@@ -269,20 +281,17 @@ section.other-info {
 }
 
 section {
+    padding-bottom: 2px;
     display: flex;
 }
 
-button {
-    margin-left: 10px;
-    border-radius: 7px;
-    background-color: #7b7bff;
-    transition: all 0.3s ease;
-    height: 50px;
-    width: 50px;
+
+
+
+textarea#reviewText {
+    outline: none;
 }
 
-button:hover {
-    background-color: #acacff;
+input#quantity {
+    outline: none;
 }
-
-

@@ -64,7 +64,7 @@
 <div class="divisor">
     <div class="form">
         <div class="container">
-            <div class="syllabus" onclick="window.location.href='http://localhost:8080/index'" title="Go back to home-page">
+            <div class="syllabus" onclick="window.location.href='http://localhost:8080/'" title="Go back to home-page">
             </div>
             <form method="post" action="http://localhost:8080/register" id="formReg">
                 <div class="form-group">
@@ -80,6 +80,7 @@
                     <label for="pwd" id="stringPassword">Password:</label>
                     <input type="password" required minlength="5" class="form-control" placeholder="Enter a password.." id="pwd" name="password">
                 </div>
+                <input type="hidden" name="googleLogin" id="google">
                 <div class="divBottone">
                     <button type="submit" class="bottone color-purple" id="submitButton">Submit</button>
                 </div>
@@ -104,7 +105,7 @@
                         document.getElementById("stringPassword").setAttribute("class", "toHide");
                         document.getElementById("loginButtons").setAttribute("class", "toHide");
                         document.getElementById("oppure").setAttribute("class", "toHide");
-                        sessionStorage.setItem("googleLogin","yes");
+                        document.getElementById("google").setAttribute("value", "yes")
                     }
 
 

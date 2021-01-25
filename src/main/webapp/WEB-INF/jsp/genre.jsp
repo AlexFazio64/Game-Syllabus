@@ -11,7 +11,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="../../javascript/genreScript.js"></script>
-    <script src="../../javascript/utility.js"></script>
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">

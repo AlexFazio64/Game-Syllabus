@@ -42,7 +42,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
             connection = DBManager.getDataSource().getConnection();
             Recensione recensione;
             PreparedStatement statement;
-            String query = "select * from recensione where scrittada = ?";
+            String query = "select * from recensione where scrittada = ? ORDER BY Id DESC ";
             statement = connection.prepareStatement(query);
             statement.setString(1, email);
             ResultSet result = statement.executeQuery();
@@ -69,7 +69,7 @@ public class RecensioneDAOPG implements RecensioneDAO {
         try {
             connection = DBManager.getDataSource().getConnection();
             PreparedStatement statement;
-            String query = "select * from recensione where scrittada = ? and idgioco=?";
+            String query = "select * from recensione where scrittada = ? and idgioco=? ";
             statement = connection.prepareStatement(query);
             statement.setString(1, email);
             statement.setString(2, idGame);
@@ -146,7 +146,6 @@ public class RecensioneDAOPG implements RecensioneDAO {
         return recensioni;
     }
 
-    /*Funziona ma da vedere con gli altri*/
     @Override
     public boolean update(Recensione recensione) {
         Connection connection = null;
@@ -157,24 +156,15 @@ public class RecensioneDAOPG implements RecensioneDAO {
             st.setInt(1, recensione.getValutazione());
             st.setString(2, recensione.getTesto());
             st.setInt(3, recensione.getId());
-
+            connection.close();
             st.executeUpdate();
             return true;
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                return false;
-            } catch (SQLException e) {
-                throw new RuntimeException(e.getMessage());
-            }
-
+            return false;
         }
-
     }
 
-    //Funziona
+
     @Override
     public boolean delete(Recensione recensione) {
         Connection connection = null;
@@ -184,16 +174,10 @@ public class RecensioneDAOPG implements RecensioneDAO {
             PreparedStatement st = connection.prepareStatement(delete);
             st.setInt(1, recensione.getId());
             st.executeUpdate();
+            connection.close();
             return true;
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
-        } finally {
-            try {
-                connection.close();
-                return false;
-            } catch (SQLException e) {
-                throw new RuntimeException(e.getMessage());
-            }
+            return false;
         }
     }
 }

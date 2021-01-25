@@ -15,9 +15,13 @@ public class LoginController {
 	
 	//Login post request
 	@PostMapping("/doLogin")
-	public String login(HttpSession session, @RequestParam String email, @RequestParam String password) {
+	public String login(HttpSession session, @RequestParam String email, @RequestParam String password, @RequestParam String googleLogin) {
 		if ( loginOk(email, password) ) {
 			ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
+			//SE FAI IL LOGIN CON GOOGLE VUOL DIRE CHE HA YES COME PARAMETRO
+			if (googleLogin.equals("yes")) {
+				session.setAttribute("googleLogin", googleLogin);
+			}
 			session.setAttribute("usernameLogged", profiloDAOPG.findByPrimaryKey(email).getUsername());
 			session.setAttribute("emailLogged", email);
 		} else {
@@ -42,8 +46,9 @@ public class LoginController {
 	//Logout from session
 	@GetMapping("doLogout")
 	public String logout(HttpSession session) {
-		session.invalidate();
-		
+		if (session.getAttribute("emailLogged") != null) {
+			session.invalidate();
+		}
 		return "redirect:/";
 	}
 	
