@@ -186,14 +186,18 @@
 					<input type="text" name="username" value="${username}" minlength="5"
 					       pattern="[a-zA-Z0-9-]+"
 					       title="Use only numbers and letters">
-					<p>Old Password</p>
-					<input type="password" name="password" required minlength="5"
-					       pattern="[a-zA-Z0-9-]+"
-					       title="Use only numbers and letters">
+					<c:if test="${password != null}">
+						<input type="hidden" name="password" value="-1">
+						<input type="hidden" name="new_password" value="-1">
+					</c:if>
+					<c:if test="${password == null}">
+						<p>Old Password</p>
+						<input type="password" name="password" required minlength="5" pattern="[a-zA-Z0-9-]+"
+						       title="Use only numbers and letters">
 					<p>New Password</p>
-					<input type="password" name="new_password" minlength="5"
-					       pattern="[a-zA-Z0-9-]+"
+					<input type="password" name="new_password" minlength="5" pattern="[a-zA-Z0-9-]+"
 					       title="Use only numbers and letters">
+					</c:if>
 					<p>Picture</p>
 					<input type="file" name="image" accept="image/*">
 					<p class="delete-btn" onclick="deleteAccount()">Delete your account</p>
