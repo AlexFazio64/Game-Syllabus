@@ -23,7 +23,14 @@
         $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
-
+<script>
+    function remove(){
+        window.location.href = "http://localhost:8080/removeFrom?id=${game}";
+    }
+</script>
+<script defer>
+    console.log(${added}" - "${intoList});
+</script>
 <script>
     function textAreaAdjust(element) {
         element.style.height = "1px";
@@ -45,6 +52,18 @@
         <ul id="basicInformation">
             <li><span id="game-name" class="gameName"> </span>
             </li>
+            <%--<c:if test="${emailLogged==null}">
+                <script defer>
+                var button = document.getElementById('delete');
+                button.parentNode.removeChild(button);
+                </script>
+            </c:if>--%>
+            <%--<c:if test="${intoList==null}">
+                <script defer>
+                    var button = document.getElementById('delete');
+                    button.parentNode.removeChild(button);
+                </script>
+            </c:if>--%>
             <c:if test="${added!=null}">
                 <script>
                     swal("Success!", "Game added to your list", "success");
@@ -52,14 +71,15 @@
             </c:if>
             <c:if test="${intoList!=null}">
                 <script defer>
-                    var listIcon = document.getElementById('list');
-                    listIcon.parentNode.removeChild(listIcon);
-                    var labelContainer = document.createElement('li');
-                    var label = document.createElement('label');
-                    label.innerHTML = "&#10004; Added to the list";
-                    labelContainer.append(label);
+                    var listItem = document.getElementById('list');
+                    listItem.parentNode.removeChild(listItem);
+                    var addRemoveContainer = document.createElement('li');
+                    var addRemove = document.createElement('button');
+                    addRemove.className="add-remove"
+                    addRemove.addEventListener("click",remove);
+                    addRemoveContainer.append(addRemove);
                     var coverid = document.getElementById("cover");
-                    coverid.parentNode.append(labelContainer);
+                    coverid.parentNode.append(addRemoveContainer);
                 </script>
             </c:if>
 
@@ -146,6 +166,7 @@
 <script>
     loadGameRate("${averageRate}");
 </script>
+
 </body>
 
 </html>

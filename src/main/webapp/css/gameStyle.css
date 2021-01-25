@@ -52,7 +52,7 @@
     box-shadow: 12px 11px 20px 11px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     margin: auto;
-    filter: blur(0);
+
 }
 
 .info {
@@ -93,7 +93,6 @@ ul li {
 
 
 footer {
-    filter: blur(0);
     font-weight: 500;
 }
 
@@ -109,7 +108,7 @@ footer .nav {
     width: 100%;
 }
 
-#list{
+#list {
     border-radius: 7px;
     background-color: #acacff;
     transition: all 0.3s ease;
@@ -117,18 +116,42 @@ footer .nav {
     float: left;
     padding: 0.5vh;
     width: 100%;
+    font-size: 19px;
 }
+
 #list:hover {
     background-color: #7b7bff;
 }
-label{
+
+button.add-remove {
     border-radius: 7px;
-    background-color: #0b8f0b;
-    height: fit-content;
-    float: left;
     width: 100%;
     text-align: center;
+    margin-top: 3px;
+    height: 28px;
+    transition: all 0.3s ease;
+    font-size: 19px;
+    color: black;
 }
+
+button.add-remove:after {
+    content: '\2713 Added to your list';
+}
+
+button.add-remove {
+    background-color: #0b8f0b;
+}
+
+button.add-remove:hover {
+    background-color: red;
+    transition: all 0.3s ease;
+}
+
+button.add-remove:hover:after {
+    content: "Delete from your list";
+
+}
+
 button.sendButton {
     border-radius: 7px;
     background-color: #acacff;
@@ -140,7 +163,8 @@ button.sendButton {
     width: 50px;
 
 }
-.sendButton:hover{
+
+.sendButton:hover {
     background-color: #7b7bff;
 }
 
@@ -273,11 +297,10 @@ a.info:visited {
 
 section.other-info {
     display: grid;
-    margin: 40px 30px 10px 30px;
+    margin: 1vh 2vw 0 2vw;
     background-color: #DDF;
     border-radius: 25px 25px 25px 25px;
 
-    filter: blur(0);
 }
 
 section {
@@ -286,12 +309,21 @@ section {
 }
 
 
-
-
 textarea#reviewText {
     outline: none;
 }
 
 input#quantity {
     outline: none;
+}
+
+@media (min-device-width : 320px) and (max-device-width : 640px) {
+        .other-info{
+        width: fit-content;
+        margin: 1vh 2vh 10px 2vw;
+    }
+}
+
+@media (min-device-width : 768px) and (max-device-width : 1024px) {
+    /* Tablet */
 }
