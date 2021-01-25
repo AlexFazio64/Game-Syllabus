@@ -36,11 +36,12 @@ public class AccountController {
 			ids.deleteCharAt(ids.lastIndexOf(","));
 			model.addAttribute("ids", ids.toString());
 		}
+		
 		model.addAttribute("reviews", rec);
 		ProfiloDAOPG daopg = new ProfiloDAOPG();
 		Profilo profilo = daopg.findByUsername(username);
 		
-		model.addAttribute("password", profilo.getPassword());
+		model.addAttribute("password", session.getAttribute("googleLogin"));
 		model.addAttribute("username", profilo.getUsername());
 		
 		String descrizione = profilo.getDescrizione();
@@ -48,6 +49,8 @@ public class AccountController {
 		
 		if ( profilo.getImmagine() != null ) {
 			model.addAttribute("immagine", "data:image/*;base64," + Base64Utils.encodeToString(profilo.getImmagine()));
+		} else {
+			model.addAttribute("style", (int) ( Math.random() * 100 ) % 5 + 1);
 		}
 		
 		return "profile";
@@ -59,31 +62,35 @@ public class AccountController {
 			return "redirect:/";
 		}
 		
+		Profilo updated = new Profilo();
 		ProfiloDAOPG daopg = new ProfiloDAOPG();
-		if ( !password.equals("") ) {
-			if ( !BCrypt.checkpw(password, daopg.findByUsername(usr).getPassword()) ) {
-				//password is wrong
-				model.addAttribute("error", true);
-				model.addAttribute("error_message", "Invalid Credentials");
-				return "redirect:/account/" + usr;
-			} else {
-				if ( !new_password.equals("") ) {
-					//wants to change password
-					password = new_password;
+		
+		if ( session.getAttribute("googleLogin") == null ) {
+			if ( !password.equals("") ) {
+				if ( !BCrypt.checkpw(password, daopg.findByUsername(usr).getPassword()) ) {
+					//password is wrong
+					model.addAttribute("error", true);
+					model.addAttribute("error_message", "Invalid Credentials");
+					return "redirect:/account/" + usr;
+				} else {
+					if ( !new_password.equals("") ) {
+						//wants to change password
+						password = new_password;
+						updated.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
+					}
 				}
+			} else {
+				//no password to confirm
+				model.addAttribute("error", true);
+				model.addAttribute("error_message", "Please, insert your password to confirm");
+				return "redirect:/account/" + usr;
 			}
 		} else {
-			//no password to confirm
-			model.addAttribute("error", true);
-			model.addAttribute("error_message", "Please, insert your password to confirm");
-			return "redirect:/account/" + usr;
+			updated.setPassword(daopg.findByUsername(usr).getPassword());
 		}
 		
-		Profilo updated = new Profilo();
 		String email = session.getAttribute("emailLogged").toString();
-		
 		updated.setEmail(email);
-		updated.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
 		updated.setUsername(username);
 		updated.setDescrizione(descrizione);
 		

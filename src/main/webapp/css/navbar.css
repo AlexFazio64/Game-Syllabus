@@ -12,6 +12,12 @@
 	src: url(https://fonts.gstatic.com/s/materialicons/v70/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
 }
 
+:root {
+	--primary: #663399;
+	--secondary: #3B1162;
+	--ext-font: "Raleway";
+}
+
 .material-icons {
 	font-family: 'Material Icons', sans-serif;
 	font-weight: normal;
@@ -27,12 +33,6 @@
 	user-select: none;
 	-webkit-font-feature-settings: 'liga';
 	-webkit-font-smoothing: antialiased;
-}
-
-:root {
-	--primary: rebeccapurple;
-	--secondary: #3B1162;
-	--ext-font: "Raleway";
 }
 
 * {

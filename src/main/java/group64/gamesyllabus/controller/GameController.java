@@ -13,12 +13,21 @@ import java.util.ArrayList;
 
 @Controller
 public class GameController {
+    @GetMapping("/removeFrom")
+    public String removeFromList(@RequestParam String id, HttpSession session) {
+        if (session.getAttribute("emailLogged") != null) {
+            String email = session.getAttribute("emailLogged").toString();
+            new ListaGiochiDAOPG().delete(email, id);
+        }
+        return "redirect:/game?id=" + id;
+    }
+
     @GetMapping("/addTo")
     public String addToList(@RequestParam String id, HttpSession session) {
         if (session.getAttribute("emailLogged") != null) {
             String email = session.getAttribute("emailLogged").toString();
-            boolean save = new ListaGiochiDAOPG().save(email, id);
-            session.setAttribute("newInList",new String("new game"));
+            new ListaGiochiDAOPG().save(email, id);
+            session.setAttribute("newInList", new String("new game"));
         }
         return "redirect:/game?id=" + id;
     }
@@ -67,14 +76,16 @@ public class GameController {
                 if (games.get(i).getIdGioco().equals(id))
                     alreadyInList = true;
             }
+
             if (alreadyInList) {
-                model.addAttribute("intoList","OK");
+                model.addAttribute("intoList", "OK");
             }
-            if(session.getAttribute("newInList")!=null){
-                model.addAttribute("added","ok");
+            if (session.getAttribute("newInList") != null) {
+                model.addAttribute("added", "ok");
                 session.removeAttribute("newInList");
             }
         }
+        System.out.println(session.getAttribute("emailLogged"));
         return "game";
     }
 }

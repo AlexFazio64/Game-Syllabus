@@ -104,7 +104,7 @@ public class ListaGiochiDAOPG implements ListaGiochiDAO {
             connection.close();
             return value != 0;
         } catch (SQLException e) {
-            throw new RuntimeException(e.getMessage());
+            return false;
         }
     }
 }

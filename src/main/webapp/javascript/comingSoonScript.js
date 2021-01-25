@@ -10,7 +10,7 @@ function loadComingSoon(start) {
             "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
         },
         data: 'fields name,first_release_date ,platforms.name,cover.url,release_dates.human, status; limit 80   ; ' +
-            'where first_release_date > ' + today + ' & id >' + start + ';sort first_release_date asc;',
+            'where first_release_date > ' + today +';sort first_release_date asc;',
         dataType: "json",
         success: function (result) {
             console.log(result);

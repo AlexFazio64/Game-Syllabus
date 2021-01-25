@@ -36,7 +36,7 @@ function loadDevelopers(previous, start) {
                             if (!("logo" in dev[cont].company) == 0) {
                                 logo.src = "//images.igdb.com/igdb/image/upload/t_logo_med/" + dev[cont].company.logo.image_id + ".png";
                             } else {
-                                logo.src = "/images/devLogoNotFound.webp";
+                                logo.src = "../images/notFound.png";
                                 logo.height = 150;
                                 logo.width = 35;
                             }

@@ -23,6 +23,7 @@ label {
     margin: auto;
     text-decoration: none;
     color: black;
+    text-align: center;
 }
 
 * {
@@ -115,4 +116,32 @@ main#developers {
 
 footer {
     font-weight: 500;
+}
+
+@media (min-device-width: 280px) and (max-device-width: 767px) {
+    .card {
+        justify-self: center;
+        margin: auto;
+        display: grid;
+        /* height: 20vh; */
+        width: 100vw;
+    }
+    .comp-logo{
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+@media (min-device-width: 768px) and (max-device-width: 1024px) {
+    .card {
+        justify-self: center;
+        margin: auto;
+        display: grid;
+        /* height: 20vh; */
+        width: 100vw;
+    }
+    .comp-logo{
+        width: fit-content;
+        height: fit-content;
+    }
 }
