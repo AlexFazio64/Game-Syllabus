@@ -168,11 +168,6 @@ button.sendButton {
     background-color: #7b7bff;
 }
 
-img {
-    height: 4vh;
-    width: 2vw;
-}
-
 #videos {
     margin-top: 20px;
     display: flex;

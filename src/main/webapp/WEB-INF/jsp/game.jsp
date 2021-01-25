@@ -28,9 +28,6 @@
         window.location.href = "http://localhost:8080/removeFrom?id=${game}";
     }
 </script>
-<script defer>
-    console.log(${added}" - "${intoList});
-</script>
 <script>
     function textAreaAdjust(element) {
         element.style.height = "1px";
