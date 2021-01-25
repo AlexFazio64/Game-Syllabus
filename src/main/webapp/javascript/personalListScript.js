@@ -63,7 +63,7 @@ function populateList(stringa) {
         var placeholder = document.createElement('img');
         placeholder.className = "placeholder-list";
         placeholder.src = "../../images/error.png";
-        document.getElementById("list-panel").appendChild(placeholder);
+        // document.getElementById("list-panel").appendChild(placeholder);
     }
 
 }

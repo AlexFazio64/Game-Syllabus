@@ -1,206 +1,208 @@
-*{
-    margin:0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
 * {
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-body{
-    background-color: #e7e7e7;
+main {
+	font-family: Arial, sans-serif;
 }
 
-.container{
-    padding-top: 25px;
-    width: 75%;
-    margin:auto;
-    line-height: 1.5;
+body {
+	background-color: #e7e7e7;
 }
 
-.info-grid{
-    margin: auto;
-    background-color: white;
-    border-radius: 20px;
+.container {
+	padding-top: 25px;
+	width: 75%;
+	margin: auto;
+	line-height: 1.5;
+}
+
+.info-grid {
+	margin: auto;
+	background-color: white;
+	border-radius: 20px;
 }
 
 
-.lista-giochi{
-    margin: 50px auto auto;
-    background-color: white;
-    border-radius: 25px 25px 0px 0px;
+.lista-giochi {
+	margin: 50px auto auto;
+	background-color: white;
+	border-radius: 25px 25px 0px 0px;
 }
 
-.lista-giochi h1{
-    text-align: center;
-    border-width: 0 0 5px 0;
-    border-style: solid;
-    border-color: #9966cc;
+.lista-giochi h1 {
+	text-align: center;
+	border-width: 0 0 5px 0;
+	border-style: solid;
+	border-color: #9966cc;
 }
 
 
 .genere {
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
 }
 
-.genere span h1{
-    text-decoration: underline;
-    text-decoration-color: #9966cc;
+.genere span h1 {
+	text-decoration: underline;
+	text-decoration-color: #9966cc;
 }
 
-.genereInfo{
-    color: #9966cc;
-    font-weight: 600;
+.genereInfo {
+	color: #9966cc;
+	font-weight: 600;
 }
 
-.logoGenere{
-    width: 20%;
-    display: flex;
-    margin: auto;
+.logoGenere {
+	width: 20%;
+	display: flex;
+	margin: auto;
 }
 
-.cardGenere .containerino{
-    font-size: 45px;
-    font-weight: 600;
-    font-family: system-ui, sans-serif;
-    background: -webkit-linear-gradient(#3c4aff, #f454ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
+.cardGenere .containerino {
+	font-size: 45px;
+	font-weight: 600;
+	font-family: system-ui, sans-serif;
+	background: -webkit-linear-gradient(#3c4aff, #f454ff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-align: center;
 }
 
-.genreName{
-    font-size: 40px;
-    font-weight: 100;
-    text-align: center;
+.genreName {
+	font-size: 40px;
+	font-weight: 100;
+	text-align: center;
 }
 
-::-webkit-scrollbar{
-    width: 10px;
+::-webkit-scrollbar {
+	width: 10px;
 }
 
-::-webkit-scrollbar-track{
-    background-color: whitesmoke;
+::-webkit-scrollbar-track {
+	background-color: whitesmoke;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color: #9966cc;
-    border-radius: 15px;
+::-webkit-scrollbar-thumb {
+	background-color: #9966cc;
+	border-radius: 15px;
 }
 
-.elencoLista{
-    list-style-type: none;
-    font-size: 16px;
+.elencoLista {
+	list-style-type: none;
+	font-size: 16px;
 }
 
-.cardInside{
-    display: grid;
-    grid-template-columns: 1fr 4fr auto;
-    margin: 22px;
-    background: white;
-    align-items: center;
-    border-radius: 10px;
-    padding: 8px;
-    min-height: 130px;
-    transition: all 0.3s ease;
+.cardInside {
+	display: grid;
+	grid-template-columns: 1fr 4fr auto;
+	margin: 22px;
+	background: white;
+	align-items: center;
+	border-radius: 10px;
+	padding: 8px;
+	min-height: 130px;
+	transition: all 0.3s ease;
 }
 
 
-
-.cardInside:hover{
-    box-shadow: 5px 5px 3px 3px #888888;
-    transform: translateY(-20px);
+.cardInside:hover {
+	box-shadow: 5px 5px 3px 3px #888888;
+	transform: translateY(-20px);
 }
 
-.cardInside img{
-    border-radius: 5px;
+.cardInside img {
+	border-radius: 5px;
 }
 
-.cardInside > a:last-of-type{
-    border-color: #3B1162;
-    border-radius: 8px;
-    background-color: #9966cc;
-    text-decoration: none;
-    color: white;
-    padding: 8px 20px;
-    transition: all 0.3s ease;
-    font-weight: 600;
+.cardInside > a:last-of-type {
+	border-color: #3B1162;
+	border-radius: 8px;
+	background-color: #9966cc;
+	text-decoration: none;
+	color: white;
+	padding: 8px 20px;
+	transition: all 0.3s ease;
+	font-weight: 600;
 }
 
-.cardInside > a:hover{
-    background-color: #3B1162;
+.cardInside > a:hover {
+	background-color: #3B1162;
 }
 
 
 .column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-    background: aliceblue;
+	float: left;
+	width: 50%;
+	padding: 10px;
+	background: aliceblue;
 }
 
-.showMore{
-    border-color: #3B1162;
-    border-radius: 8px;
-    font-size: 70px;
-    background-color: #9966cc;
-    text-decoration: none;
-    color: white;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    margin: auto;
-    width: 60%;
-    justify-content: center;
-    display: none;
+.showMore {
+	border-color: #3B1162;
+	border-radius: 8px;
+	font-size: 70px;
+	background-color: #9966cc;
+	text-decoration: none;
+	color: white;
+	transition: all 0.3s ease;
+	font-weight: 600;
+	margin: auto;
+	width: 60%;
+	justify-content: center;
+	display: none;
 }
 
-.backTop{
-    font-size: 40px!important;
-    transition: all 0.3s ease;
-    display: inline-block;
-    position: sticky;
-    height: 10%;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
+.backTop {
+	font-size: 40px !important;
+	transition: all 0.3s ease;
+	display: inline-block;
+	position: sticky;
+	height: 10%;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
 }
 
-.material-icons{
-    color: #9966cc;
+#backTop {
+	color: #9966cc;
 }
-html{
-    scroll-behavior: smooth;
+
+html {
+	scroll-behavior: smooth;
 }
-.backTop:hover{
-    color: #3B1162;
-    cursor: pointer;
+
+.backTop:hover {
+	color: #3B1162;
+	cursor: pointer;
 }
-.showMore:hover{
-    background-color: #3B1162;
+
+.showMore:hover {
+	background-color: #3B1162;
 }
 
 footer {
-    font-family: Arial, sans-seris;
-    font-size: 20px;
-    background-color: #9966cc;
-    color: white;
-    text-align: center;
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	background-color: #9966cc;
+	color: white;
+	text-align: center;
 }
 
 .elencoLista li a {
-    text-decoration: none;
-    color: black;
-    transition: all 0.2s ease;
+	text-decoration: none;
+	color: black;
+	transition: all 0.2s ease;
 }
 
-.elencoLista li a:hover{
-    color: #9966cc;
+.elencoLista li a:hover {
+	color: #9966cc;
 }
 
-.place{
-    margin: auto;
+.place {
+	margin: auto;
 }

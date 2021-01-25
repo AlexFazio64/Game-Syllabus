@@ -20,6 +20,7 @@ body {
 .line{
     display: block;
     border-color: #9966cc;
+    background-color: #9966cc;
     border-width: 5px 5px 5px 5px;
     border-style: solid;
     border-radius: 10px;
@@ -134,6 +135,7 @@ a quelli contenuti in .nome-gioco*/
     border-color: #9966cc;
     border-width: 5px 5px 5px 5px;
     border-style: solid;
+    margin-bottom: 10px;
 }
 
 

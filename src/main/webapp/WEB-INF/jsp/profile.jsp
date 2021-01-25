@@ -8,6 +8,7 @@
 	<title>${username}</title>
 	<link rel="stylesheet" href="../../css/profile.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../../javascript/personalListScript.js"></script>
 </head>
 <body>
 <div id="nav-placeholder"></div>
@@ -184,9 +185,23 @@
 			</form>
 		</section>
 		<section class="list-panel">
-			<section class="game-list"></section>
+			<section id="game-list">
+				<c:if test="${showlist.size()>0}">
+					<script>
+                        var idGiochi = [];
+                        <c:forEach var="game" items="${showlist}">
+                        idGiochi.push(${game.getIdGioco()});
+                        </c:forEach>
+                        populateList(idGiochi);
+					</script>
+				</c:if>
+			</section>
 		</section>
 	</section>
 </main>
+<footer>
+	<p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
+	<p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
+</footer>
 </body>
 </html>
