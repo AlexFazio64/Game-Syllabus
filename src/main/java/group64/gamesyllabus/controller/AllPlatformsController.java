@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @org.springframework.stereotype.Controller
 
 
-public class PlatformsController {
+public class AllPlatformsController {
 
     @GetMapping("/platforms")
     public String genreChoose(@RequestParam String start, Model model) {
         model.addAttribute("start", start);
-        return "platforms";
+        return "allPlatforms";
     }
 }

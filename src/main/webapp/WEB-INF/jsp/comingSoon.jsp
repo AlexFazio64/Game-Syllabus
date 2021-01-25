@@ -38,9 +38,9 @@
 <div id="nav-placeholder">
 </div>
 <script>
-    $(function () {
-        $("#nav-placeholder").load("http://localhost:8080/getNavbar");
-    });
+	$(function () {
+		$("#nav-placeholder").load("http://localhost:8080/getNavbar");
+	});
 </script>
 
 
@@ -61,10 +61,12 @@
 		</div>
 	</div>
 </main>
-<footer>
-<p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
-<p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
-</footer>
+	<footer>
+		<p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
+		<p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
+	</footer>
+
+
 <script src="../../javascript/Vibrant.min.js"></script>
 <script defer type="text/javascript">
     loadComingSoon("${start}");
