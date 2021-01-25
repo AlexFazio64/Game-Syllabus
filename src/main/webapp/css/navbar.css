@@ -1,3 +1,40 @@
+@font-face {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/Raleway-Regular.ttf");
+}
+
+@font-face {
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://fonts.gstatic.com/s/materialicons/v70/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+:root {
+	--primary: #663399;
+	--secondary: #3B1162;
+	--ext-font: "Raleway";
+}
+
+.material-icons {
+	font-family: 'Material Icons', sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	user-select: none;
+	-webkit-font-feature-settings: 'liga';
+	-webkit-font-smoothing: antialiased;
+}
+
 * {
 	margin: 0;
 	padding: 0;
