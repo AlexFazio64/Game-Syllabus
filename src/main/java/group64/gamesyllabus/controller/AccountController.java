@@ -82,8 +82,8 @@ public class AccountController {
 					if ( !new_password.equals("") ) {
 						//wants to change password
 						password = new_password;
-						updated.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
 					}
+					updated.setPassword(BCrypt.hashpw(password, BCrypt.gensalt(12)));
 				}
 			} else {
 				//no password to confirm
@@ -116,7 +116,7 @@ public class AccountController {
 	
 	@DeleteMapping("/account/{username}/delete")
 	@ResponseBody
-	public String deleteAccount(HttpSession session, @RequestHeader String username) {
+	public String deleteAccount(HttpSession session, @PathVariable("username") String username) {
 		if ( isNotLogged(username, session) ) {
 			return "/";
 		}
@@ -157,13 +157,13 @@ public class AccountController {
 	public String deleteItem(HttpSession session, Model model, @RequestParam String idGame) {
 		//fixa il login
 		/*
-		*
-		*
-		*
-		*
-		*
-		*
-		* */
+		 *
+		 *
+		 *
+		 *
+		 *
+		 *
+		 * */
 		
 		ListaGiochiDAOPG listaGiochiDAOPG = new ListaGiochiDAOPG();
 		boolean state = listaGiochiDAOPG.delete(session.getAttribute("emailLogged").toString(), idGame);
