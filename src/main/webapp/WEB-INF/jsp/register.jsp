@@ -11,7 +11,6 @@
 
     <title>Sign up</title>
     <link rel="stylesheet" href="../../css/registerStyle.css">
-    <link rel="stylesheet" href="../../css/indexStyle.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>

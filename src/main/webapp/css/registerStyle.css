@@ -2,7 +2,6 @@
 	font-family: Arial, sans-serif;
 }
 
-
 .form-group, .form-control{
 	font-family: Arial,sans-serif;
 	font-size: 20px;
@@ -24,6 +23,7 @@
 	color: white;
 	border-radius: 8px;
 	transition: all 0.3s ease;
+	cursor: pointer;
 }
 
 .bottone:hover{
