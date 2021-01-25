@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ComingSoonController {
 
     @GetMapping("/comingSoon")
-    public String loadGames(@RequestParam String start, Model model) {
-        model.addAttribute("start", start);
+    public String loadGames() {
         return "comingSoon";
     }
 }
