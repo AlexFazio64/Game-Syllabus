@@ -9,7 +9,7 @@ function showList() {
 function showGrid() {
     $('.game_info').css('display', 'none');
     $('.game_result').css('display', 'contents');
-    if(document.getElementById('research_box_id').offsetHeight < 20);
+    if(document.getElementById('research_box_id').offsetHeight < 20)
         $('.line').css('display','none');
     document.getElementById('research_box_id').className = "research_box_grid";
 }
