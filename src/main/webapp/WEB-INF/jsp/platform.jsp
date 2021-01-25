@@ -46,8 +46,7 @@
             </div>
 
             <div class="other-two">
-                <h2>OFFICIAL WEBSITE:</h2>
-                <a id="website"></a>
+                <h2 id="website">OFFICIAL WEBSITE:<br></h2>
             </div>
 
             <div class="other-three">

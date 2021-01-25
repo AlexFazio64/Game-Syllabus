@@ -2,12 +2,15 @@
 function showList() {
     $('.game_info').css('display', 'block');
     $('.game_result').css('display', 'grid');
+    $('.line').css('display','block');
     document.getElementById('research_box_id').className = "research_box_list";
 }
 
 function showGrid() {
     $('.game_info').css('display', 'none');
     $('.game_result').css('display', 'contents');
+    if(document.getElementById('research_box_id').offsetHeight < 20);
+        $('.line').css('display','none');
     document.getElementById('research_box_id').className = "research_box_grid";
 }
 

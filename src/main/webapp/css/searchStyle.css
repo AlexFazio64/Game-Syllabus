@@ -17,6 +17,15 @@ body {
     line-height: 1.5;
 }
 
+.line{
+    display: block;
+    border-color: #9966cc;
+    border-width: 5px 5px 5px 5px;
+    border-style: solid;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
 .research_box_list .game_result {
     display: grid;
     grid-template-columns: 1fr 4fr auto;

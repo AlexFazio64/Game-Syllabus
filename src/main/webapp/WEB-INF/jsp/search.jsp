@@ -29,9 +29,8 @@
             <a href="#" onclick="showGrid()">Grid</a>
         </div>
     </section>
+    <hr class="line">
     <div class="research_box_list" id="research_box_id"></div>
-
-    <button onclick="topFunction()" id="top_button" title="Go to top">Top</button>
 </main>
 
 </body>

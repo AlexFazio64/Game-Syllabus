@@ -41,9 +41,7 @@ body{
 }
 
 .info-uno, .info-due{
-
     text-align: center;
-
 }
 
 
@@ -67,6 +65,19 @@ body{
     grid-column: 2;
     grid-row: 2;
 }
+
+#website .material-icons{
+    background-color: #9966cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 40px;
+}
+
+#website .material-icons:hover{
+    background-color: #801dc4;
+}
+
 
 
 .lista-giochi{

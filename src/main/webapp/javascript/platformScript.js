@@ -88,7 +88,8 @@ async function searchPlatform(platform) {
 
                     /*Inserimento Sito (comune)*/
                     if (result[0].websites != undefined) {
-                        link.innerText = "Official Website";
+                        link.setAttribute("class", "material-icons");
+                        link.innerHTML = "language";
                         link.href = result[0].websites[0].url;
                     } else {
                         document.getElementById("website").innerText = ("Website not available");
@@ -102,7 +103,8 @@ async function searchPlatform(platform) {
             document.getElementById("website").appendChild(link);
 
 
-            searchGame(result[0].name);
+            if(result[0].name != undefined)
+                searchGame(result[0].name);
 
         },
         error: function (xhr, status, error) {
@@ -150,7 +152,7 @@ function searchGame(stringa) {
                 var date = document.createElement('li');
                 var platform = document.createElement('li');
                 var name = document.createElement('li');
-                name.className = "title_game";
+                name.className = title_game;
 
                 if (!('name' in newresult[i]) == 0) {
                     name.innerHTML = newresult[i].name;

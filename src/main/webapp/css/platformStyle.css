@@ -83,6 +83,25 @@ body{
     margin-right: 25px;
 }
 
+.other-info p{
+    padding-bottom: 25px;
+}
+
+#website .material-icons{
+    background-color: #9966cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 40px;
+}
+
+#website .material-icons:hover{
+    background-color: #801dc4;
+}
+
+
+
+
 .lista-giochi{
     margin: 50px auto auto;
     background-color: white;

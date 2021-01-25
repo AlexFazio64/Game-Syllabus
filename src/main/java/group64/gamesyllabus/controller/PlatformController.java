@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class developerController {
+public class PlatformController {
+    @GetMapping("/platform")
+    public String loadPlatform(@RequestParam String name, Model model){
+        model.addAttribute("platform", name);
 
-    @GetMapping("/developer")
-    public String loadDeveloper(@RequestParam String name, Model model){
-            model.addAttribute("developer", name);
-
-        return "developer";
+        return "platform";
     }
-
 }

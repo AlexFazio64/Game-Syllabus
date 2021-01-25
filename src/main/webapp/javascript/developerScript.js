@@ -9,7 +9,7 @@ async function searchInfo(developer) {
             "Authorization": "Bearer vnshkav90zd6ngdjrjnw3zsiqa3kml"
         },
 
-        data: 'fields id, company.name, company.logo.image_id, company.websites.url, company.country, company.start_date, company.developed; limit 1; where developer=true & company.name= "' + developer + '";',
+        data: 'fields id, company.name, company.logo.image_id, company.websites.url, company.country, company.start_date, company.developed, game; limit 1; where developer=true & company.name= "' + developer + '";',
         dataType: "json",
         success: async function (result) {
             document.getElementById("name").innerHTML = result[0].company.name;
@@ -39,7 +39,9 @@ async function searchInfo(developer) {
                 document.getElementById("website").innerText = ("Website not available");
             } else {
                 var link = document.createElement('a');
-                link.innerText = "Official Website";
+                link.setAttribute("class", "material-icons");
+                link.innerHTML = "language";
+
                 link.href = result[0].company.websites[0].url;
                 document.getElementById("website").appendChild(link);
             }
@@ -51,7 +53,13 @@ async function searchInfo(developer) {
                 document.getElementById("contryCode").innerText = await searchCountry(result[0].company.country);
             }
 
+
+
+            if(result[0].company.developed != null)
             searchGame(JSON.stringify(result[0].company.developed).replace(/[\[\]]/g, ""));
+
+            if(result[0].game != null)
+            searchGame(result[0].game);
         },
         error: function (xhr, status, error) {
             alert(status);
