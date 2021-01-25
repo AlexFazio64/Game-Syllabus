@@ -55,10 +55,11 @@ async function searchInfo(developer) {
 
 
 
-            if(result[0].company.developed != null)
-            searchGame(JSON.stringify(result[0].company.developed).replace(/[\[\]]/g, ""));
+            if(result[0].company.developed != null){
+                searchGame(JSON.stringify(result[0].company.developed).replace(/[\[\]]/g, ""));
+            }
 
-            if(result[0].game != null)
+            if(result[0].game != null && result[0].company.developed == null)
             searchGame(result[0].game);
         },
         error: function (xhr, status, error) {
