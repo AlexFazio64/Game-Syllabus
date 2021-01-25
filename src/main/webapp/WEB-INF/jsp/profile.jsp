@@ -36,28 +36,24 @@
     }
 
     async function fetchGamesAndUpdate() {
-        setTimeout(request, 1000);
-
-        function request() {
-            $.ajax({
-                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
-                type: "POST",
-                crossDomain: true,
-                dataType: "json",
-                headers: {
-                    "Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
-                    "Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
-                },
-                data: 'f cover.image_id, name; w id=(${ids}); limit 500;',
-                success: function (result) {
-                    for (const res of result) {
-                        if (res.cover)
-                            $("#" + res.id + " > div.game-img > img")[0].src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + res.cover.image_id + ".jpg";
-                        $("#" + res.id + " > div.rev-info > h2")[0].innerText = res.name;
-                    }
+        $.ajax({
+            url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
+            type: "POST",
+            crossDomain: true,
+            dataType: "json",
+            headers: {
+                "Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
+                "Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
+            },
+            data: 'f cover.image_id, name; w id=(${ids}); limit 500;',
+            success: function (result) {
+                for (const res of result) {
+                    if (res.cover)
+                        $("#" + res.id + " > div.game-img > img")[0].src = "https://images.igdb.com/igdb/image/upload/t_cover_big/" + res.cover.image_id + ".jpg";
+                    $("#" + res.id + " > div.rev-info > h2")[0].innerText = res.name;
                 }
-            });
-        }
+            }
+        });
     }
 
     function deleteAccount() {
@@ -81,54 +77,18 @@
             }
         });
     }
-
-    function removeGame(game) {
-        $('#' + game).remove();
-    }
-
-    function populate(num) {
-        for (let x = 0; x < num; x++) {
-            var d = $("<div>").attr({"class": "game", "id": x});
-            var p = $("<img>").attr("src", "");
-            var n = $("<p>").html("Very LOOOOOOOOOOOOOOOONG game name [" + x + "]");
-            var i = $("<i>").attr("class", "material-icons").html("close");
-            i.attr("onclick", "removeGame(" + x + ")");
-            d.append(p);
-            d.append(n);
-            d.append(i);
-            $(".game-list").append(d);
-        }
-    }
 </script>
 <main>
-	<div class="background">
-		<script defer>
-            $.ajax({
-                url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
-                type: "POST",
-                crossDomain: true,
-                dataType: "json",
-                headers: {
-                    "Client-ID": "eof600pvnu4zmfzrgf1mmmgwhugt72",
-                    "Authorization": "Bearer dwg48lh6ge8576eju90dh266jbp40n"
-                },
-                data: 'f artworks.image_id; w total_rating >=85 & artworks.image_id != null & artworks.width >= 720 & id <=' + Math.round(Math.random() * 100000) + '; limit 20;',
-                success: function (result) {
-                    var art = Math.trunc(Math.random() * 20) % result.length;
-                    var ch = Math.trunc(Math.random() * 20) % result[art].artworks.length;
-                    $(".background").first().css("background", 'url("https://images.igdb.com/igdb/image/upload/t_1080p/' + result[art].artworks[ch].image_id + '.jpg") no-repeat no-repeat 0 0 / cover');
-
-                    <c:if test="${reviews!=null}">
-                    fetchGamesAndUpdate();
-                    </c:if>
-                }
-            });
-		</script>
-	</div>
+	<div class="background"></div>
 	<section>
 		<section class="account-options">
 			<div>
-				<img src="${immagine}" alt="avatar" class="avatar-img">
+				<c:if test="${immagine == null}">
+					<img src="http://localhost:8080/images/avatars/style${style}.png" alt="avatar" class="avatar-img">
+				</c:if>
+				<c:if test="${immagine != null}">
+					<img src="${immagine}" alt="avatar" class="avatar-img">
+				</c:if>
 				<p class="usrnm">${username}</p>
 			</div>
 			<div class="btn">
@@ -142,9 +102,16 @@
 				<h3>About</h3>
 				<p class="description">${descrizione}</p>
 			</c:if>
-			
-			<c:if test="${reviews!=null}">
-				<section class="reviews">
+			<section class="reviews">
+				<c:if test="${reviews.size()==0}">
+					<div class="review">
+						<span class="no-reviews">You haven't reviewed any game</span>
+					</div>
+				</c:if>
+				<c:if test="${reviews.size()>0}">
+					<script defer>
+                        fetchGamesAndUpdate()
+					</script>
 					<c:forEach var="rev" items="${reviews}">
 						<div class="review" id="${rev.getIdGioco()}">
 							<div class="game-img">
@@ -173,10 +140,9 @@
 								</form>
 							</div>
 						</div>
-					
 					</c:forEach>
-				</section>
-			</c:if>
+				</c:if>
+			</section>
 		</section>
 		<section class="edit-about-panel">
 			<form method="post" action="http://localhost:8080/account/${username}/edit" class="info-edit-panel"
@@ -186,14 +152,18 @@
 					<input type="text" name="username" value="${username}" minlength="5"
 					       pattern="[a-zA-Z0-9-]+"
 					       title="Use only numbers and letters">
-					<p>Old Password</p>
-					<input type="password" name="password" required minlength="5"
-					       pattern="[a-zA-Z0-9-]+"
-					       title="Use only numbers and letters">
-					<p>New Password</p>
-					<input type="password" name="new_password" minlength="5"
-					       pattern="[a-zA-Z0-9-]+"
-					       title="Use only numbers and letters">
+					<c:if test="${password != null}">
+						<input type="hidden" name="password" value="-1">
+						<input type="hidden" name="new_password" value="-1">
+					</c:if>
+					<c:if test="${password == null}">
+						<p>Old Password</p>
+						<input type="password" name="password" required minlength="5" pattern="[a-zA-Z0-9-]+"
+						       title="Use only numbers and letters">
+						<p>New Password</p>
+						<input type="password" name="new_password" minlength="5" pattern="[a-zA-Z0-9-]+"
+						       title="Use only numbers and letters">
+					</c:if>
 					<p>Picture</p>
 					<input type="file" name="image" accept="image/*">
 					<p class="delete-btn" onclick="deleteAccount()">Delete your account</p>
@@ -207,9 +177,6 @@
 		</section>
 		<section class="list-panel">
 			<section class="game-list"></section>
-			<script>
-                populate(10);
-			</script>
 		</section>
 	</section>
 </main>
