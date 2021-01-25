@@ -124,7 +124,7 @@
 					<c:forEach var="rev" items="${reviews}">
 						<div class="review" id="${rev.getIdGioco()}">
 							<div class="game-img">
-								<img src="http://localhost:8080/images/notFound.png" alt="game-cover">
+								<img src="http://localhost:8080/images/notFound.png" onclick="window.location.href='http://localhost:8080/game?id=${rev.getIdGioco()}'" alt="game-cover">
 							</div>
 							<div class="rev-info">
 								<h2>Loading...</h2>
@@ -187,7 +187,7 @@
 		<section class="list-panel">
 			<section id="game-list">
 				<c:if test="${showlist.size()>0}">
-					<script>
+					<script defer>
                         var idGiochi = [];
                         <c:forEach var="game" items="${showlist}">
                         idGiochi.push(${game.getIdGioco()});
