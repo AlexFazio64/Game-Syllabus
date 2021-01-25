@@ -16,6 +16,9 @@ main {
 
 main > section {
 	width: 70%;
+	position: relative;
+	top: -50vh;
+	background-color: white;
 }
 
 main > section > section {
@@ -25,7 +28,8 @@ main > section > section {
 .background {
 	z-index: -1;
 	width: 100%;
-	height: 300px;
+	height: 100vh;
+	filter: blur(5px);
 	background-color: #919191;
 }
 
@@ -48,6 +52,7 @@ main > section > section {
 	bottom: 20px;
 	width: 200px;
 	height: 200px;
+	object-fit: cover;
 	background-color: white;
 	border-radius: 5px;
 	border: solid #ccc 5px;
@@ -168,7 +173,6 @@ span.edit-btn:hover {
 .review {
 	border-top: solid lightgrey 1px;
 	border-bottom: solid lightgrey 1px;
-	cursor: pointer;
 	display: flex;
 	column-gap: 15px;
 	min-height: 260px;
@@ -176,17 +180,29 @@ span.edit-btn:hover {
 }
 
 .review .game-img {
+	cursor: pointer;
 	display: flex;
-	width: 200px;
+	overflow: hidden;
+	max-width: 200px;
 	justify-content: center;
 	align-items: center;
 }
 
+/* eh, mannaia!
+* https://stackoverflow.com/questions/47914821/image-moves-on-hover-when-changing-filter-in-chrome
+*/
 .game-img img {
+	transition: filter 0.2s ease-out, transform 0.1s cubic-bezier(0.22, 0.61, 0.36, 1);
 	width: 200px;
 }
 
+.game-img img:hover {
+	filter: blur(3px) grayscale(100%);
+	transform: scale(1.1);
+}
+
 .rev-info {
+	width: 100%;
 	height: 200px;
 	display: flex;
 	flex-direction: column;
@@ -195,9 +211,48 @@ span.edit-btn:hover {
 	align-items: flex-start;
 }
 
-.rev-info p {
-	overflow: hidden;
+.rev-info > * {
+	width: 100%;
+}
+
+.rev-info form {
+	height: 100%;
+}
+
+.rev-info .delete-btn {
+	display: block;
+	font-size: 1em;
+}
+
+.rev-info form *:not(textarea) {
+	display: none;
+	float: right;
+	margin: 10px 5px;
+}
+
+.rev-info textarea {
+	border: none;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
 	text-align: justify;
+	outline: none;
+	resize: none;
+	font-family: "Raleway", sans-serif;
+	font-size: 1em;
+}
+
+.rev-info:focus-within form *:not(textarea) {
+	display: initial;
+}
+
+.rev-info:focus-within form textarea {
+	font-family: sans-serif;
+	cursor: auto;
+	border: solid 1px lightgrey;
+	border-radius: 3px;
+	text-align: left;
+	padding: 1%;
 }
 
 .about-panel {
@@ -235,6 +290,7 @@ span.edit-btn:hover {
 	font-size: 2rem;
 	background: red;
 }
+
 @media screen and (max-width: 1340px) {
 	.info {
 		font-size: 1em;
@@ -244,6 +300,7 @@ span.edit-btn:hover {
 		font-size: 0.7em;
 	}
 }
+
 @media screen and (max-width: 1200px) {
 	.info-edit-panel {
 		flex-direction: column-reverse;
