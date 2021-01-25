@@ -29,8 +29,8 @@ public:
 		int r =rd()%100000; 
 		return r>=0 ? r : r+100000;}
 	string 	email() {return word(10)+'@'+word(5)+'.'+word(3);}
-	string 	username() {return word(6,10);}
-	string 	password() {return word(5);}
+	string 	username() {return word(5,10);}
+	string 	password() {return "$2y$12$TE2A1KMEi2lRkdka2j/nrurKaayFLySaTXqGWs0UzPrsmemIDix3W";} //pass: 12345
 	string 	text() {
 		string text = word(50, 255);
 		int m=text.length()/5;
@@ -88,7 +88,7 @@ int main(){
 	for (auto a = games.begin(); a != games.end(); ++a){
 		int n = g.num(r_g,n_u);
 		for (int i = 0; i < n; ++i)
-			un2.insert(insertRecensione(g.num(5)+1, g.text(), games.at(g.num(n_g)), users.at(g.num(n_u)).email));
+			un2.insert(insertRecensione(g.num(10)+1, g.text(), games.at(g.num(n_g)), users.at(g.num(n_u)).email));
 	}
 
 	for (auto a = users.begin(); a != users.end(); ++a){
