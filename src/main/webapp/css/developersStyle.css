@@ -26,10 +26,6 @@ label {
     text-align: center;
 }
 
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
 
 /* Create two equal columns that floats next to each other */
 .column {

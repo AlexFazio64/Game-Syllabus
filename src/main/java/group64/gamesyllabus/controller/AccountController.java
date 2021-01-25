@@ -1,5 +1,6 @@
 package group64.gamesyllabus.controller;
 
+import Model.ListaGiochi;
 import Model.Profilo;
 import Model.Recensione;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import persistence.DAO.JDBC.ListaGiochiDAOPG;
 import persistence.DAO.JDBC.ProfiloDAOPG;
 import persistence.DAO.JDBC.RecensioneDAOPG;
 
@@ -27,6 +29,10 @@ public class AccountController {
 		if ( isNotLogged(username, session) ) {
 			return "redirect:/";
 		}
+		
+		ArrayList<ListaGiochi> personalList;
+		personalList = new ListaGiochiDAOPG().findByPrimaryKey(session.getAttribute("emailLogged").toString());
+		model.addAttribute("showlist", personalList);
 		
 		RecensioneDAOPG recdaopg = new RecensioneDAOPG();
 		ArrayList<Recensione> rec = recdaopg.findAllByEmail(session.getAttribute("emailLogged").toString());
@@ -145,5 +151,25 @@ public class AccountController {
 		del.setId(id);
 		daopg.delete(del);
 		return "/account/" + username;
+	}
+	
+	@GetMapping("/deleteElement")
+	public String deleteItem(HttpSession session, Model model, @RequestParam String idGame) {
+		//fixa il login
+		/*
+		*
+		*
+		*
+		*
+		*
+		*
+		* */
+		
+		ListaGiochiDAOPG listaGiochiDAOPG = new ListaGiochiDAOPG();
+		boolean state = listaGiochiDAOPG.delete(session.getAttribute("emailLogged").toString(), idGame);
+		if ( state ) {
+			model.addAttribute("stateOperation", state);
+		}
+		return "redirect:/account/" + session.getAttribute("usernameLogged").toString();
 	}
 }

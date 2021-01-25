@@ -1,10 +1,15 @@
-* {
+main {
     font-family: Arial, sans-serif;
 }
 
 .divBenvenuto * {
     display: inline-block;
     font-size: 20px;
+}
+
+.utenteLogged {
+    color: #9966cc;
+    font-weight: bold;
 }
 
 .color-purple {

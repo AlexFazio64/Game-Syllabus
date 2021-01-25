@@ -156,8 +156,8 @@ public class RecensioneDAOPG implements RecensioneDAO {
             st.setInt(1, recensione.getValutazione());
             st.setString(2, recensione.getTesto());
             st.setInt(3, recensione.getId());
-            connection.close();
             st.executeUpdate();
+            connection.close();
             return true;
         } catch (SQLException e) {
             return false;

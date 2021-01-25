@@ -85,7 +85,6 @@ public class GameController {
                 session.removeAttribute("newInList");
             }
         }
-        System.out.println(session.getAttribute("emailLogged"));
         return "game";
     }
 }

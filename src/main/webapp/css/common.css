@@ -28,3 +28,11 @@
 		transform: rotate(360deg);
 	}
 }
+
+footer {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    background-color: #9966cc;
+    color: white;
+    text-align: center;
+}

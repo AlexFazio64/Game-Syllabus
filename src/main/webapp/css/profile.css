@@ -30,6 +30,7 @@ main > section > section {
 	background-image: url("http://localhost:8080/images/sillabus.png");
 	background-size: contain;
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .account-options {
@@ -246,6 +247,75 @@ span.edit-btn:hover {
 	resize: none;
 	font-family: "Raleway", sans-serif;
 	font-size: 1em;
+}
+
+/*FATTO DA ME*/
+.game-light{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #9966cc;
+    color: white;
+    padding: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+/*FATTO DA ME*/
+.game-dark{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background-color: #663399;
+    color: white;
+    padding: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+
+/*FATTO DA ME*/
+.list-panel a{
+    text-decoration: none;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+
+/*FATTO DA ME*/
+.list-panel a:hover{
+    font-weight: 600;
+}
+
+
+/*FATTO DA ME*/
+.list-panel img {
+    width: 120px;
+    height: 160px;
+    background-color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+}
+
+/*FATTO DA ME*/
+.list-panel i{
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 2rem;
+    background: white;
+    color: black;
+}
+
+/*FATTO DA ME*/
+.list-panel i:hover{
+    border-radius: 10px;
+    font-size: 2rem;
+    background: #bcbcbc;
+    color: red;
 }
 
 .rev-info:focus-within form *:not(textarea) {

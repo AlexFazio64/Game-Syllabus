@@ -1,34 +1,34 @@
-*{
-    font-family: Arial,sans-serif;
+* {
+	font-family: Arial, sans-serif;
 }
 
-body{
-    background: url(../images/alredyRegister.png);
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: 260px;
+body {
+	background: url(../images/alredyRegister.png) no-repeat;
+	background-size: 50%;
+	background-position-x: center;
+	background-position-y: 260px;
 }
 
-.testo{
-    margin: 150px 0;
+.testo {
+	margin: 150px 0;
 }
 
-.parametro{
-    color: #9966cc;
-}
-.image{
-    display: flex;
-    margin: auto;
-    justify-content: center;
-    margin: 100px 0;
+.parametro {
+	color: #9966cc;
 }
 
-h1{
-    text-align: center;
+.image {
+	display: flex;
+	margin: auto;
+	justify-content: center;
+	margin: 100px 0;
 }
 
-img{
-    width: 50%;
-    height: 50%;
+h1 {
+	text-align: center;
+}
+
+img {
+	width: 50%;
+	height: 50%;
 }
