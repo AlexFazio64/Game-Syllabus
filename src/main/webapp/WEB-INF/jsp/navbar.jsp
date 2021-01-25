@@ -172,10 +172,10 @@ $("#nav-placeholder").load("navbar.html");
 
         <li class="item">
             <span class="menu material-icons">menu</span>
-            <a href="#">Games</a>
+            <a href="http://localhost:8080/comingSoon">Coming Soon</a>
             <a href="http://localhost:8080/developers?start=0">Developers</a>
             <a href="#">About Us</a>
-            <a href="#">Platforms</a>
+            <a href="http://localhost:8080/platforms?start=0">Platforms</a>
             <a href="http://localhost:8080/genres">Genres</a>   <!-- Muovere in About us? -->
         </li>
 
