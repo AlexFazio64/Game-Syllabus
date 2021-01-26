@@ -17,6 +17,8 @@ PASSWORD SERVER: postgres
 
 Dopo aver creato ciò, utilizzare il seguente codice per riempire il DB con le tabelle e le colonne necessarie: https://github.com/TheDD97/progettoWcomp-Ingsw/blob/doc/DB/game-syllabus_refresh.sql 
 
+# Riempimento
+
 Dopo aver creato tutto il DB, abbiamo preparato un insieme di profili,recensoni e giochi in una lista. Eseguire le seguenti QUERY in ordine
   1- https://github.com/TheDD97/progettoWcomp-Ingsw/blob/doc/DB/profili.txt
   2- https://github.com/TheDD97/progettoWcomp-Ingsw/blob/doc/DB/liste.txt
