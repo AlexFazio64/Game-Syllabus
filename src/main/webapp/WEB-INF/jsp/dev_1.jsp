@@ -1,8 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <main id="daniele" class="content-bg">
 	<div class="content">
 		<div class="personalInfo">
 			<div class="profilePic">
-				<img class="sourceImg" src="images/aboutPage/lovaion/lovaionAvatar.jpg" alt="Eren Jaeger">
+				<img class="sourceImg" src="../../images/aboutPage/lovaion/lovaionAvatar.jpg" alt="Eren Jaeger">
 			</div>
 			<div class="textInfo">
 				<div class="nome">
@@ -27,7 +28,7 @@
 				<div class="myGames cardsCont">
 					<div class="cardInside">
 						<div class="bgImg">
-							<img class="sourceCard" src="images/aboutPage/lovaion/LOL.jpg" id="lol" alt="">
+							<img class="sourceCard" src="../../images/aboutPage/lovaion/LOL.jpg" id="lol" alt="">
 						</div>
 						<div class="name">
 							<h3>League of Legends</h3>
@@ -35,7 +36,7 @@
 					</div>
 					<div class="cardInside">
 						<div class="bgImg">
-							<img class="sourceCard" src="images/aboutPage/lovaion/ds3.jpg" id="ds3" alt="">
+							<img class="sourceCard" src="../../images/aboutPage/lovaion/ds3.jpg" id="ds3" alt="">
 						</div>
 						<div class="name">
 							<h3>Dark Souls 3</h3>
@@ -43,7 +44,7 @@
 					</div>
 					<div class="cardInside">
 						<div class="bgImg">
-							<img class="sourceCard" src="images/aboutPage/lovaion/csgo.jpg" id="cs" alt="">
+							<img class="sourceCard" src="../../images/aboutPage/lovaion/csgo.jpg" id="cs" alt="">
 						</div>
 						<div class="name">
 							<h3>Counter Strike: GO</h3>
@@ -56,7 +57,7 @@
 			<div class="mangaAndAnime cardsCont">
 				<div class="cardInside">
 					<div class="bgImg">
-						<img class="sourceCard" src="images/aboutPage/lovaion/aot.jpg" id="aot" alt="">
+						<img class="sourceCard" src="../../images/aboutPage/lovaion/aot.jpg" id="aot" alt="">
 					</div>
 					<div class="name">
 						<h3>Attack On Titan</h3>
@@ -64,7 +65,7 @@
 				</div>
 				<div class="cardInside">
 					<div class="bgImg">
-						<img class="sourceCard" src="images/aboutPage/lovaion/berserk.png" id="berserk" alt="">
+						<img class="sourceCard" src="../../images/aboutPage/lovaion/berserk.png" id="berserk" alt="">
 					
 					</div>
 					<div class="name">
@@ -73,7 +74,7 @@
 				</div>
 				<div class="cardInside">
 					<div class="bgImg">
-						<img class="sourceCard" src="images/aboutPage/lovaion/jojo.jpg" id="jojo" alt="">
+						<img class="sourceCard" src="../../images/aboutPage/lovaion/jojo.jpg" id="jojo" alt="">
 					</div>
 					<div class="name">
 						<h3>JoJo</h3>
@@ -82,13 +83,13 @@
 			</div>
 			<div class="socials">
 				<div class="social">
-					<img src="images/aboutPage/lovaion/twitter.png" alt="Twitter" id="twitter" class="socialIcon">
+					<img src="../../images/aboutPage/lovaion/twitter.png" alt="Twitter" id="twitter" class="socialIcon">
 				</div>
 				<div class="social">
-					<img src="images/aboutPage/lovaion/instagram.png" alt="Instagram" id="instagram" class="socialIcon">
+					<img src="../../images/aboutPage/lovaion/instagram.png" alt="Instagram" id="instagram" class="socialIcon">
 				</div>
 				<div class="social">
-					<img src="images/aboutPage/lovaion/github.png" alt="Instagram" id="github" class="socialIcon">
+					<img src="../../images/aboutPage/lovaion/github.png" alt="Instagram" id="github" class="socialIcon">
 				</div>
 			</div>
 		</div>

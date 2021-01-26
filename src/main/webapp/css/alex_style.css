@@ -54,7 +54,7 @@
 
 .info {
 	display: flex;
-	align-items: center;
+	/*align-items: center;*/
 	column-gap: 10px;
 }
 
@@ -133,11 +133,6 @@ div.name-alex::after {
 	align-items: center;
 	font-family: "Raleway", sans-serif;
 	font-size: 1.2em;
-}
-
-.interests p {
-	font-size: 1.2em;
-	text-decoration: underline;
 }
 
 .music, .games-alex, .media {
@@ -235,9 +230,6 @@ div.name-alex::after {
 		width: 100%;
 	}
 
-	.interests div p {
-		font-size: 1.5em;
-	}
 }
 
 @media screen and (max-width: 452px) {

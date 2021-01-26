@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <section id="alex">
 	<video src="http://localhost:8080/images/aboutPage/alex/zero.mp4" muted autoplay loop class="best-girl"></video>
 	<div class="main-sec">
@@ -25,20 +26,17 @@
 		</div>
 		<div class="interests">
 			<div class="music">
-				<p>Music</p>
 				<div class="fav"><h2>(G)I-DLE</h2></div>
 			</div>
 			<div class="games-alex">
-				<p>Games</p>
 				<div class="fav"><h2>NieR</h2></div>
 			</div>
 			<div class="media">
-				<p>Media</p>
 				<div class="fav"><h2>Conan</h2></div>
 			</div>
 		</div>
 	</div>
 </section>
 <script>
-	window.location.href = "#alex";
+    window.location.href = "#alex";
 </script>

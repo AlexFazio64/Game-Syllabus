@@ -149,7 +149,7 @@
 			<span class="hamburger-menu">
 				<a href="http://localhost:8080/comingSoon?start=0">Upcoming</a>
 				<a href="http://localhost:8080/developers?start=0">Developers</a>
-				<a href="http://localhost:8080/about_us.html">About Us</a>
+				<a href="http://localhost:8080/about">About Us</a>
 				<a href="http://localhost:8080/platforms?start=0">Platforms</a>
 				<a href="http://localhost:8080/genres">Genres</a>
 				<c:if test="${usernameLogged != null}">
@@ -166,7 +166,7 @@
 		<li class="item">
 			<a href="http://localhost:8080/comingSoon?start=0">Upcoming</a>
 			<a href="http://localhost:8080/developers?start=0">Developers</a>
-			<a href="http://localhost:8080/about_us.html">About Us</a>
+			<a href="http://localhost:8080/about">About Us</a>
 			<a href="http://localhost:8080/platforms?start=0">Platforms</a>
 			<a href="http://localhost:8080/genres">Genres</a>
 		</li>
