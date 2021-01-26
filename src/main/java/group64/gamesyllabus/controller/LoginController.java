@@ -44,7 +44,7 @@ public class LoginController {
 	}
 	
 	//Logout from session
-	@GetMapping("doLogout")
+	@GetMapping("/doLogout")
 	public String logout(HttpSession session) {
 		if (session.getAttribute("emailLogged") != null) {
 			session.invalidate();

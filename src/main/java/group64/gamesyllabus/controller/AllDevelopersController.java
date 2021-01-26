@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class DevelopersController {
+public class AllDevelopersController {
     @GetMapping("/developers")
     public String firstPage(@RequestParam String start, Model model) {
         model.addAttribute("start", start);
-        return "developers";
+        return "allDevelopers";
 
     }
 
@@ -19,7 +19,7 @@ public class DevelopersController {
     public String next(@RequestParam String start, @RequestParam String previous, Model model) {
         model.addAttribute("start", start);
         model.addAttribute("previous",previous);
-        return "developers";
+        return "allDevelopers";
     }
 }
 

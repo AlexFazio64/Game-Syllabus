@@ -1,45 +1,48 @@
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
-    background-color: #e7e7e7;
+body {
+    font-family: Arial, sans-serif;
 }
 
-.container{
+.container {
     padding-top: 25px;
     width: 75%;
-    margin:auto;
+    margin: auto;
     line-height: 1.5;
+    display: grid;
 }
 
-.info-grid{
+.info-grid {
     margin: auto;
     background-color: white;
     border-radius: 20px;
 }
 
 
-.game-list{
+.game-list {
     margin: 50px auto auto;
     background-color: white;
     border-radius: 25px 25px 0px 0px;
 }
 
-.game-list h1{
+.game-list h1 {
     text-align: center;
     border-width: 0 0 5px 0;
     border-style: solid;
     border-color: #9966cc;
 }
 
-.logoGenere{
+.logoGenere {
     width: 20%;
     display: flex;
     margin: auto;
 }
 
-.card-coming-soon .info-container{
+.card-coming-soon .info-container {
     font-size: 45px;
     font-weight: 600;
     font-family: system-ui, sans-serif;
@@ -49,31 +52,31 @@ body{
     text-align: center;
 }
 
-.genreName{
+.genreName {
     font-size: 40px;
     font-weight: 100;
     text-align: center;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     background-color: whitesmoke;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background-color: #9966cc;
     border-radius: 15px;
 }
 
-.list{
+.list {
     list-style-type: none;
     font-size: 16px;
 }
 
-.game-card{
+.game-card {
     display: grid;
     grid-template-columns: 1fr 4fr auto;
     margin: 22px;
@@ -86,18 +89,17 @@ body{
 }
 
 
-
-.game-card:hover{
+.game-card:hover {
     box-shadow: 5px 5px 3px 3px #888888;
     transform: translateY(-20px);
 
 }
 
-.game-card img{
+.game-card img {
     border-radius: 5px;
 }
 
-.game-card > a:last-of-type{
+.game-card > a:last-of-type {
     border-color: #3B1162;
     border-radius: 8px;
     background-color: #9966cc;
@@ -108,7 +110,7 @@ body{
     font-weight: 600;
 }
 
-.game-card > a:hover{
+.game-card > a:hover {
     background-color: #3B1162;
 }
 
