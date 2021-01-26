@@ -46,7 +46,7 @@ public class Controller {
 		if ( googleLogin.equals("yes") ) {
 			session.setAttribute("googleLogin", googleLogin);
 		}
-		
+		System.out.println(email);
 		Profilo profilo = new Profilo();
 		ProfiloDAOPG profiloDAOPG = new ProfiloDAOPG();
 		profilo.setEmail(email);

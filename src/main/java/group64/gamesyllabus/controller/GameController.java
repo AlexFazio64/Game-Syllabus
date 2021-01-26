@@ -32,6 +32,7 @@ public class GameController {
         return "redirect:/game?id=" + id;
     }
 
+
     @GetMapping("/Review")
     public String saveReview(@RequestParam String id, Model model, HttpSession session, @RequestParam String
             rating, @RequestParam String text) {
