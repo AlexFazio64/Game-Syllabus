@@ -163,13 +163,13 @@
         "https://media.giphy.com/media/izyy2cD6xSftxfGQiU/giphy.gif", //sword adn shield
         "https://media.giphy.com/media/AO5qaphTxRnyw/source.gif", //shovelknight
         "https://media.giphy.com/media/Jmn0cHknbudA5iGnrY/source.gif", //
-        "https://media.giphy.com/media/fVbewaMFrOoC38gvFZ/source.gif", // castlevaina
         "https://media.giphy.com/media/LpiA8MVudQO8pitF4c/giphy.gif",
         "https://media.giphy.com/media/izyy2cD6xSftxfGQiU/giphy.gif", //unlimmited flat
         "https://media.giphy.com/media/3ohzdKgSnQwjEbkxry/giphy.gif", //unlimited cose
         "https://media.giphy.com/media/LkfPKsQwgNU3ILEOZk/giphy-downsized-large.gif", //fallout
     ];
     const random = Math.floor(Math.random() * gifs.length);
+    const randomHue =
     document.getElementById("bg").style.backgroundImage = "url(" + gifs[random] + ")";
 </script>
 

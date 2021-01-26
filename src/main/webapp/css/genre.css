@@ -206,3 +206,54 @@ footer {
 .place {
 	margin: auto;
 }
+
+.showMore{
+	font-family: Arial,sans-serif;
+}
+
+@media ( max-width: 1110px) {
+	.cardInside{
+		height: 190px;
+	}
+
+	.logoGenere{
+		display: none;
+	}
+}
+
+@media ( max-width: 920px) {
+	.containerino h1{
+		font-size: 50px;
+	}
+	.cardInside{
+		height: 280px;
+		grid-template-rows: 1fr 4fr auto;
+		grid-template-columns: none;
+		place-items: center;
+	}
+	.elencoLista{
+		text-align: center;
+	}
+}
+
+@media ( max-width: 650px) {
+	.containerino h1{
+		font-size: 38px;
+	}
+	.container{
+		width: 100%;
+	}
+
+	.showMore{
+		font-size: 45px;
+	}
+}
+
+@media ( max-width :350px ){
+	.containerino h1{
+		font-size: 26px;
+	}
+	.elencoLista{
+		font-size: 13px
+	}
+}

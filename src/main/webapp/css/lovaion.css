@@ -33,6 +33,10 @@
 	border-radius: 20px;
 }
 
+ul {
+	list-style: none;
+}
+
 .things {
 	margin: 25px;
 	border-radius: 20px;
@@ -111,4 +115,70 @@
 
 span {
 	color: #9966cc;
+}
+
+/*RESPONSIVE*/
+@media (min-device-width: 400px) and (max-device-width: 923px) {
+
+	.profilePic{
+		margin: auto;
+	}
+	.personalInfo{
+		display: block;
+		text-align: center;
+	}
+
+	.cardsCont{
+		display: block;
+		padding: 20px 0;
+	}
+
+	.socials{
+		width: 100%;
+	}
+}
+@media (min-device-width: 280px) and (max-device-width: 400px) {
+	.profilePic{
+		width: 100px;
+		margin: auto;
+	}
+	.personalInfo{
+		display: block;
+		text-align: center;
+	}
+
+	.cardsCont{
+		display: block;
+		padding: 20px 0;
+	}
+
+	.textInfo{
+		font-size: 14px;
+	}
+
+	.cardInside{
+		place-items: center;
+		width: 100px;
+		margin: 20px auto;
+	}
+
+	.bgImg{
+		width: 100px;
+		height: 100px;
+	}
+	.sourceCard{
+		width: 100%;
+		object-fit: cover;
+		height: 100%;
+		border-radius: 50%;
+	}
+	.name{
+		display: none;
+	}
+
+	.socials{
+		display: block;
+		width: auto;
+		height: auto;
+	}
 }

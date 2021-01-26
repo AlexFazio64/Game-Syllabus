@@ -56,7 +56,7 @@ main {
 }
 
 .genInit h1{
-    font-size: 70px;
+    font-size: 50px;
     font-weight: 700;
 }
 
@@ -66,7 +66,7 @@ main {
 }
 
 .bg{
-    height: 401px;
+    height: 350px;
     width: 100%;
     background-size: cover;
     background-position-y: center;
@@ -99,5 +99,57 @@ main {
 .place{
     margin: auto;
 }
+
+@media (min-width: 1118px) and (max-width: 1450px) {
+
+    .cardInside p{
+        font-size: 14px;
+    }
+
+    .bg{
+        height: 250px;
+    }
+}
+
+@media (max-width: 1118px) {
+    .bg{
+        display: none;
+    }
+    .cardInside p{
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 900px) {
+    .genInit{
+        display: none;
+    }
+
+    .cardInside{
+        height: 50px;
+    }
+    .cardInside p{
+        font-size: 13px;
+    }
+}
+
+@media ( max-width: 500px) {
+    .genInit h1{
+        display: block;
+        font-size: 30px;
+    }
+    .cardInside p{
+        display: none;
+    }
+}
+
+@media ( max-width: 350px) {
+    .genInit h1{
+        font-size: 15px;
+    }
+}
+
+
+
 
 

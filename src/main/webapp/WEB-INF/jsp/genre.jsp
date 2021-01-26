@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="google-signin-client_id"
           content="508493289721-mi2g5njrlan5oue6n1h64b2lroc28nu4.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>${genre}</title>
     <link rel="stylesheet" href="../../css/genre.css">
     <link rel="stylesheet" href="../../css/common.css">

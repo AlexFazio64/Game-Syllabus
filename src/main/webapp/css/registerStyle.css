@@ -61,6 +61,7 @@
 	width: calc(1920px / 3);
 	height: calc(545px / 3);
 	cursor: pointer;
+	animation: colorLogo 3s linear infinite alternate-reverse;
 }
 
 .loginButtons {
@@ -162,6 +163,11 @@ input {
 
 input:placeholder-shown {
 	background-color: #18181840;
+}
+
+@keyframes colorLogo {
+	from {filter: brightness(1) invert(1) hue-rotate(0deg);}
+	to {filter: brightness(1) invert(1) hue-rotate(360deg);}
 }
 
 
