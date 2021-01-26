@@ -28,6 +28,7 @@ function loadComingSoon(start) {
                     lista.className = "list";
                     var platform = document.createElement('li');
                     var name = document.createElement('li');
+                    name.className="game-title";
                     if (!('name' in result[i]) == 0) {
                         name.innerHTML = result[i].name;
                     } else {
