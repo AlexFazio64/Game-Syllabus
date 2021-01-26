@@ -49,18 +49,7 @@
         <ul id="basicInformation">
             <li><span id="game-name" class="gameName"> </span>
             </li>
-            <%--<c:if test="${emailLogged==null}">
-                <script defer>
-                var button = document.getElementById('delete');
-                button.parentNode.removeChild(button);
-                </script>
-            </c:if>--%>
-            <%--<c:if test="${intoList==null}">
-                <script defer>
-                    var button = document.getElementById('delete');
-                    button.parentNode.removeChild(button);
-                </script>
-            </c:if>--%>
+
             <c:if test="${added!=null}">
                 <script>
                     swal("Success!", "Game added to your list", "success");
@@ -79,7 +68,6 @@
                     coverid.parentNode.append(addRemoveContainer);
                 </script>
             </c:if>
-
             <li><span id="game-rate"><strong>Rate: </strong></span></li>
             <li><span id="release_date"><strong>Release Date: </strong></span></li>
             <li><span id="gameplay-type"><strong>Gameplay Type: </strong> </span></li>
