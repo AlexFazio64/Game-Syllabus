@@ -289,7 +289,7 @@ input#quantity {
     outline: none;
 }
 
-@media (min-device-width: 280px) and (max-device-width: 640px) {
+@media (min-device-width: 280px) and (max-device-width: 768px) {
     body {
         font-size: 18px;
     }
@@ -297,7 +297,6 @@ input#quantity {
     #all-info {
         display: block;
         padding: 0 11px;
-        /* max-width: -webkit-fill-available; */
         max-width: 100vw;
         overflow-wrap: break-word;
     }
@@ -330,12 +329,12 @@ input#quantity {
 
     .Myreview {
         max-width: 100vw;
-
+        margin: 0;
     }
 
     div.review {
         max-width: 100vw;
-
+        margin: 0;
     }
 
     #screenshots {
@@ -354,7 +353,9 @@ input#quantity {
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) {
-
+    .game{
+        font-size: 32px;
+    }
     #all-info {
         padding: 0 11px;
         max-width: 100vw;
