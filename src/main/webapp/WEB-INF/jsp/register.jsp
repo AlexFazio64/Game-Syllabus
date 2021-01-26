@@ -55,19 +55,19 @@
 				<div class="form-group">
 					<label for="email" id="stringEmail">Email address:</label>
 					<input type="email" required class="form-control" placeholder="Enter your email.." id="email"
-					       name="email">
+					       name="email" value="">
 				</div>
 				<div class="form-group">
 					<label for="usr" id="stringUsername">Username:</label>
 					<%--SOLAMENTE NUMERI E LETTERE--%>
 					<input type="text" required minlength="5" class="form-control" pattern="[a-zA-Z0-9-]+"
 					       title="Use only numbers and letters" placeholder="Enter a username.." id="usr"
-					       name="username">
+					       name="username" value="">
 				</div>
 				<div class="form-group">
 					<label for="pwd" id="stringPassword">Password:</label>
 					<input type="password" required minlength="5" class="form-control" placeholder="Enter a password.."
-					       id="pwd" name="password">
+					       id="pwd" name="password" value="">
 				</div>
 				<input type="hidden" name="googleLogin" id="google">
 				<div class="divBottone">
@@ -86,8 +86,8 @@
 				<script>
                     function onSuccess(googleUser) {
                         var profile = googleUser.getBasicProfile();
-                        document.getElementById("email").setAttribute("value", profile.getEmail());
-                        document.getElementById("pwd").setAttribute("value", profile.getId());
+						document.getElementById("email").value = (profile.getEmail());
+						document.getElementById("pwd").setAttribute("value", profile.getId());
                         document.getElementById("email").setAttribute("type", "hidden");
                         document.getElementById("pwd").setAttribute("type", "hidden");
                         document.getElementById("stringEmail").setAttribute("class", "toHide");
