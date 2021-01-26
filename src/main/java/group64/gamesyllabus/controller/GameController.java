@@ -60,6 +60,7 @@ public class GameController {
             }
             sum /= reviews.size();
         }
+        model.addAttribute("reviews", reviews);
         model.addAttribute("averageRate", sum);
         String email = null;
         Recensione review = null;
@@ -69,7 +70,6 @@ public class GameController {
             review = new RecensioneDAOPG().findReviewByEmail(email, id);
             model.addAttribute("personalReview", review);
             model.addAttribute("emailLogged", email);
-            model.addAttribute("reviews", reviews);
             boolean alreadyInList = false;
             ArrayList<ListaGiochi> games = new ListaGiochiDAOPG().findByPrimaryKey(email);
             for (int i = 0; i < games.size(); i++) {
