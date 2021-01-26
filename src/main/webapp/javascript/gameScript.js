@@ -76,7 +76,6 @@ function loadGameBasicInfo(game) {
                     for (var i = 0; i < txt.websites.length; i++) {
                         var newLink = document.createElement('a');
                         newLink.href = txt.websites[i].url;
-                        console.log(txt.websites[i].category);
                         newLink.text = type[txt.websites[i].category - 1];
                         newLink.className = "info";
                         document.getElementById("websites").append(newLink);
@@ -197,7 +196,6 @@ function encode(url) {
     codedUrl = codedUrl.replaceAll("=", "%3D");
     codedUrl = codedUrl.replaceAll("?", "%3F");
     codedUrl = codedUrl.replaceAll("@", "%40");
-    console.log(codedUrl);
     return codedUrl;
 }
 
@@ -214,7 +212,6 @@ function sendReview(review, email, game) {
 }
 
 function loadGameRate(gameRate) {
-    console.log(gameRate);
     if (gameRate == 0)
         for (var i = 0; i < 10; ++i) {
             var star = document.createElement('span');

@@ -147,7 +147,7 @@
 			</div>
 			<span class="icon hamburger" onclick="hamburgerMenu()"><i class="material-icons">menu</i></span>
 			<span class="hamburger-menu">
-				<a href="http://localhost:8080/comingSoon?start=0">Upcoming</a>
+				<a href="http://localhost:8080/comingSoon">Upcoming</a>
 				<a href="http://localhost:8080/developers?start=0">Developers</a>
 				<a href="http://localhost:8080/about">About Us</a>
 				<a href="http://localhost:8080/platforms?start=0">Platforms</a>
@@ -164,7 +164,7 @@
 		</li>
 		
 		<li class="item">
-			<a href="http://localhost:8080/comingSoon?start=0">Upcoming</a>
+			<a href="http://localhost:8080/comingSoon">Upcoming</a>
 			<a href="http://localhost:8080/developers?start=0">Developers</a>
 			<a href="http://localhost:8080/about">About Us</a>
 			<a href="http://localhost:8080/platforms?start=0">Platforms</a>

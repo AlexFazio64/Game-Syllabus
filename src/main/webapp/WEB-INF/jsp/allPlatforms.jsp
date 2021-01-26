@@ -20,8 +20,6 @@
         $("#nav-placeholder").load("http://localhost:8080/getNavbar");
     });
 </script>
-
-
 <main id="developers">
     <label>Platforms</label>
     <div id="row0" class="row" style="height: 15px"></div>
@@ -40,7 +38,6 @@
     <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
     <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
 </footer>
-
 <script defer>
     loadPlatforms("${start}");
 </script>

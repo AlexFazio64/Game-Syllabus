@@ -1,5 +1,3 @@
-var lastIndex;
-
 function loadPlatforms(firstIndex) {
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/platforms",
@@ -13,7 +11,6 @@ function loadPlatforms(firstIndex) {
         data: 'fields name,platform_logo.image_id; limit 20; sort id asc; where id >' + firstIndex + '; ',
         dataType: "json",
         success: function (results) {
-            console.log(results);
             var datas = JSON.stringify(results);
             var platform = [];
             var cont = 0;
@@ -54,7 +51,6 @@ function loadPlatforms(firstIndex) {
                     lastIndex = platform[cont - 1].id;
                 }
             }
-
             loadPagination(firstIndex, lastIndex);
         }, error: function (xhr, status, error) {
             alert(status);
@@ -78,7 +74,6 @@ function loadPagination(firstIndex, lastindex) {
         var starts = [parseInt(firstIndex - 20), parseInt(lastindex)];
         if (starts[0] < 24)
             starts[0] = 0;
-        console.log("s: " + starts);
         document.getElementById("previous").href = "http://localhost:8080/platforms?start=" + starts[0];
         document.getElementById("next").href = "http://localhost:8080/platforms?start=" + starts[1];
         document.getElementById("previous").innerHTML = '&laquo;';

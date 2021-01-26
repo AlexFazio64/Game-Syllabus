@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ComingSoonController {
-
     @GetMapping("/comingSoon")
     public String loadGames() {
         return "comingSoon";

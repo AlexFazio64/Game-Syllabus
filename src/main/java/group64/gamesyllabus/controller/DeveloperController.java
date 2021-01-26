@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class DeveloperController {
-
     @GetMapping("/developer")
-    public String loadDeveloper(@RequestParam String name, Model model){
-            model.addAttribute("developer", name);
-
+    public String loadDeveloper(@RequestParam String name, Model model) {
+        model.addAttribute("developer", name);
         return "developer";
     }
 

@@ -30,19 +30,16 @@
 </main>
 <div class="center">
     <div id="numPage" class="pagination">
-
         <a id="previous"></a>
         <a id="next"></a>
-
     </div>
 </div>
 <script>
-    loadDevelopers("${previous}","${start}");
+    loadDevelopers("${previous}", "${start}");
 </script>
 <footer>
     <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
     <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>
 </footer>
-
 </body>
 </html>

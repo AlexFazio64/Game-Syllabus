@@ -1,4 +1,4 @@
-function loadComingSoon(start) {
+function loadComingSoon() {
     var today = Math.round(new Date().getTime() / 1000);
     $.ajax({
         url: "https://game-syllabus-proxy.group64.workers.dev/?https://api.igdb.com/v4/games",
@@ -10,16 +10,12 @@ function loadComingSoon(start) {
             "Authorization": "Bearer b6tr4i9lufeysqmxcvkclmirl4b8zj"
         },
         data: 'fields name,first_release_date ,platforms.name,cover.url,release_dates.human, status; limit 80   ; ' +
-            'where first_release_date > ' + today +';sort first_release_date asc;',
+            'where first_release_date > ' + today + ';sort first_release_date asc;',
         dataType: "json",
         success: function (result) {
-            console.log(result);
-            var lastIndex = result[result.length - 1].id;
-            console.log(lastIndex);
             for (var k = 0; k < 2; k++) {
                 for (var i = parseInt(k * result.length / 2); i < parseInt((result.length / 2)) * (k + 1); i++) {
                     var date = document.createElement('li');
-                    console.log(i);
                     var card = document.createElement('div');
                     card.className = "game-card";
                     var image = document.createElement('img');
@@ -28,7 +24,7 @@ function loadComingSoon(start) {
                     lista.className = "list";
                     var platform = document.createElement('li');
                     var name = document.createElement('li');
-                    name.className="game-title";
+                    name.className = "game-title";
                     if (!('name' in result[i]) == 0) {
                         name.innerHTML = result[i].name;
                     } else {
@@ -40,7 +36,6 @@ function loadComingSoon(start) {
                         image.src = "../../images/missing.png"
                     }
                     if (!('first_release_date' in result[i]) == 0) {
-                        console.log(new Date(result[i].first_release_date * 1000).getMonth() + " " + new Date(result[i].first_release_date * 1000).getFullYear());
                         date.innerHTML = new Date(result[i].first_release_date * 1000).toDateString();
                     } else {
                         date.innerHTML = "Missing dates.."
