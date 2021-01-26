@@ -1,0 +1,247 @@
+@font-face {
+	font-family: "Raleway";
+	font-style: normal;
+	font-weight: 400;
+	src: url("../fonts/Raleway-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Raleway Light";
+	font-style: normal;
+	font-weight: 300;
+	src: url("../fonts/Raleway-Light.ttf");
+}
+
+#alex {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	position: relative;
+	color: white;
+	/*}*/
+
+	/*#alex {*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	height: 100vh;
+}
+
+#alex video {
+	position: absolute;
+	z-index: -1;
+	filter: brightness(.5);
+}
+
+.main-sec {
+	user-select: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
+	min-width: 412px;
+	width: 60%;
+	position: relative;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.65);
+	border-radius: 4px;
+	box-shadow: -5px -5px 10px 1px rgba(0, 0, 0, 0.3),
+	5px -5px 10px 1px rgba(0, 0, 0, 0.3),
+	-5px 5px 10px 1px rgba(0, 0, 0, 0.3),
+	5px 5px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	column-gap: 10px;
+}
+
+img#avatar-alex {
+	border: solid 7px white;
+	width: 250px;
+	margin: 20px;
+}
+
+.text-alex {
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.name-alex {
+	width: fit-content;
+	color: white;
+	padding: 10px;
+	align-items: center;
+	font-family: "Raleway", sans-serif;
+	font-size: 2em;
+}
+
+.number {
+	color: #faff64;
+	margin: 10px 0;
+	display: inline-block;
+}
+
+div.name-alex::after {
+	content: "";
+	display: block;
+	border-bottom: solid 2px rgba(255, 255, 255, 1);
+	width: 0;
+	transition: width 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), border-bottom-color 0.3s linear;
+}
+
+.main-sec:hover div::after {
+	width: 100%;
+	border-bottom-color: #faff64;
+}
+
+.descr-alex {
+	font-family: "Raleway Light", sans-serif;
+	font-size: 1.3em;
+	text-align: justify;
+	width: 100%;
+}
+
+.social {
+	width: 100%;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.social a img {
+	width: 40px;
+	height: 40px;
+}
+
+#twitter-alex {
+	filter: brightness(0) invert(1);
+}
+
+#ig-alex, #steam-alex {
+	filter: invert(1);
+}
+
+.interests {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.2em;
+}
+
+.interests p {
+	font-size: 1.2em;
+	text-decoration: underline;
+}
+
+.music, .games-alex, .media {
+	width: 33%;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.fav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 80px;
+	background-color: #fff;
+}
+
+.music .fav {
+	background-color: #7e11bf;
+}
+
+.fav h2 {
+	user-select: none;
+	letter-spacing: 5px;
+}
+
+.games-alex .fav {
+	background-image: url("http://localhost:8080/images/aboutPage/alex/game.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.media .fav {
+	background-image: url("http://localhost:8080/images/aboutPage/alex/conan.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+@media screen and (max-width: 1078px) {
+	img#avatar-alex {
+		width: 150px;
+		height: 150px;
+	}
+
+	.interests {
+		font-size: 1em;
+	}
+
+	.name-alex {
+		font-size: 1.4em;
+	}
+
+	.descr-alex {
+		font-size: 0.9em;
+	}
+
+	.social a img {
+		width: 25px;
+		height: 25px;
+	}
+}
+
+@media screen and (max-width: 742px) {
+	.name-alex {
+		font-size: 2em;
+	}
+
+	.descr-alex {
+		font-size: 1.2em;
+	}
+
+	.main-sec {
+		height: 100%;
+		width: 100%;
+		row-gap: 50px;
+	}
+
+	.interests {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+
+	.music {
+		grid-row: 1;
+		grid-column: 1 / 3;
+	}
+
+	.media, .games-alex {
+		grid-row: 2;
+	}
+
+	.music, .games-alex, .media {
+		width: 100%;
+	}
+
+	.interests div p {
+		font-size: 1.5em;
+	}
+}
+
+@media screen and (max-width: 452px) {
+	.main-sec {
+		row-gap: 0;
+	}
+}

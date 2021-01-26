@@ -233,7 +233,7 @@
 
                 <div class="review">
                     <div class="game-img">
-                        <img src="../../images/profile_picture.jpg" alt="game-mugshot">
+                        <img src="../../images/aboutPage/alex/avatar.jpg" alt="game-mugshot">
                     </div>
                     <div class="rev-info">
                         <h2>Game Name</h2>
