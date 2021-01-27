@@ -2,7 +2,7 @@
 <div id="domenico" class="bg">
 	<main>
 		<section id="bio">
-			Hi my name is domenico and I am a university student, I study computer science and I have a great passion
+			Hi my name is Domenico and I am a university student, I study computer science and I have a great passion
 			for
 			technology and videogames. I love RPGs and SCI-FI games among my favorite games the Mass Effect series
 			stands
