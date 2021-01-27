@@ -15,8 +15,6 @@ function genreInfo(genere) {
         success: function (result) {
             $(".loader")[0].remove();
             var content = JSON.stringify(result).replaceAll("'", " ");
-            //content = content.replace("[", "");
-            //content = content.substring(0, content.lastIndexOf("]"));
             var txt = [];
             txt = JSON.parse(content);
             document.getElementById("showButton").onclick = showMore;
