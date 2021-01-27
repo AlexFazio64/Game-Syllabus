@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${platform}</title>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link rel="stylesheet" href="../../css/platformStyle.css">
@@ -18,7 +19,6 @@
 
 
 <script type="text/javascript" defer>
-    readMore();
     searchPlatform('${platform}');
 </script>
 
@@ -35,9 +35,6 @@
         <div class="platform-description">
             <p id="description"></p>
         </div>
-
-        <%--bottone readMore--%>
-        <p class="my_read_more"><a id="box-button" href="#">Read More</a></p>
 
         <div class="other-info">
             <div class="other-one">
@@ -58,12 +55,17 @@
 
     <div class="lista-giochi" id="list">
         <h1> Games list</h1>
+        <div class="loader place" id="loader_platform"></div>
         <div id="col0" class="column"></div>
         <div id="col1" class="column"></div>
         <div class="card" id="card">
         </div>
     </div>
 </main>
+<div class="buttonShow">
+    <a href="#bottom" id="showButton" class="showMore">Show more</a>
+</div>
+<a href="#nav-placeholder" class="material-icons back-to-top">arrow_upward</a>
 <footer>
 <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
 <p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>

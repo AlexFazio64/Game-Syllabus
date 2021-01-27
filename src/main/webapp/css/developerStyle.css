@@ -24,6 +24,7 @@ body{
     margin: auto;
     background-color: white;
     height: 320px;
+    border-radius: 25px;
 }
 
 .casa-vg{
@@ -82,8 +83,8 @@ body{
 
 .lista-giochi{
     margin: 50px auto auto;
-    background-color: white;
     border-radius: 25px 25px 0 0;
+    background-color: transparent;
 }
 
 .lista-giochi h1{
@@ -92,6 +93,8 @@ body{
     border-width: 0 0 5px 0;
     border-style: solid;
     border-color: #9966cc;
+    background-color: white;
+    border-radius: 25px 25px 0 0;
 }
 
 .elencoLista{
@@ -150,11 +153,124 @@ body{
 }
 
 .column{
-    float: left;
-    width: 50%;
-    padding: 10px;
+    display: contents;
 }
 
+.back-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary);
+    border-radius: 50%;
+    text-decoration: none;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    background-color: var(--secondary);
+}
+
+html {   scroll-behavior: smooth; }
+
+.showMore{
+    border-color: #3B1162;
+    border-radius: 8px;
+    font-size: 35px;
+    background-color: #9966cc;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: 10px auto;
+    width: 220px;
+    justify-content: center;
+    display: none;
+    padding: 5px;
+}
+
+.showMore:hover {
+    background-color: #3B1162;
+}
+
+#loader_developer{
+    margin: 10px auto;
+}
+
+@media ( max-width: 1130px ) {
+
+    .info-grid {
+        display: block;
+        background-color: white;
+        height: auto;
+        border-radius: 25px;
+    }
+
+    .casa-vg {
+        /* grid-column: 2/4; */
+        /* grid-row: 1; */
+        display: flex;
+        justify-content: center;
+    }
+
+    .casa-vg h1 {
+        border-width: 0 0 5px 0;
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .info-uno, .info-due {
+        padding: 15px;
+    }
+
+}
+
+@media ( max-width: 650px ) {
+
+    .info-casa {
+        display: contents;
+        padding-top: 0;
+    }
+
+    .casa-vg h1{
+        padding: 10px;
+        overflow-wrap: anywhere;
+        text-align: center;
+        margin: 0 10px 0 10px;
+    }
+
+    .cardInside {
+        display: flow-root;
+        margin: 22px;
+    }
+
+    .cardInside img {
+        display: block;
+        border-radius: 5px;
+        margin: auto;
+    }
+
+    .other-info {
+        padding: 10px;
+        display: block;
+        justify-content: space-evenly;
+    }
+
+
+    .elencoLista {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .cardInside > a:last-of-type {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
 
 
 

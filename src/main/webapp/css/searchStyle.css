@@ -54,6 +54,10 @@ a quelli contenuti in .nome-gioco*/
     font-weight: 600;
 }
 
+.game_info li {
+    font-size: 20px;
+}
+
 .game_info a {
     text-decoration: none;
     color: black;
@@ -64,9 +68,7 @@ a quelli contenuti in .nome-gioco*/
     color: #671cae;
 }
 
-.game_info li {
-    font-size: 20px;
-}
+
 
 .game_info {
     display: inline-grid;
@@ -106,6 +108,7 @@ a quelli contenuti in .nome-gioco*/
 }
 
 .btn a {
+    display: inline-table;
     border-radius: 10px;
     background-color: #9966cc;
     padding: 5px 20px;
@@ -194,6 +197,61 @@ a quelli contenuti in .nome-gioco*/
 
 .research_box_list .game-card-overlay{
     display: none;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary);
+    border-radius: 50%;
+    text-decoration: none;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    background-color: var(--secondary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media ( max-width: 650px) {
+    .container{
+        width: 100%;
+    }
+
+    .research_box_list img {
+        max-width: 90px;
+        max-height: 90px;
+    }
+
+    .body{
+        width: 100%;
+    }
+
+    .game_info ul {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .game_info li {
+        font-size: 12px;
+    }
+
+}
+
+@media ( max-width :400px ){
+
+    .research_box_grid img {
+        width: 220px;
+        height: 293px;
+    }
 }
 
 

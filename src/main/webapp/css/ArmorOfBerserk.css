@@ -24,17 +24,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 }
 
 .mycontainer video {
 	position: absolute;
-	/*top: 0;*/
-	/*left: 0;*/
 	width: 100%;
 	height: 100vh;
 	object-fit: cover;
-	background-repeat: repeat-x;
 }
 
 .mycontainer > * {
@@ -49,7 +45,6 @@
 	opacity: 0.95;
 	height: 320px;
 	margin: auto;
-
 }
 
 .personalInfo_armor #title {
@@ -92,7 +87,6 @@
 }
 
 .favorite_things_armor img {
-	background-color: red;
 	color: black;
 	font-size: 50px;
 	height: 160px;
@@ -106,6 +100,7 @@
 }
 
 .social_link_armor {
+	padding-top: 20px;
 	display: flex;
 	justify-content: space-evenly;
 	background: white;
@@ -126,4 +121,33 @@
 .social_link_armor .img_social:hover {
 	box-shadow: 0 5px 10px 5px #888888;
 	transform: scale(1.05);
+}
+
+@media ( max-width: 1450px ) {
+	.personalInfo_armor {
+		display: block;
+		background-color: white;
+		opacity: 0.95;
+		height: auto;
+	}
+
+	.mycontainer video {
+		height: 100%;
+	}
+
+
+}
+
+@media ( max-width: 560px ) {
+
+	.personalInfo_armor #portrait{
+		height: 200px;
+		width: 220px;
+	}
+
+	.favorite_things_armor {
+		display: grid;
+		justify-content: center;
+		margin: auto;
+	}
 }

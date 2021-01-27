@@ -155,18 +155,14 @@ public class AccountController {
 	
 	@GetMapping("/deleteElement")
 	public String deleteItem(HttpSession session, Model model, @RequestParam String idGame) {
-		//fixa il login
-		/*
-		 *
-		 *
-		 *
-		 *
-		 *
-		 *
-		 * */
-		
+
+		if ( isNotLogged(session.getAttribute("usernameLogged").toString(), session) ) {
+			return "/";
+		}
+
 		ListaGiochiDAOPG listaGiochiDAOPG = new ListaGiochiDAOPG();
 		boolean state = listaGiochiDAOPG.delete(session.getAttribute("emailLogged").toString(), idGame);
+
 		if ( state ) {
 			model.addAttribute("stateOperation", state);
 		}

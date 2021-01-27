@@ -184,9 +184,9 @@
 				</div>
 			</form>
 		</section>
-		<section class="list-panel">
+		<section class="list-panel" id="personal_list">
+			<h1 id="favorite_games">Favorite games</h1>
 			<section id="game-list">
-				<c:if test="${showlist.size()>0}">
 					<script defer>
                         var idGiochi = [];
                         <c:forEach var="game" items="${showlist}">
@@ -194,7 +194,6 @@
                         </c:forEach>
                         populateList(idGiochi);
 					</script>
-				</c:if>
 			</section>
 		</section>
 	</section>

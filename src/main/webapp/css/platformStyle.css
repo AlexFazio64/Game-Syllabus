@@ -1,35 +1,35 @@
-*{
+* {
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #e7e7e7;
     font-family: "Raleway", Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 1em;
 }
 
-.container{
+.container {
     padding-top: 25px;
     width: 75%;
     margin: auto;
     line-height: 1.5;
 }
 
-.info-grid{
+.info-grid {
     display: grid;
     grid-template-columns: 20% auto;
     margin: auto;
     background-color: white;
+    border-radius: 25px;
 }
 
-.platform-name{
+.platform-name {
     grid-column: 2;
     grid-row: 1;
 }
 
-.platform-name h1{
+.platform-name h1 {
     border-width: 0 0 15px 0;
     border-style: solid;
     border-color: #9966cc;
@@ -38,15 +38,14 @@ body{
     overflow-wrap: anywhere;
 }
 
-.platform-description{
+.platform-description {
     grid-column: 2;
-    grid-row:2;
+    grid-row: 2;
     overflow: hidden;
-    max-height: 145px;
     padding-right: 5px;
 }
 
-#box-button{
+#box-button {
     background-color: #9966cc;
     padding: 5px;
     border-radius: 5px;
@@ -55,23 +54,23 @@ body{
     display: none;
 }
 
-#box-button:hover{
+#box-button:hover {
     background-color: #3B1162;
 }
 
-.platform-logo{
+.platform-logo {
     display: flex;
     justify-content: center;
     align-items: center;
     grid-row: 1/5;
 }
 
-.platform-logo img{
+.platform-logo img {
     max-width: 180px;
     max-height: 250px;
 }
 
-.other-info{
+.other-info {
     padding-top: 10px;
     display: flex;
     justify-content: space-between;
@@ -79,15 +78,15 @@ body{
     text-align: center;
 }
 
-.other-three{
+.other-three {
     margin-right: 25px;
 }
 
-.other-info p{
+.other-info p {
     padding-bottom: 25px;
 }
 
-#website .material-icons{
+#website .material-icons {
     background-color: #9966cc;
     color: white;
     text-decoration: none;
@@ -95,33 +94,33 @@ body{
     font-size: 40px;
 }
 
-#website .material-icons:hover{
+#website .material-icons:hover {
     background-color: #801dc4;
 }
 
 
-
-
-.lista-giochi{
+.lista-giochi {
     margin: 50px auto auto;
-    background-color: white;
     border-radius: 25px 25px 0 0;
+    background-color: transparent;
 }
 
-.lista-giochi h1{
+.lista-giochi h1 {
     padding-top: 1%;
     text-align: center;
     border-width: 0 0 5px 0;
     border-style: solid;
     border-color: #9966cc;
+    background-color: white;
+    border-radius: 25px 25px 0 0;
 }
 
-.elencoLista{
+.elencoLista {
     list-style-type: none;
     padding-left: 10px;
 }
 
-.cardInside{
+.cardInside {
     display: grid;
     grid-template-columns: 1fr 4fr auto;
     margin: 22px;
@@ -133,30 +132,30 @@ body{
     transition: all 0.3s ease;
 }
 
-.cardInside:hover{
+.cardInside:hover {
     box-shadow: 5px 5px 3px 3px #888888;
     transform: translateY(-20px);
 }
 
-.cardInside img{
+.cardInside img {
     border-radius: 5px;
 }
 
-.cardInside .title_game{
+.cardInside .title_game {
     font-weight: 600;
 }
 
 .cardInside a {
     text-decoration: none;
     color: black;
-    transition-duration:0.3s;
+    transition-duration: 0.3s;
 }
 
 .cardInside a:hover {
     color: #671cae;
 }
 
-.cardInside > a:last-of-type{
+.cardInside > a:last-of-type {
     border-color: #3B1162;
     border-radius: 8px;
     background-color: #9966cc;
@@ -167,12 +166,162 @@ body{
     font-weight: 600;
 }
 
-.cardInside > a:hover{
+.cardInside > a:hover {
     background-color: #3B1162;
 }
 
-.column{
-    float: left;
-    width: 50%;
-    padding: 10px;
+.column {
+    display: contents;
 }
+
+.column {
+    display: contents;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    padding: 10px;
+    color: white;
+    background-color: var(--primary);
+    border-radius: 50%;
+    text-decoration: none;
+    opacity: 0.2;
+    transition: opacity 0.3s ease-in;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    background-color: var(--secondary);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.showMore {
+    border-color: #3B1162;
+    border-radius: 8px;
+    font-size: 35px;
+    background-color: #9966cc;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: 10px auto;
+    width: 220px;
+    justify-content: center;
+    display: none;
+    padding: 5px;
+}
+
+.showMore:hover {
+    background-color: #3B1162;
+}
+
+#loader_platform {
+    margin: 10px auto;
+}
+
+@media ( max-width: 1130px ) {
+
+    .info-grid {
+        display: block;
+        background-color: white;
+        border-radius: 25px;
+    }
+
+    .platform-description {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .platform-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .platform-name h1 {
+        border-width: 0 0 5px 0;
+        border-style: solid;
+        border-color: #9966cc;
+        padding-top: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    .other-info {
+        padding: 10px;
+        display: flex;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+
+    .platform-name {
+        display: flex;
+        justify-content: center;
+    }
+
+    .other-info h2{
+        padding: 0 10px;
+    }
+}
+
+@media ( max-width: 650px ) {
+
+    .container{
+        width: 90%;
+    }
+
+    .platform-name h1 {
+        padding: 10px;
+        overflow-wrap: anywhere;
+        text-align: center;
+        margin: 0 10px 0 10px;
+    }
+
+    .other-info p {
+        padding-bottom: 0;
+    }
+
+    .other-three {
+        margin-right: 0;
+    }
+
+    .other-info h2{
+        padding-top: 10px;
+    }
+
+    .cardInside {
+        display: flow-root;
+        margin: 22px;
+    }
+
+    .cardInside img {
+        display: block;
+        border-radius: 5px;
+        margin: auto;
+    }
+
+    .other-info {
+        padding: 10px;
+        display: block;
+        justify-content: space-evenly;
+    }
+
+
+    .elencoLista {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .cardInside > a:last-of-type {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+

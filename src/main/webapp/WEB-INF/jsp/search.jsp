@@ -5,6 +5,7 @@
 	<link rel="stylesheet" href="../../css/searchStyle.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<script type="text/javascript" src="../../javascript/searchScript.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
@@ -32,6 +33,7 @@
 	<hr class="line">
 	<div class="research_box_list" id="research_box_id"></div>
 </main>
+<a href="#nav-placeholder" class="material-icons back-to-top">arrow_upward</a>
 <footer>
 	<p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
 	<p>Used public database: <a href="https://www.igdb.com/discover">IGDB</a></p>

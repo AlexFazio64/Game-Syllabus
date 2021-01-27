@@ -59,11 +59,16 @@ function populateList(stringa) {
     }
 
     /*SE NON C'E' NULLA NELLA LISTA, APPARE QUESTO*/
-    else{
-        var placeholder = document.createElement('img');
-        placeholder.className = "placeholder-list";
-        placeholder.src = "../../images/error.png";
-        // document.getElementById("list-panel").appendChild(placeholder);
+    else {
+        var emptyList = document.createElement('div');
+        emptyList.className = "empty_List";
+        var mex_emptyList = document.createElement('span');
+        mex_emptyList.className = "mex";
+        mex_emptyList.innerHTML = "Your list is empty :(";
+
+        emptyList.appendChild(mex_emptyList);
+
+        document.getElementById("game-list").appendChild(emptyList);
     }
 
 }
