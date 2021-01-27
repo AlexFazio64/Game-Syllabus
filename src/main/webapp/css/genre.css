@@ -7,9 +7,8 @@
 main {
 	font-family: Arial, sans-serif;
 }
-
-body {
-	background-color: #e7e7e7;
+.game-title{
+	font-weight: bolder;
 }
 
 .container {
@@ -132,7 +131,9 @@ body {
 .cardInside > a:hover {
 	background-color: #3B1162;
 }
-
+.game-title {
+	font-weight: bolder;
+}
 
 .column {
 	float: left;

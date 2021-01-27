@@ -32,6 +32,7 @@ public class GameController {
         return "redirect:/game?id=" + id;
     }
 
+
     @GetMapping("/Review")
     public String saveReview(@RequestParam String id, Model model, HttpSession session, @RequestParam String
             rating, @RequestParam String text) {
@@ -44,14 +45,13 @@ public class GameController {
             review.setTesto(text);
             model.addAttribute("personalReview", review);
             model.addAttribute("emailLogged", email);
-            boolean newReview = new RecensioneDAOPG().save(review);
+            new RecensioneDAOPG().save(review);
         }
         return "redirect:/game?id=" + id;
     }
 
     @GetMapping("/game")
     public String loadGame(@RequestParam String id, Model model, HttpSession session) {
-
         ArrayList<Recensione> reviews = new RecensioneDAOPG().findAllByIdGame(id);
         int sum = 0;
         if (reviews.size() > 0) {
@@ -60,6 +60,7 @@ public class GameController {
             }
             sum /= reviews.size();
         }
+        model.addAttribute("reviews", reviews);
         model.addAttribute("averageRate", sum);
         String email = null;
         Recensione review = null;
@@ -69,14 +70,12 @@ public class GameController {
             review = new RecensioneDAOPG().findReviewByEmail(email, id);
             model.addAttribute("personalReview", review);
             model.addAttribute("emailLogged", email);
-            model.addAttribute("reviews", reviews);
             boolean alreadyInList = false;
             ArrayList<ListaGiochi> games = new ListaGiochiDAOPG().findByPrimaryKey(email);
             for (int i = 0; i < games.size(); i++) {
                 if (games.get(i).getIdGioco().equals(id))
                     alreadyInList = true;
             }
-
             if (alreadyInList) {
                 model.addAttribute("intoList", "OK");
             }

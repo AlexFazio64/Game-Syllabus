@@ -11,20 +11,19 @@ function loadDevelopers(previous, start) {
         data: 'fields company.name,company.logo.image_id,company.id; limit 45;where developer = t & id >' + start + '; sort id asc;  ',
         dataType: "json",
         success: function (results) {
-            var alreadyPresent = [];
+            var alreadyIn = [];
             var datas = JSON.stringify(results);
             var dev = [];
             dev = JSON.parse(datas);
             var finish = false;
             var cont = 0;
-            console.log(results);
             if (dev.length > 0) {
                 for (var j = 0; j < 5; j++) {
                     if (finish)
                         break;
                     for (var i = 0; i < 4 && !finish;) {
-                        if (!(alreadyPresent.includes(dev[cont].company.name))) {
-                            alreadyPresent.push(dev[cont].company.name);
+                        if (!(alreadyIn.includes(dev[cont].company.name))) {
+                            alreadyIn.push(dev[cont].company.name);
                             var link = document.createElement('a');
                             link.href = "http://localhost:8080/developer?name=" + dev[cont].company.name;
                             var container = document.createElement('section');
@@ -46,7 +45,7 @@ function loadDevelopers(previous, start) {
                             link.appendChild(container);
                             document.getElementById("row" + j).appendChild(link);
                             i++;
-                            if (alreadyPresent.length >= 20) {
+                            if (alreadyIn.length >= 20) {
                                 finish = true;
                                 lastIndex = dev[cont].id;
                                 break;
@@ -56,14 +55,12 @@ function loadDevelopers(previous, start) {
                     }
                 }
             }
-            console.log(previous);
             loadPagination(start, lastIndex, previous, cont - 1);
         }, error: function (xhr, status, error) {
             alert(status);
         }
     });
 }
-
 function loadPagination(firstIndex, lastIndex, previous, counter) {
     if (firstIndex <= 0) {
         var element = document.getElementById('previous');
@@ -76,7 +73,6 @@ function loadPagination(firstIndex, lastIndex, previous, counter) {
         document.getElementById("next").href = "http://localhost:8080/developers?start=" + previous;
         document.getElementById("previous").innerHTML = '&laquo;';
     } else {
-        console.log(firstIndex);
         var next = parseInt(lastIndex);
         if (firstIndex < 137)
             document.getElementById("previous").href = "http://localhost:8080/developers?start=0";

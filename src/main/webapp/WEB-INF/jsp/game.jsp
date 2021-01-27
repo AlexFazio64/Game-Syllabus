@@ -12,9 +12,7 @@
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
 </head>
-
 <body>
 <div id="nav-placeholder">
 </div>
@@ -49,18 +47,6 @@
         <ul id="basicInformation">
             <li><span id="game-name" class="gameName"> </span>
             </li>
-            <%--<c:if test="${emailLogged==null}">
-                <script defer>
-                var button = document.getElementById('delete');
-                button.parentNode.removeChild(button);
-                </script>
-            </c:if>--%>
-            <%--<c:if test="${intoList==null}">
-                <script defer>
-                    var button = document.getElementById('delete');
-                    button.parentNode.removeChild(button);
-                </script>
-            </c:if>--%>
             <c:if test="${added!=null}">
                 <script>
                     swal("Success!", "Game added to your list", "success");
@@ -79,7 +65,6 @@
                     coverid.parentNode.append(addRemoveContainer);
                 </script>
             </c:if>
-
             <li><span id="game-rate"><strong>Rate: </strong></span></li>
             <li><span id="release_date"><strong>Release Date: </strong></span></li>
             <li><span id="gameplay-type"><strong>Gameplay Type: </strong> </span></li>
@@ -130,26 +115,21 @@
                     </section>
                 </div>
             </c:if>
-
             <div id="review-container">
                 <c:forEach var="rews" items="${reviews}">
                     <div class="review">
                         <span>${rews.getScrittaDa()}</span>
-
                         <c:forEach begin="1" end="${rews.getValutazione()}">
                             <span class="fa fa-star checked"></span>
                         </c:forEach>
-
                         <c:forEach begin="${rews.getValutazione()+1}" end="10">
                             <span class="fa fa-star"></span>
                         </c:forEach>
-
                         <p>${rews.getTesto()}</p>
                     </div>
                 </c:forEach>
             </div>
         </div>
-
     </section>
     <footer>
         <p>Site made for <strong>Software Engineering and Web Computing exams</strong>.</p>
@@ -162,7 +142,5 @@
 <script>
     loadGameRate("${averageRate}");
 </script>
-
 </body>
-
 </html>

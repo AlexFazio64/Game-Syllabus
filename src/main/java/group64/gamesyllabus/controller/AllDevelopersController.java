@@ -18,7 +18,7 @@ public class AllDevelopersController {
     @GetMapping("/developers/next")
     public String next(@RequestParam String start, @RequestParam String previous, Model model) {
         model.addAttribute("start", start);
-        model.addAttribute("previous",previous);
+        model.addAttribute("previous", previous);
         return "allDevelopers";
     }
 }

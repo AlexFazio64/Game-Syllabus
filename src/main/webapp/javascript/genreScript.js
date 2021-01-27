@@ -52,6 +52,7 @@ function genreInfo(genere) {
                     var date = document.createElement('li');
                     var platform = document.createElement('li');
                     var name = document.createElement('li');
+                    name.className="game-title";
                     if (!('name' in txt[i]) == 0) {
                         name.innerHTML = txt[i].name;
                     } else {
