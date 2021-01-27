@@ -251,10 +251,6 @@ a.info {
     transition: all 0.3s ease;
 }
 
-a.info:visited {
-    text-decoration: none;
-}
-
 #summary {
     margin: 20px 20px 20px 10px;
     border-radius: 15px;
@@ -290,9 +286,10 @@ input#quantity {
 }
 
 @media (min-device-width: 280px) and (max-device-width: 768px) {
-    .gameName{
+    .gameName {
         font-size: 30px;
     }
+
     body {
         font-size: 18px;
     }
@@ -356,9 +353,10 @@ input#quantity {
 }
 
 @media (min-device-width: 768px) and (max-device-width: 1024px) {
-    .gameName{
+    .gameName {
         font-size: 30px;
     }
+
     #all-info {
         padding: 0 11px;
         max-width: 100vw;

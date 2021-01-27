@@ -44,8 +44,9 @@ function loadComingSoon() {
                     if (!('platforms' in result[i]) == 0) {
                         for (var j = 0; j < result[i].platforms.length && j < 2; j++) {
                             var collegamento = document.createElement('a');
+                            collegamento.className="link-style";
                             collegamento.innerHTML = listaConsole.concat(result[i].platforms[j].name);
-                            collegamento.href = "#";
+                            collegamento.href = "http://localhost:8080/platform?name="+result[i].platforms[j].name;
                             platform.appendChild(collegamento);
                             if (j == 0 && result[i].platforms.length > 1) {
                                 collegamento.innerHTML = collegamento.innerHTML.concat(", ");
