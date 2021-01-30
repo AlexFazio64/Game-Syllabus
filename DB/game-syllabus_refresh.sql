@@ -134,3 +134,7 @@ ALTER TABLE ONLY public.listagiochi
 
 ALTER TABLE ONLY public.recensione
     ADD CONSTRAINT "profiloFK" FOREIGN KEY (scrittada) REFERENCES public.profilo(email) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+ALTER TABLE public.recensione
+    ADD CONSTRAINT "scrittada-gioco" UNIQUE (scrittada, idgioco);
