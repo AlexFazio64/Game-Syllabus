@@ -84,11 +84,19 @@ int main(){
 
 	for (int i = 0; i < users.size(); ++i)
 		un1.insert(insertProfilo(users.at(i).email, users.at(i).password, users.at(i).username));
-
+	set<int>game_to_review;
 	for (auto a = games.begin(); a != games.end(); ++a){
+		set<int> reviewer;
 		int n = g.num(r_g,n_u);
-		for (int i = 0; i < n; ++i)
-			un2.insert(insertRecensione(g.num(10)+1, g.text(), games.at(g.num(n_g)), users.at(g.num(n_u)).email));
+
+		for (int i = 0; i < n; ++i){
+			int ind;
+			do{
+				ind = g.num(n_u);
+			}while(reviewer.find(ind) != reviewer.end());
+			reviewer.insert(ind);
+			un2.insert(insertRecensione(g.num(10)+1, g.text(), *a, users.at(ind).email));
+		}
 	}
 
 	for (auto a = users.begin(); a != users.end(); ++a){
